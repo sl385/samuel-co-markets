@@ -16,6 +16,7 @@ add_action('after_setup_theme', 'scm_setup');
 function scm_assets() {
     $ver = wp_get_theme()->get('Version');
     wp_enqueue_style('scm-main', get_template_directory_uri() . '/assets/css/markets.css', [], $ver);
+    wp_enqueue_style('scm-hub-pages', get_template_directory_uri() . '/assets/css/hub-pages.css', ['scm-main'], $ver);
     wp_enqueue_script('scm-main', get_template_directory_uri() . '/assets/js/markets.js', [], $ver, true);
 }
 add_action('wp_enqueue_scripts', 'scm_assets');
