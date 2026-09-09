@@ -12,10 +12,9 @@ $markets = scm_latest_excluding($exclude, 4);
 <section class="scm-hero">
   <div class="scm-shell scm-hero__grid">
     <div class="scm-hero__copy">
-      <span class="scm-eyebrow">EST. 2012</span>
       <h1>Markets.<br>Research.<br>Education.</h1>
       <p class="scm-hero__lead">Understand what is moving markets — and build the knowledge to act with confidence.</p>
-      <p class="scm-hero__sub">Independent market intelligence, professional research and structured education from a trading business established in 2012.</p>
+      <p class="scm-hero__sub">Independent market intelligence from a trading business established in 2012.</p>
       <form id="morning-brief-signup" class="scm-signup" action="#" method="post">
         <input type="email" name="email" placeholder="Enter your email address" required>
         <button class="scm-button scm-button--gold" type="submit">Get the Morning Brief — Free</button>
@@ -23,6 +22,7 @@ $markets = scm_latest_excluding($exclude, 4);
       <small>Delivered every weekday morning. Free. Unsubscribe anytime.</small>
     </div>
     <div class="scm-hero__visual">
+      <div class="scm-hero__values">Discipline<br>Knowledge<br>Opportunity<br>A Brighter<br>Tomorrow</div>
       <div class="scm-hero__quote">
         <blockquote>“Better information leads to better decisions.”</blockquote>
         <cite>Samuel Leach · Founder, Samuel &amp; Co Trading</cite>
@@ -33,10 +33,10 @@ $markets = scm_latest_excluding($exclude, 4);
 
 <section class="scm-proof">
   <div class="scm-shell scm-proof__grid">
-    <div><strong>Independent analysis</strong><span>Clear thinking, not noise.</span></div>
-    <div><strong>Real-world education</strong><span>Built around markets.</span></div>
-    <div><strong>Global community</strong><span>For serious traders.</span></div>
-    <div><strong>Trusted since 2012</strong><span>More than a decade in markets.</span></div>
+    <div><strong>Independent Analysis</strong><span>Clear thinking, not noise.</span></div>
+    <div><strong>Real-world Education</strong><span>Built around markets.</span></div>
+    <div><strong>A Global Community</strong><span>For serious traders.</span></div>
+    <div><strong>Trusted Since 2012</strong><span>More than a decade in markets.</span></div>
   </div>
 </section>
 
@@ -56,24 +56,28 @@ $markets = scm_latest_excluding($exclude, 4);
         <h2><?php the_title(); ?></h2>
         <p><?php echo esc_html(wp_trim_words(get_the_excerpt() ?: get_the_content(), 34)); ?></p>
         <div class="scm-actions-row">
-          <a class="scm-button scm-button--gold" href="<?php the_permalink(); ?>">Read Today's Brief</a>
+          <a class="scm-button scm-button--gold" href="<?php the_permalink(); ?>">Read Today's Brief →</a>
           <a class="scm-underlink" href="<?php echo esc_url(get_category_link(get_cat_ID('Morning Market Brief'))); ?>">View Brief Archive</a>
         </div>
       <?php else: ?>
-        <h2>Know what happened overnight. Understand what matters today.</h2>
-        <p>The Samuel &amp; Co Morning Brief gives readers the key market story, overnight moves and the day's important events.</p>
+        <h2>Oil Near $100 as Markets Turn to CPI</h2>
+        <p>Oil prices rise sharply as geopolitical tensions intensify, with traders focused on inflation, rates and the next major data release.</p>
       <?php endif; wp_reset_postdata(); ?>
+      <ul class="scm-brief-points"><li>Oil remains the dominant inflation story</li><li>US futures steady ahead of CPI</li><li>Gold benefits from renewed risk demand</li><li>Central-bank expectations remain in focus</li></ul>
     </div>
-    <div class="scm-brief__image"><?php if (!empty($morning_id) && has_post_thumbnail($morning_id)) echo get_the_post_thumbnail($morning_id, 'large'); ?></div>
+    <div class="scm-brief__image">
+      <?php if (!empty($morning_id) && has_post_thumbnail($morning_id)) echo get_the_post_thumbnail($morning_id, 'large'); else echo '<img src="https://www.samuelandcotrading.com/wp-content/uploads/2026/09/2026-09-09-morning-v2-notext.webp" alt="Morning market brief">'; ?>
+      <div class="scm-image-caption">Higher Prices.<br>Bigger Questions.</div>
+    </div>
     <aside class="scm-usopen">
       <span class="scm-eyebrow">US OPEN</span>
       <?php if ($usopen->have_posts()): $usopen->the_post(); ?>
         <h3><?php the_title(); ?></h3>
         <p><?php echo esc_html(wp_trim_words(get_the_excerpt() ?: get_the_content(), 24)); ?></p>
-        <a class="scm-button scm-button--gold" href="<?php the_permalink(); ?>">Read latest update</a>
-        <?php if (has_post_thumbnail()) the_post_thumbnail('medium_large'); ?>
+        <a class="scm-button scm-button--gold" href="<?php the_permalink(); ?>">Read latest update →</a>
+        <?php if (has_post_thumbnail()) the_post_thumbnail('medium_large'); else echo '<img src="https://www.samuelandcotrading.com/wp-content/uploads/2026/09/us-reopen.webp" alt="US Open markets">'; ?>
       <?php else: ?>
-        <h3>What changed since London opened.</h3><p>A concise update into the US session.</p>
+        <h3>A calmer open, but all eyes remain on inflation</h3><p>A concise update into the US session.</p><a class="scm-button scm-button--gold" href="#">Read latest update →</a><img src="https://www.samuelandcotrading.com/wp-content/uploads/2026/09/us-reopen.webp" alt="US Open markets">
       <?php endif; wp_reset_postdata(); ?>
     </aside>
   </div>
@@ -100,10 +104,14 @@ $markets = scm_latest_excluding($exclude, 4);
       <div class="scm-card-grid scm-card-grid--3">
         <?php if ($research->have_posts()): while ($research->have_posts()): $research->the_post(); ?>
           <article class="scm-card"><a class="scm-card__image" href="<?php the_permalink(); ?>"><?php if (has_post_thumbnail()) the_post_thumbnail('medium_large'); ?></a><div class="scm-card__body"><span class="scm-meta"><?php echo esc_html(scm_read_time()); ?> min read</span><h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3><p><?php echo esc_html(wp_trim_words(get_the_excerpt() ?: get_the_content(), 18)); ?></p></div></article>
-        <?php endwhile; else: ?><p>Add posts to a <strong>Research</strong> category and they will populate here automatically.</p><?php endif; wp_reset_postdata(); ?>
+        <?php endwhile; else: ?>
+          <article class="scm-card"><div class="scm-card__image"><img src="https://www.samuelandcotrading.com/wp-content/uploads/2026/09/carry-trade.webp" alt="Carry trade research"></div><div class="scm-card__body"><span class="scm-meta">Themes · 5 min read</span><h3>How Carry Trades Work — and When They Break</h3><p>A practical look at the mechanics and risks behind carry.</p></div></article>
+          <article class="scm-card"><div class="scm-card__image"><img src="https://www.samuelandcotrading.com/wp-content/uploads/2026/09/oil-risk.webp" alt="Oil research"></div><div class="scm-card__body"><span class="scm-meta">Macro · 7 min read</span><h3>What $100 Oil Means for Global Inflation</h3><p>How higher energy prices feed into rates and the economy.</p></div></article>
+          <article class="scm-card"><div class="scm-card__image"><img src="https://www.samuelandcotrading.com/wp-content/uploads/2026/09/bunds.webp" alt="European bond research"></div><div class="scm-card__body"><span class="scm-meta">Rates · 8 min read</span><h3>The Investment Case for European Duration</h3><p>What growth, inflation and policy expectations imply for bonds.</p></div></article>
+        <?php endif; wp_reset_postdata(); ?>
       </div>
     </div>
-    <aside class="scm-member"><span class="scm-eyebrow">SAMUEL &amp; CO MARKETS</span><h3>Join the serious markets community.</h3><p>Daily briefings, premium research, live market sessions and structured learning in one membership.</p><a class="scm-button scm-button--gold scm-button--block" href="<?php echo esc_url(home_url('/membership/')); ?>">Join for £99/month</a><ul><li>Morning &amp; US Open Briefs</li><li>Premium research</li><li>Weekly live market session</li><li>Complete lesson library</li><li>Trader community</li><li>Member events &amp; more</li></ul></aside>
+    <aside class="scm-member"><span class="scm-eyebrow">SAMUEL &amp; CO MARKETS</span><h3>Join Samuel &amp; Co Markets</h3><p>Daily briefings, premium research, live market sessions and structured learning in one membership.</p><a class="scm-button scm-button--gold scm-button--block" href="<?php echo esc_url(home_url('/membership/')); ?>">Join for £99/month</a><ul><li>Morning &amp; US Open Briefs</li><li>Premium research</li><li>Weekly live market session</li><li>Complete lesson library</li><li>Trader community</li><li>Member events &amp; more</li></ul></aside>
   </div>
 </section>
 
