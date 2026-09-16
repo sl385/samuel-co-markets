@@ -1,0 +1,55 @@
+/* ==== Member ====
+   Research layout + Join Markets sticky CTA.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-research-layout {
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:26px;
+  align-items:start;
+}
+
+.scm-member {
+  background:var(--navy);
+  color:var(--white);
+  padding:25px;
+  position:sticky;
+  top:20px;
+}
+
+.scm-member .scm-eyebrow {
+  color:var(--gold-soft);
+  margin-bottom:10px;
+}
+
+.scm-member h3 {
+  font:500 29px/1.04 var(--font-display);
+  margin:0 0 11px;
+}
+
+.scm-member p {
+  font-size:10px;
+  line-height:1.55;
+  color:#d2dde2;
+  margin:0 0 15px;
+}
+
+.scm-member ul {
+  list-style:none;
+  margin:15px 0 0;
+  padding:0;
+}
+
+.scm-member li {
+  font-size:9.5px;
+  margin:7px 0;
+}
+
+.scm-member li:before {
+  content:'✓';
+  color:var(--gold);
+  margin-right:7px;
+}
+
+.scm-member li:before { content: '✓'; }
+.scm-member__note { font-size: 9px; color: var(--on-dark-muted); margin: 10px 0 0; }

@@ -1,0 +1,32 @@
+/* ==== Ticker ====
+   Market ticker strip (data is static for now).
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-ticker {
+  background:var(--navy);
+  color:white;
+}
+
+.scm-ticker__grid {
+  display:grid;
+  grid-template-columns:repeat(9,1fr);
+}
+
+.scm-tick {
+  padding:12px 13px;
+  border-right:1px solid rgba(255,255,255,.12);
+  font-size:8px;
+}
+
+.scm-tick strong {
+  display:block;
+  font-size:11px;
+  margin-top:3px;
+}
+
+/* Figures + change, and the trailing "View full markets" link */
+.scm-tick strong { font-family: var(--font-mono); font-weight: 600; letter-spacing: 0; }
+.scm-tick__change { font-size: 9px; margin-left: 6px; font-family: var(--font-mono); }
+.scm-tick--up .scm-tick__change { color: var(--up); }
+.scm-tick--down .scm-tick__change { color: var(--down); }
+.scm-ticker__more { display: flex; align-items: center; padding: 12px 13px; font-size: 10px; text-decoration: none; color: var(--on-dark); white-space: nowrap; }

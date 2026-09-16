@@ -1,0 +1,11 @@
+{
+  "name": "samuel-co-2026",
+  "private": true,
+  "scripts": {
+    "build": "sass --quiet --no-source-map --style=compressed assets/sass/screen.scss assets/css/screen.css",
+    "watch": "sass --quiet --watch assets/sass/screen.scss assets/css/screen.css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

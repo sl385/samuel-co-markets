@@ -1,0 +1,74 @@
+/* =========================================================
+   Samuel & Co 2026 — single compiled stylesheet
+   Build: npm run build   (see package.json)
+
+   Layer 1: legacy functional styles ported from the 2022 theme
+            (WooCommerce, course player, forms, ACF page templates).
+   Layer 2: the 2026 design system (scm-*). Tokens are CSS custom
+            properties in scm/_tokens.scss; Sass is structure only.
+            Loaded last so it wins on any tie.
+   ========================================================= */
+
+/* ==== Legacy vars + mixins */
+@import "legacy/vars";
+@import "legacy/global/mixins";
+@import "legacy/global/reset";
+@import "legacy/global/validations";
+
+/* ==== Legacy base */
+@import "legacy/local/typography";
+@import "legacy/local/scaffold";
+@import "legacy/local/button";
+@import "legacy/local/grids";
+
+/* ==== Legacy page-template + component styles (ACF templates still in use) */
+@import "legacy/local/masthead";
+@import "legacy/local/components";
+@import "legacy/local/testimonials";
+@import "legacy/local/blog";
+@import "legacy/local/contact";
+@import "legacy/local/service";
+@import "legacy/local/about";
+@import "legacy/local/gfx";
+@import "legacy/local/utils";
+@import "legacy/local/cards";
+@import "legacy/local/forms";
+@import "legacy/local/wp-content";
+
+/* ==== Legacy course / LMS */
+@import "legacy/local/course";
+@import "legacy/local/player";
+
+/* ==== Legacy WooCommerce */
+@import "legacy/local/woo/global";
+@import "legacy/local/woo/loop";
+@import "legacy/local/woo/single";
+@import "legacy/local/woo/cart";
+@import "legacy/local/woo/checkout";
+@import "legacy/local/woo/account";
+
+@import "legacy/local/apperancefixes";
+@import "legacy/local/getfunded2026";
+@import "legacy/local/mobile";
+
+/* ==== 2026 design system (scm-*) */
+@import "scm/tokens";
+@import "scm/mixins";
+@import "scm/base";
+@import "scm/typography";
+@import "scm/buttons";
+@import "scm/header";
+@import "scm/hero";
+@import "scm/proof";
+@import "scm/ticker";
+@import "scm/tabs";
+@import "scm/brief";
+@import "scm/cards";
+@import "scm/member";
+@import "scm/learn";
+@import "scm/education";
+@import "scm/footer";
+@import "scm/article";
+@import "scm/hub-pages";
+@import "scm/site";
+@import "scm/responsive";

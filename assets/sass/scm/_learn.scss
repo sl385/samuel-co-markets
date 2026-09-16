@@ -1,0 +1,43 @@
+/* ==== Learn ====
+   Learn topic grid.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-learn {
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:32px;
+}
+
+.scm-learn-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.scm-learn-item {
+  text-decoration:none;
+  border-top:1px solid var(--line);
+  padding:16px 8px 7px;
+}
+
+.scm-learn-item strong {
+  display:block;
+  font:500 18px var(--font-display);
+}
+
+.scm-learn-item span {
+  display:block;
+  font-size:10px;
+  color:#788287;
+  margin-top:6px;
+}
+
+.scm-learn__visual {
+  min-height:300px;
+  background:url('../img/editorial/london-ny-overlap.webp') center/cover no-repeat;
+}
+
+/* Icon variant from the reference */
+.scm-learn-item { display: flex; gap: var(--space-3); align-items: flex-start; }
+.scm-learn-item__icon { font-size: 20px; color: var(--gold); width: 26px; flex: none; margin-top: 2px; }
+.scm-learn-item__text { display: block; }

@@ -1,0 +1,40 @@
+/* ==== Article ====
+   Single post / page / prose.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-article__header,.scm-page__header {
+  padding:80px 0 36px;
+}
+
+.scm-article__narrow {
+  max-width:820px;
+}
+
+.scm-article__meta {
+  font-size:12px;
+  color:var(--muted);
+}
+
+.scm-article__hero {
+  max-width:1180px;
+}
+
+.scm-article__hero img {
+  width:100%;
+  max-height:620px;
+  object-fit:cover;
+}
+
+.scm-prose {
+  font:17px/1.75 var(--font-display);
+  padding-top:40px;
+  padding-bottom:80px;
+}
+
+.scm-prose h2 {
+  font-size:34px;
+}
+
+.scm-prose h3 {
+  font-size:26px;
+}

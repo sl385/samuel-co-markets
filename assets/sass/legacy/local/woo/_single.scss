@@ -1,0 +1,132 @@
+.woocommerce #content div.product div.summary, 
+.woocommerce div.product div.summary, 
+.woocommerce-page #content div.product div.summary, 
+.woocommerce-page div.product div.summary {
+    float: none;
+    @media screen and ( min-width: 1350px ) {
+
+        flex-basis: 35%;
+    }
+}
+
+.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
+   
+    float: none;
+    width: 100%;
+    @media screen and ( min-width: 1350px ) {
+
+        width: 100%;
+    }
+}
+
+
+.woocommerce-product-gallery__wrapper a {
+    pointer-events: none;
+}
+
+form.cart .quantity,
+.woocommerce div.product form.cart div.quantity {
+    display: none;
+}
+
+
+
+.woocommerce div.product {
+    @media screen and ( min-width: 768px ) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > * {
+            flex-basis: 62%;
+            justify-content: space-between;
+        }
+    }
+
+     div.images img {
+        max-height: 685px;
+        width: auto;
+        margin: 0 auto;
+     }
+
+     .product_title {
+        @extend .type--40;
+     }
+
+     h1 + .price {
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        border-bottom:1px solid $dark;
+        color: $brand;
+        font-weight: $semibold;
+     }
+
+     .wp-content {
+        p:first-of-type {
+            font-weight: $semibold;
+        }
+     }
+
+     .button {
+        width: 100%;
+     }
+
+
+    
+
+     
+}
+
+
+.section--product.section--dark {
+    .wp-content p {
+         color: #fff;
+         &:first-of-type {
+             font-weight: $semibold;
+             color: $brand;
+         }
+     }
+  }
+
+  .section--product .faqs {
+    margin-bottom: 1.5em;
+  }
+
+  .section--product-what {
+    position: relative;
+    .gfx {
+        position: absolute;
+    }
+    .gfx--arrow {
+      
+        top: 4em;
+        right: 3vw;
+    }
+    .gfx--grid {
+      
+        top: 60%;
+        left: 2vw;
+    }
+    .gfx--circle-lg {
+        
+        bottom: -170px;
+       
+        right: 2vw;
+    }
+  }
+
+
+.section--product-faqs {
+    position: relative;
+    .gfx--grid-d {
+        position: absolute;
+        top: -30px;
+        right: 5vw;
+    }
+}
+
+.course-module__header {
+    color: $brand;
+    @extend .type--subs-30;
+    margin-bottom: 1em;
+}

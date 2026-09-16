@@ -1,0 +1,270 @@
+/*
+
+<a href="#" class="article-card">
+                        <div>
+                            <figure>
+
+                            </figure>
+                            <a class="article__tag" href="#">News</a>
+                            <h3>Forex Today: Dollar bends but does not break</h3>
+                        </div>
+                        <span class="button">Read More</span>
+                    </a>
+
+*/ 
+
+.article-card {
+    box-shadow: 3px 3px 30px rgba(0,0,0,.1);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 15px 15px 25px 15px;
+    background: $white;
+    height: 100%;
+    justify-content: space-between;
+    figure {
+        height: 145px;
+        background: #eee;
+        @extend .u-ofc;
+        margin-bottom: 15px;
+        @media screen and ( min-width: 768px ) {
+            height: 189px;
+          
+        }
+        position: relative;
+    }
+
+    .article__tag {
+        @extend .type--20;
+        color: $brand;
+        pointer-events: none;
+    }
+
+    h3 {
+        @extend .type--subs-28;
+        margin: .5em 0 1em 0;
+        text-align: left;
+    }
+
+    p,
+    a,h3, span {
+        margin-left: 25px;
+        margin-right: 25px;
+       
+    }
+
+    span {
+        align-self: flex-start;
+        &:hover {
+            background-color: $dark;
+            color: $white;
+        }
+    }
+
+    .event_cost {
+        color: $brand;
+    }
+}
+
+/* ==== Single */ 
+
+.single-post {
+
+    main {
+        position: relative;
+    }
+
+    .banner {
+        padding: 3em 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @media screen and ( min-width: 1024px ) {
+            padding: 8em 0;
+            background: none !important;
+        }
+        .container {
+            padding: 1.5em;
+            text-align: center;
+            background: rgba(0,0,0,.5);
+            color: $white;
+            @media screen and ( min-width: 1024px ) {
+                padding: 3em;
+            }
+        }
+    }
+
+
+    .page--bg {
+        display: none;
+        position: absolute;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        height: 70vh;
+
+        @media screen and ( min-width: 1024px ) {
+            display: block;
+        }
+    }
+
+    h1, .article__container {
+        @extend .container--s;
+        margin: 0 auto;
+    }
+
+    .single-content {
+        position: relative;
+        z-index: 11;
+    }
+
+    article .container {
+        background-color: #fff;
+        padding: 3em 0;
+        
+        @media screen and ( min-width: 1024px ) {
+            padding: 6em 0;
+        }
+    }
+
+    .article__container {
+        @media screen and ( min-width: 1024px ) {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+}
+
+.post-navigation {
+    a {
+        @extend .button;
+        &:hover {
+            background: $dark;
+            color: #fff;
+        }
+    }
+    display:  flex;
+    justify-content: space-between;
+    padding-top: 2em;
+    margin-top: 2em;
+    @media screen and ( min-width: 1024px ) {
+        margin-top: 4em;
+    }
+    border-top: 2px solid $dark;
+}
+
+
+
+.filter-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4em;
+    li:not(:last-child) {
+        margin-right: 15px;
+    }
+}
+
+.m-cat-toggle {
+    display: block;
+    @media screen and ( min-width: 768px ) {
+        display: none;
+    }
+}
+
+
+
+.filter-list  {
+    @media screen and ( max-width: 768px ) {
+        margin-bottom: 2em;
+        display: none;
+        background: $white;
+        text-align: center;
+        padding: 15px 0;
+        &.active {
+            display: block;
+        }
+        .button {
+            color: $brand;
+            border-radius: 0;
+            background: none;
+        }
+    }
+}
+
+
+
+.event-card {
+    figcaption {
+        object-fit: none !important;
+        width: 66px !important;
+        height: 66px !important;
+        left: 15px !important;
+        top: -5px !important;
+    }
+}
+
+
+.event_date {
+    width: 66px;
+    height: 66px;
+    text-align: center;
+    box-shadow: 0 0 6px rgba(0,0,0,.1);
+    span {
+        margin: 0;
+        
+        display: block;
+        &:first-of-type {
+            padding: 2px;
+            color: #fff;
+            font-size: 1.4rem;
+            background: $brand;
+        }
+        &:last-child {
+            padding: 10px 5px;
+            color: $brand;
+            font-size: 3.3rem;
+            background: $white;
+        }
+    }
+}
+
+
+/* ==== section--newsthumbs */ 
+
+.section--newsthumbs {
+
+    .container {
+        position: relative;
+        z-index: 11;
+    }
+
+    .container > * {
+        position: relative;
+        z-index: 11;
+    }
+
+    .gfx {
+        position: absolute;
+        z-index: 1;
+    }
+
+    .gfx--arrow-d {
+        left: -80px;
+        bottom: -40px;
+    }
+
+    .gfx--grid-b {
+        left: -45px;
+        bottom: 30px;
+    }
+
+    .gfx--grid-d  {
+        top: 60px;
+        right: -35px;
+    }
+
+}

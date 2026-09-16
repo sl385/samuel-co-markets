@@ -1,0 +1,128 @@
+/* ==== Header ====
+   Site header, brand mark, primary nav.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-header {
+  height:84px;
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  position:relative;
+  z-index:20;
+}
+
+.scm-header__inner {
+  display:grid;
+  grid-template-columns:300px 1fr 310px;
+  gap:24px;
+  align-items:center;
+  width:100%;
+}
+
+.scm-identity {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.scm-brand {
+  text-decoration:none;
+  display:inline-flex;
+  flex-direction:column;
+  width:max-content;
+}
+
+.scm-brand__main {
+  font-weight:700;
+  letter-spacing:5px;
+  font-size:19px;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.scm-brand__sub {
+  display:block;
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:8px;
+  margin-top:8px;
+}
+
+.scm-established {
+  height:42px;
+  padding-left:18px;
+  border-left:1px solid #cdc7bd;
+  display:flex;
+  align-items:center;
+  font-size:9px;
+  letter-spacing:1.5px;
+  color:#5d6a71;
+}
+
+.scm-nav__list,.scm-footer__links {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.scm-nav__list {
+  display:flex;
+  justify-content:center;
+  gap:34px;
+}
+
+.scm-nav a {
+  text-decoration:none;
+  font-size:12px;
+  padding:33px 0;
+}
+
+.scm-header__actions {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+}
+
+.scm-search-link {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-right:1px solid var(--line);
+  margin-right:2px;
+  text-decoration:none;
+}
+
+.scm-search-link span {
+  width:13px;
+  height:13px;
+  border:1.7px solid var(--ink);
+  border-radius:50%;
+  position:relative;
+}
+
+.scm-search-link span:after {
+  content:'';
+  position:absolute;
+  width:6px;
+  height:1.7px;
+  background:var(--ink);
+  right:-5px;
+  bottom:-3px;
+  transform:rotate(45deg);
+}
+
+.scm-text-link {
+  text-decoration:none;
+  padding:14px 18px;
+}
+
+.scm-menu-toggle {
+  display:none;
+  border:0;
+  background:none;
+  font-size:24px;
+}

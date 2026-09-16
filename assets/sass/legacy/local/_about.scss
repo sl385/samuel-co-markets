@@ -1,0 +1,102 @@
+
+.page-template-template-about {
+
+    .container--layout  {
+
+        p:first-of-type {
+            font-weight: normal;
+            @extend .type--default;
+        }
+
+    }
+
+}
+
+
+/*
+<div class="team-modal" aria-hidden="true">
+    <div class="team-modal__content">
+        <a class="team__member--exit" href="#"><i class="fa-solid fa-times"></i></a>
+        <img class="team-modal__image" src="" alt="" />         
+        <h2 class="team-modal__title">xx</h2>       
+        <h3 class="team-modal__role">xx</h3>     
+        <div class="team-modal__contents"></div>            
+    </div>
+</div>
+
+*/ 
+
+.team-modal {
+    outline: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $dark;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: all .2s ease-in-out;
+
+    img {
+        display: block;
+        margin: 0 auto 2em auto;
+        width: 80%;
+    }
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+   
+    z-index: 111111111;
+
+    .team__member--exit {
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+    }
+    
+    color: #fff;
+    h2 {
+        color: $brand;
+        font-size: 2.6rem;
+        margin-bottom: 0;
+    }
+    h3 {
+        font-size: 2.2rem;
+        margin:.5em 0 1em 0;
+        
+    }
+    p {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    .team-modal__contents {
+        font-size: 1.6rem;
+    }
+    .team-modal__content {
+        overflow-y: auto;
+        height: 100%;
+        padding: 2.5rem;
+    }
+
+    ul {
+        margin-left: 1.5rem;
+        display: flex;
+        font-size: 130%;
+        li {
+            margin-right: 1rem;
+        }
+    }
+
+    ul a {
+        color: #fff;
+    }
+    header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+}

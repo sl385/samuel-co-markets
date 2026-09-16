@@ -1,0 +1,81 @@
+/* ==== Design tokens ====
+   Single source of truth for the 2026 design system. Everything is a CSS custom
+   property so it can be themed at runtime (dark bands, member areas) without a
+   Sass rebuild. Sass is used for structure, nesting and mixins only.
+   Reference: reference/PHOTO-2026-09-10-11-51-31.jpg */
+
+:root {
+  /* Colour — brand */
+  --navy:        #061a25;   /* primary dark: ticker, education band, member CTA */
+  --navy-2:      #0d2a36;   /* raised surface on navy */
+  --gold:        #c7a16a;   /* primary accent: buttons, rules, eyebrow dashes */
+  --gold-deep:   #937046;   /* eyebrow text, meta labels */
+  --gold-soft:   #dfbe88;   /* gold on dark backgrounds */
+
+  /* Colour — neutrals */
+  --ink:         #0c1d28;   /* headings, body on light */
+  --ink-2:       #30434f;   /* lead paragraphs */
+  --muted:       #68747b;   /* secondary copy */
+  --muted-2:     #8a9094;   /* captions, footnotes */
+  --paper:       #fbfaf7;   /* page background */
+  --white:       #ffffff;
+  --sand:        #f4f1ea;   /* soft section background */
+  --line:        #ddd8ce;   /* hairlines, card borders */
+  --line-strong: #bcb5aa;   /* button borders */
+
+  /* Colour — on dark */
+  --on-dark:     #ffffff;
+  --on-dark-muted: #cbd6da;
+  --line-on-dark: rgba(255, 255, 255, .12);
+
+  /* Colour — data */
+  --up:          #2e9e5b;   /* ticker positive */
+  --down:        #d64545;   /* ticker negative */
+
+  /* Type */
+  --font-display: Georgia, 'Times New Roman', serif;   /* TODO: licence a serif close to the reference (e.g. Tiempos / Source Serif) */
+  --font-body:    Arial, Helvetica, sans-serif;         /* TODO: swap for Typekit sans (elza is already licensed) */
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;  /* ticker figures */
+
+  --text-xs:   9px;    /* eyebrows, footnotes */
+  --text-sm:   11px;   /* meta, nav */
+  --text-base: 13px;   /* body in cards, brief copy */
+  --text-md:   15px;
+  --text-lg:   17px;   /* article prose */
+  --text-xl:   20px;   /* hero lead */
+  --display-sm: 27px;  /* card/aside headings */
+  --display-md: 34px;  /* section h2 */
+  --display-lg: 48px;  /* Morning Brief headline */
+  --display-xl: 68px;  /* hero h1 */
+
+  --tracking-eyebrow: 2.7px;
+  --tracking-display: -1.8px;
+  --leading-tight: 1.02;
+  --leading-body: 1.55;
+
+  /* Space (4px base) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-14: 56px; --space-16: 64px; --space-20: 80px;
+
+  /* Layout */
+  --shell-max: 1450px;
+  --shell-gutter: 43px;
+  --prose-max: 820px;
+  --header-h: 84px;
+  --control-h: 46px;   /* buttons + inputs share a height */
+
+  /* Shape + motion */
+  --radius: 0;         /* the design is square-cornered throughout */
+  --radius-pill: 999px;
+  --ease: .18s ease;
+  --shadow-text: 0 2px 12px rgba(0, 0, 0, .45);
+}
+
+/* Dark surfaces re-map the semantic tokens so components don't need variants. */
+.scm-on-dark, .scm-ticker, .scm-education, .scm-member, .scm-prefooter, .scm-subnav {
+  --ink: var(--on-dark);
+  --muted: var(--on-dark-muted);
+  --line: var(--line-on-dark);
+  --gold-deep: var(--gold-soft);
+}

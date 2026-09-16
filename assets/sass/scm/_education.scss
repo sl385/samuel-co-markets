@@ -1,0 +1,56 @@
+/* ==== Education ====
+   Dark education band with Level 5 / Level 7.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-education {
+  background:var(--navy);
+  color:var(--white);
+  padding:34px 0;
+}
+
+.scm-education__grid {
+  display:grid;
+  grid-template-columns:30% 35% 35%;
+  align-items:stretch;
+}
+
+.scm-education__intro {
+  padding:8px 26px 8px 0;
+}
+
+.scm-education__intro .scm-eyebrow {
+  color:var(--gold-soft);
+}
+
+.scm-education h2 {
+  font-size:32px;
+  line-height:1.07;
+  margin:0 0 7px;
+}
+
+.scm-education__intro p {
+  font-size:9.5px;
+  color:#cbd6da;
+  margin:0;
+}
+
+.scm-qualification {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:var(--navy-2);
+  margin-left:14px;
+  min-height:145px;
+  padding:22px;
+  text-decoration:none;
+}
+
+.scm-qualification h3 {
+  font:500 18px/1.12 var(--font-display);
+  margin:7px 0 13px;
+}
+
+.scm-qualification>span:last-child {
+  font-size:9px;
+  color:var(--gold-soft);
+}

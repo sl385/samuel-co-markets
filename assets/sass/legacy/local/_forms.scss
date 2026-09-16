@@ -1,0 +1,211 @@
+
+
+.newsletter {
+    position: relative;
+    p {
+        
+   
+    display: flex;
+    
+    justify-content: space-between;
+    max-width: 627px;
+    margin: 1em auto 0 auto;
+    align-items: flex-start;
+
+        > *:not(.wpcf7-spinner) {
+            min-height: 58px;
+        }
+
+    }
+
+  
+    
+    button {
+        border: none;
+    }
+
+    input[type="submit"] {
+        @extend .button;
+        border: none;
+       
+    }
+
+    span {
+        flex: 1;
+    }
+
+    input[type="email"] {
+        border-radius: 30px;
+        padding: 15px;
+        width: auto !important;
+        margin-right: 1em;
+        border: none;
+        font-family: elza, sans-serif;
+        @extend .type--20;
+        cursor: pointer;
+    }
+
+    .wpcf7-spinner {
+        position: absolute;
+    }
+
+    input[type="submit"] {
+        -webkit-appearance: none;
+   
+    }
+
+    @media screen and ( max-width: 600px) {
+        span {
+            margin-right: 1em;
+        }
+        input[type="email"] {
+            font-size: 1.5rem;
+            display: block;
+            margin: 0;
+            width: 95%;
+        }
+       
+    }
+}
+
+.section--mailer {
+   
+        .wpcf7-acceptance {
+            margin-top: 15px;
+            display: block;
+        }
+   
+}
+
+#maillist {
+    .wpcf7-list-item {
+        display: block;
+        margin: 0 auto;
+        flex-basis: 100%;
+        font-size: 1.4rem;
+        text-align: center;
+       
+        a {
+            color: $brand;
+        }
+    }
+
+    .section__title {
+        margin-bottom: 1.5em;
+    }
+}
+
+
+.woocommerce-ResetPassword,
+.woocommerce-form-register,
+.woocommerce-form-login,
+.woocommerce-form-login,
+.woocommerce-MyAccount-content,
+.woocommerce-checkout,
+.form {
+
+    input[type="submit"] {
+        -webkit-appearance: none;
+    }
+
+    legend {
+        font-weight: $semibold;
+        margin: 1em 0 0.5em 0;
+    }
+    
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+
+    label {
+        margin-bottom: .5em;
+        display: block;
+    }
+
+    textarea,
+    input[type="password"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"] {
+        background-color: $light;
+        padding: 1em;
+        width: 100%;
+        border: none;
+        font-family: elza, sans-serif;
+    }
+
+    .wpcf7-list-item {
+        margin-left: 0;
+    }
+
+    input[type="submit"] {
+        border: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        @media screen and ( max-width: 768px ) {
+            display: block;
+            width: 100%;
+            float: none;
+            margin-top: 1em;
+        }
+        &:hover {
+            background-color: $dark;
+            color: $white;
+        }
+    }
+
+}
+
+.woocommerce .woocommerce-ResetPassword .form-row-first {
+    float: none;
+    width: 100%;
+}
+
+
+
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
+    border-color: $light;
+}
+
+
+.wpcf7 {
+    .wpcf7-form-control-wrap {
+        
+
+        .wpcf7-not-valid-tip {
+            background-color: $brand;
+            padding: 5px;
+            text-transform: none;
+            font-size: 16px;
+            color: #fff !important;
+        }
+    }
+
+    .wpcf7-response-output {
+        background-color: $brand;
+        color: #fff;
+        text-transform:none;
+        font-size: 16px;
+        border: none !important;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .wpcf7-not-valid {
+        border: 2px solid tomato !important;
+    }
+
+    .newsletter {
+        .wpcf7-not-valid-tip {
+            margin-top: 5px;
+
+            max-width: 447px;
+            @media screen and ( max-width: 560px ) {
+                margin-right: 0;
+            }
+        }
+    }
+    
+}
+

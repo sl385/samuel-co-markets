@@ -1,0 +1,17 @@
+/* ==== Filter tabs ====
+   Pill tab row under "What's Moving Markets" (see reference). Client-side filter
+   handled in assets/js/markets.js via data-filter / data-cats. */
+.scm-tabs {
+  display: flex; flex-wrap: wrap; gap: var(--space-2);
+  margin: 0 0 var(--space-5); padding: 0; list-style: none;
+  li { margin: 0; }
+  a, button {
+    display: inline-block; padding: 6px 14px; border-radius: var(--radius-pill);
+    border: 1px solid transparent; background: none; cursor: pointer;
+    font: 700 var(--text-sm) var(--font-body); color: var(--muted); text-decoration: none;
+    transition: color var(--ease), background var(--ease);
+    &:hover { color: var(--ink); }
+    &.is-active { background: var(--navy); color: var(--on-dark); }
+  }
+}
+.scm-card.is-hidden { display: none; }

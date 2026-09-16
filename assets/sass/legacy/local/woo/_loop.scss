@@ -1,0 +1,12 @@
+.card__actions {
+    del {
+        display: block;
+        font-size: 1.4rem;
+        &:before {
+            content: "Was: "
+        }
+    }
+    ins {
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,53 @@
+/* Additions for the ported site shell (header actions, footer legal, shared pages) */
+.scm-header__actions .scm-cart {
+  display: inline-flex; align-items: center; gap: 6px; text-decoration: none; padding: 14px 10px; font-size: 12px;
+  i { font-size: 14px; }
+}
+.scm-nav .sub-menu { display: none; }
+.scm-nav li { position: relative; }
+.scm-nav li:hover > .sub-menu {
+  display: block; position: absolute; top: 100%; left: 0; min-width: 200px; background: var(--white);
+  border: 1px solid var(--line); padding: 10px 0; z-index: 30; list-style: none; margin: 0;
+  a { display: block; padding: 8px 18px; }
+}
+.scm-nav.is-open .sub-menu { display: block; position: static; border: 0; padding: 0 0 0 16px; }
+.scm-nav.is-open .sub-menu a { padding: 6px 0; }
+
+.scm-page--wide .scm-page__body { max-width: none; }
+.scm-page__body { padding-top: 32px; padding-bottom: 80px; }
+
+/* Blog index */
+.scm-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none;
+  a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); text-decoration: none; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  a.active, a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+}
+
+/* Footer additions */
+.scm-footer__risk { font-size: 10px; line-height: 1.6; color: #6b777d; margin: 0 0 16px; }
+.scm-footer__social { display: flex; gap: 14px; list-style: none; margin: 0 0 14px; padding: 0;
+  a { font-size: 16px; text-decoration: none; }
+}
+.scm-footer__meta { font-size: 9px; color: #858e92; margin: 4px 0 0; }
+
+/* Pre-footer: mailing list + press logos (ported) */
+.scm-prefooter { background: var(--navy); color: var(--white); padding: 48px 0;
+  h2 { font: 500 30px/1.05 var(--font-display); margin: 0 0 8px; letter-spacing: -1px; }
+  p { color: #cbd6da; font-size: 13px; margin: 0 0 18px; }
+  .wpcf7 { max-width: 640px; }
+}
+.scm-press { background: var(--white); padding: 36px 0; border-bottom: 1px solid var(--line);
+  .scm-eyebrow { text-align: center; }
+  ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; list-style: none; margin: 0; padding: 0; align-items: center; }
+  img { max-height: 40px; width: auto; filter: grayscale(1); opacity: .7; }
+}
+
+/* Section-head sub line ("Research  Go beyond the headline.") */
+.scm-section-head__sub { font: 400 var(--text-base) var(--font-body); color: var(--muted); letter-spacing: 0; margin-left: var(--space-3); }
+.scm-brief-points__title { display: block; font-size: var(--text-sm); font-weight: 700; margin-top: var(--space-5); }
+.scm-brief-points { margin-top: var(--space-2); }
+.scm-learn__intro { font-size: var(--text-base); color: var(--muted); margin: 0 0 var(--space-5); }
+.scm-learn-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.scm-qualification { background-size: cover; background-position: center; position: relative; overflow: hidden; color: var(--on-dark);
+  > * { position: relative; z-index: 1; }
+  &:before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6, 26, 37, .92) 45%, rgba(6, 26, 37, .35)); }
+}

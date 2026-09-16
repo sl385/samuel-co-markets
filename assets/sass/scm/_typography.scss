@@ -1,0 +1,61 @@
+/* ==== Typography ====
+   Eyebrows, meta labels, section spacing, display headings.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-hero h1,.scm-section h2,.scm-education h2,.scm-article h1,.scm-page h1 {
+  font-family:var(--font-display);
+  font-weight:500;
+  letter-spacing:-1.8px;
+}
+
+.scm-section {
+  padding:54px 0;
+  border-bottom:1px solid var(--line);
+  background:var(--white);
+}
+
+.scm-eyebrow {
+  display:block;
+  font-size:9px;
+  letter-spacing:2.7px;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:700;
+  margin-bottom:17px;
+}
+
+.scm-section h2 {
+  font-size:34px;
+  line-height:1.05;
+  margin:0;
+}
+
+.scm-section-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:22px;
+}
+
+.scm-section-head h2 {
+  margin:0;
+}
+
+.scm-meta {
+  font-size:8px;
+  letter-spacing:1.3px;
+  color:var(--gold-deep);
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+.scm-article h1,.scm-page h1 {
+  font-size:58px;
+  line-height:1.03;
+  margin:0;
+}
+
+.scm-prose h2,.scm-prose h3 {
+  font-family:var(--font-display);
+  line-height:1.2;
+}

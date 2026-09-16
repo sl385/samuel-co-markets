@@ -1,0 +1,166 @@
+/* 
+
+<footer>
+   <div class="footer-links">
+        <div class="container">
+            <p>Our website offers information about investing, but not personal advice. Please remember past performance is not a guide to future returns and that investments can go up and down in value, so you could get back less than you put in.</p>
+            <div>
+                <nav class="social">
+                    <ul>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="button">Call Us</a>
+                <?php
+                    wp_nav_menu( array(
+                        'menu'              => 'footer',
+                        'menu_class'        => 'nav',
+                        'theme_location'    => 'main-nav',
+                        'depth'             => 1,
+                        )
+                    );
+                ?>    
+            </div>
+        </div>
+    </div>
+    <div class="footer-signoff">
+        <div class="container">
+             <p>VAT Number: 225 844 109 | Limited company registered in England & Wales (08100330)</p>
+             <p>Copyright Samuel & Co. <span>/</span> Branding and Website by <a target="_blank" href="https://brandtastic.co.uk/">Brandtastic</a></p>
+        </div>
+    </div>
+</footer>
+
+*/ 
+
+.footer-links {
+    background: $dark;
+    text-align: center;
+    padding: 2em 0;
+    color: #fff;
+    font-size: 1.6rem;
+    p {
+        margin: 0;
+    }
+    a {
+        color: #fff;
+    }
+    @media screen and ( min-width: 768px ) {
+
+        padding: 2em 0 1.5em 0;
+        text-align: left;
+        .button {
+            display: none !important;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        p {
+            flex-basis: 60%;
+            text-align: left;
+        }
+        div {
+            flex-basis: 45%;
+            text-align: right;
+        }
+    }
+
+    @media screen and ( min-width: 768px ) and ( max-width: 1280px ) {
+        p {
+            flex-basis: 50%;
+            font-size: 1.3rem;
+            line-height: 1.5rem;
+        }
+        div {
+            flex-basis: 50%;
+            ul {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .social {
+        font-size: 1.8rem;
+        li {
+            display: inline;
+        }
+       
+        a {
+            color: #fff;
+            &:hover {
+                color: $brand;
+            }
+        }
+        li:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+
+    .nav {
+        margin-top: 1em;
+        li {
+            display: inline;
+            &:not(:last-child):after {
+                content:"|";
+
+                margin-left: 5px;
+                margin-right: 4px;
+            }
+        }
+       
+        a {
+            text-decoration: none;
+            &:hover {
+                color: $brand;
+            }
+        }
+    }
+
+    @media screen and ( max-width: 768px ) {
+        .container {
+            display: flex;
+            flex-direction: column;
+            .fab {
+                font-size: 2rem;
+            }
+            .button {
+                margin: 25px 0 10px 0;
+            }
+            p {
+                order: 2;
+            }
+            div {
+                order: 1;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.footer-signoff {
+    padding: .5em 0;
+    background: $brand;
+    color: #fff;
+    font-size: 1.6rem;
+    p {
+        margin: 0;
+    }
+    a {
+        color: #fff;
+    }
+
+    text-align: center;
+    @media screen and ( min-width: 768px ) {
+        .container {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
+    }
+}

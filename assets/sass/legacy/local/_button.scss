@@ -1,0 +1,108 @@
+.button {
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.8rem;
+    text-decoration: none;
+    text-align: center;
+    @media screen and ( min-width: 1280px ) {
+        font-size: 2.0rem;
+    }
+    background-color: $brand;
+    color: $white;
+    padding: .45em 1em;
+    border-radius: 30px !important;
+    -webkit-appearance: none;
+    font-weight: $semibold;
+    transition: all .2s ease-in-out;
+    &:hover {
+        background-color: $white;
+        color: $brand;
+    }
+
+    &.button--alt {
+        background-color: $white;
+        color: $brand;
+        &:hover {
+            background-color: $brand;
+            color: $white;
+        }
+    }
+
+    &.button--tertiary {
+        background-color: $dark;
+        color: $white;
+        &:hover {
+            background-color: $brand;
+            color: $white;
+        }
+    }
+
+    &.button-hover--alt:hover {
+        background: $dark;
+        color: $white;
+    }
+
+    &.button--dark {
+        background-color: $dark;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            color: $dark;
+        }
+    }
+
+    .button-hover--alt2:hover {
+        background: $brand;
+        color: $white;
+    }
+
+    &.button--white {
+        background-color: $white;
+        color: $brand;
+        &:hover {
+            background-color: $brand;
+            color: $white;
+            a {
+                color: $white;
+            }
+        }
+
+        a {
+            color: $dark; 
+        }
+    }
+
+    &.active {
+        background-color: $dark;
+        color: $white;
+    }
+
+    &:disabled {
+        opacity: .4;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+.button-group {
+    display: flex;
+    > *:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    &.button-group--central {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.section--product-what button:hover {
+    background-color: $white !important;
+        color: $dark !important;
+}
+
+
+.type-product .summary .button:hover {
+    color: #fff;
+}

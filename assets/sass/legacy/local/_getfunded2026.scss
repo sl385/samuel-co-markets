@@ -1,0 +1,506 @@
+$v2ResponsiveBreakpoint: 820px;
+
+.section--matrixv2 {
+    .container {
+        max-width: 2000px;
+    }
+}
+
+
+.matrix-service {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    
+}
+
+.matrix-service__footer,
+.matrix-service__wrapper {
+    border: 1px solid #ccc;
+
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.matrix-service__wrapper {
+    overflow: hidden;
+}
+
+.matrix-service__item {
+    font-size: 16px;
+    span {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    p {
+        margin: 0;
+    }
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.matrix-service__footer {
+    padding: 25px;
+    .button {
+        display: block;
+        margin-top: 10px;
+        font-size: 100%;
+        padding: 15px;
+    }
+    small {
+        font-size: 80%;
+        color: #666;
+        margin-top: 5px;
+        display: block;
+    }
+}
+
+.matrix-service__cost {
+    font-weight: bold;
+    font-size: 220%;
+    margin-bottom: 0;
+    color: $brand;
+    span {
+        display: block;
+        font-size: 18px;
+        font-weight: normal;
+        margin-top: 1em;
+        color: $dark;
+    }
+}
+
+.matrix-service__title {
+    padding: 25px;
+    background-color: $dark;
+    transition: all 0.3s ease;
+    color: #fff;
+    p {
+        font-size: 200%;
+        margin-top: 0.25em;
+        font-weight: bold;
+        margin: .25em 0 0 0;
+        line-height: 1.1;
+        color: $brand;
+    }
+    h3 {
+        margin: 0;
+        
+    }
+}
+
+ .matrix-v2__keys {
+    // - background blur 
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+ }
+
+
+
+
+ @media screen and ( max-width: $v2ResponsiveBreakpoint ) {
+    .matrix-v2__keys {
+        display: none;
+    }
+   
+}
+
+/// -- Header 
+/// 
+
+.matrix-v2__header {
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.matrix-v2__headerItem ul {
+    display: flex;
+    gap: 10px;
+    // -- make scrollable horizontally
+    overflow-x: auto;
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+    // -- hide scrollbar
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none;  // IE 10+
+    &::-webkit-scrollbar { // WebKit
+        display: none;
+    }
+    .button {
+        font-size: 1.6rem;
+    }
+}
+
+.matrix-v2__headerItem  h3 {
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+// -- Keys 
+.matrix-v2__keys {
+    padding-top: 170px;
+    > * {
+        padding: 13px;
+    }
+}
+
+.matrix-v2__keys {
+    font-weight: bold;
+   
+    //z
+    header {
+          display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+    }
+    h4 {
+        margin: 0;
+        font-size: 1.6rem;
+      
+    }
+    p {
+        margin: 0;
+    }
+}
+
+
+.matrix-service__titleCTA {
+    border-top: 1px solid $brand; 
+    padding-top: 15px;
+    margin-top: 15px;
+     p {
+            font-size: 18px;
+            color: #fff;
+        }
+        strong {
+            color: $brand;
+        }
+        .matrix-service__cost {
+            font-size: 32px;
+            margin-bottom: 0;
+            span {
+                color: #fff;
+                opacity: 0.9;
+                font-size: 22px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+        }
+        .button {
+            display: block;
+            margin-top: 5px;
+            max-width: 200px;
+            margin: 10px auto 0 auto;
+        }
+        small {
+            opacity: .6;
+            margin-top: .5em;
+            display: block;
+        }
+}
+
+// -- Column Layout 
+@media screen and ( min-width: $v2ResponsiveBreakpoint ) {
+
+    .matrix-service__titleCTA {
+        display: none;
+       
+    }
+
+    
+   
+    .matrix-v2__grid {
+        display: flex;
+        
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 100%;
+            pointer-events: none;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) , rgba(255, 255, 255, 1));
+        }
+    }
+    .matrix-v2__keys {
+        width: 245px;
+        min-width: 245px;
+        position: sticky;
+        left: 0;
+
+    }
+
+    .matrix-service {
+        width: 250px;
+        min-width: 250px;
+        transition: all 0.3s ease;
+         &:hover,
+        &.active {
+            //transform: scale(1.05);
+            .matrix-service__title {
+                border-bottom: 1px solid rgba(255, 255, 255, .2);
+            }
+            .matrix-service__footer,
+            .matrix-service__wrapper {
+                 background-color: $dark;
+                color: $white;
+                box-shadow: 0 4px 15px rgba(0,0,0,.2);
+                .matrix-service__cost span,
+                .matrix-service__footer small
+                 {
+                    color: $light;
+                }
+            }
+            .matrix-service__item {
+                border-color: rgba(255, 255, 255, .2)
+            }
+           
+             .matrix-service__footer small
+                 {
+                    color: $light;
+                    opacity: .8;
+                }
+
+                 .matrix-service__title {
+                    background-color: $brand;
+                    p {
+                        color: $dark;
+                    }
+                 }
+
+        }
+    }
+
+    .matrix-service__item {
+       
+        span {
+            display: none;
+        }
+       
+    }
+
+    .matrix-v2__column {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        display: flex;
+        padding-left: 10px;
+        padding-right: 50px;
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        scrollbar-width: none; // Firefox
+            -ms-overflow-style: none;  // IE 10+
+            &::-webkit-scrollbar { // WebKit
+                display: none;
+            }
+    }
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+@media screen and ( min-width:  1200px ) {
+   .matrix-v2__header {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+   }
+}
+
+#getQualfied-data {
+    
+    @media screen and (min-width: 1200px) {
+    .matrix-service {
+        width: 330px;
+        min-width: 330px;
+       
+    }
+}
+}
+
+#getQualfied-matrix {
+    justify-content: center;
+}
+
+
+@media screen and ( min-width: 600px ) and ( max-width: 819px ) {
+    .matrix-service__title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+
+    }
+
+    .matrix-service__titleCTA {
+        padding-top: 0;
+        margin-top: 0;
+        border: none;
+       
+    }
+  
+}
+
+
+.tooltip-box {
+    background-color: $dark;
+    color: $white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    min-width: 200px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -110%);
+    transition: all 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    border: 2px solid #fff;
+
+}
+
+.tooltip {
+    position: relative;
+}
+
+h3.light {
+    color: $white;
+    font-weight: bold;
+    font-size: 140%;
+}
+
+
+/*
+<div class="disclaimer-modal" id="disclaimer-modal" style="display:none;">
+    <div class="disclaimer-modal__content">
+        <span class="disclaimer-modal__close" id="disclaimer-modal-close">&times;</span>
+        <h2>Important Disclaimer</h2>
+        <p>Please read the following important information before proceeding with your purchase.</p>
+        <p>On our $250,000 &amp; $400,000 advanced accounts, you have to achieve a 10% profit target before you can request a payout on your gains from thereafter” I confirm I understand this.</p>
+        <a class="button" href="" id="disclaimer-accept">I Accept</a>
+    </div>
+</div>
+*/ 
+
+.disclaimer-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disclaimer-modal h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.disclaimer-modal .button {
+    font-size: 16px;
+}
+
+.disclaimer-modal__body p:first-of-type {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.disclaimer-modal__content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.disclaimer-modal__close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.disclaimer-modal__close:hover {
+    color: #000;
+}
+
+
+
+.matrix-service__footer--alt {
+    p {
+        font-size: 1.75rem;
+        margin-bottom: .5em;
+        line-height: 1.1;
+    }
+    .matrix-service__cost {
+        font-size: 160%;
+        margin-bottom: .5em;
+    }
+}
+
+
+.matrix-v2__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    pointer-events: none;
+
+    @media (max-width: $v2ResponsiveBreakpoint) {
+        display: none;
+    }
+}
+
+.matrix-v2__nav--left {
+    left: 0;
+    @media screen and ( min-width: 820px ) {
+        left: 260px;
+    }
+}
+
+.matrix-v2__nav--right {
+    right: 0;
+}
+
+.matrix-v2__arrow {
+    pointer-events: all;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.matrix-v2__frame {
+    position: relative;
+}

@@ -1,0 +1,138 @@
+/* ==== Brief ====
+   Morning Brief / US Open editorial block.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-brief {
+  display:grid;
+  grid-template-columns:37% 34% 29%;
+  gap:0;
+}
+
+.scm-brief__lead {
+  padding:6px 34px 0 0;
+}
+
+.scm-brief__lead .scm-eyebrow {
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.scm-brief__lead .scm-eyebrow:after,.scm-usopen .scm-eyebrow:after {
+  content:'';
+  width:28px;
+  border-top:1px solid var(--gold);
+}
+
+.scm-brief__lead h2 {
+  font-size:48px;
+  line-height:1.01;
+  letter-spacing:-1.3px;
+  margin:0 0 14px;
+}
+
+.scm-brief__lead p {
+  font-size:13px;
+  line-height:1.58;
+  color:#56666e;
+  margin:0 0 18px;
+}
+
+.scm-brief-points {
+  margin:20px 0 0;
+  padding:0;
+  list-style:none;
+  counter-reset:item;
+}
+
+.scm-brief-points li {
+  font-size:10px;
+  color:#5e6c74;
+  margin:6px 0;
+  counter-increment:item;
+}
+
+.scm-brief-points li:before {
+  content:counter(item);
+  display:inline-grid;
+  place-items:center;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--gold);
+  color:white;
+  font-size:8px;
+  margin-right:8px;
+}
+
+.scm-brief__image {
+  height:370px;
+  position:relative;
+  background:#e6e2d8;
+  overflow:hidden;
+}
+
+.scm-brief__image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.scm-image-caption {
+  position:absolute;
+  left:0;
+  bottom:0;
+  background:rgba(6,26,37,.91);
+  color:var(--white);
+  padding:22px 25px;
+  width:62%;
+  font-size:9px;
+  line-height:1.7;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.scm-image-caption:after {
+  content:'';
+  display:block;
+  width:28px;
+  border-top:1px solid var(--gold);
+  margin-top:10px;
+}
+
+.scm-usopen {
+  padding-left:25px;
+  border-left:1px solid var(--line);
+}
+
+.scm-usopen .scm-eyebrow {
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.scm-usopen h3 {
+  font:500 27px/1.08 var(--font-display);
+  letter-spacing:-.4px;
+  margin:0 0 10px;
+}
+
+.scm-usopen p {
+  font-size:11px;
+  line-height:1.55;
+  color:#596970;
+  margin:0 0 13px;
+}
+
+.scm-usopen img {
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  margin-top:18px;
+}
+
+/* US Open media with play affordance (video posts) */
+.scm-usopen__media { position: relative; display: block; margin-top: 18px; }
+.scm-usopen__media img { margin-top: 0; }
+.scm-usopen__play { position: absolute; right: 14px; bottom: 14px; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: var(--on-dark); display: grid; place-items: center; font-size: 12px; }
+.scm-usopen__archive { display: inline-block; font-size: 10px; font-weight: 700; text-decoration: underline; margin-top: 10px; }
