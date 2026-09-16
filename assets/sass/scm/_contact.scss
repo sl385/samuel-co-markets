@@ -1,0 +1,309 @@
+/* ==== Contact ====
+   templates/template-contact.php, reskinned against
+   contact-page-template.html. Values reference CSS custom properties in
+   _tokens.scss. (.scm-contact-methods--stacked / .scm-contact-layout /
+   .scm-contact-map previously lived here — only the parked
+   _parked-page-concepts/page-contact-us.php still uses them, so dropped
+   rather than kept as dead weight.) */
+
+.scm-contact-methods-band {
+  background: var(--navy);
+  color: var(--on-dark);
+}
+
+.scm-contact-methods-band__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line-on-dark);
+}
+
+.scm-contact-method {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: var(--space-4);
+  /* Was 0 on the left for every item, not just the first — fine for the
+     first (sits against the shell's own edge) but left the icon for
+     "Email us"/"Visit us" touching the divider from the item before it,
+     with no breathing room. Symmetric padding now, floor to the outer
+     shell edges preserved below. */
+  padding: var(--space-6);
+  border-right: 1px solid var(--line-on-dark);
+  color: var(--on-dark);
+  text-decoration: none;
+}
+
+.scm-contact-method:first-child {
+  padding-left: 0;
+}
+
+.scm-contact-method:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.scm-contact-method__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gold-soft);
+  border-radius: 50%;
+  color: var(--gold);
+}
+
+.scm-contact-method .scm-meta {
+  color: var(--on-dark-muted);
+  margin-bottom: var(--space-1);
+}
+
+.scm-contact-method strong {
+  display: block;
+  font: 500 16px var(--font-display);
+  color: var(--on-dark);
+}
+
+.scm-contact-method small {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--on-dark-muted);
+  font-size: var(--text-sm);
+}
+
+.scm-contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* Real CF7 form (id 7) — styling its own real markup classes
+   (.grid/.grid--2/.grid-item/.form_foot), no fields added or removed. */
+.scm-contact-form {
+  padding: var(--space-8);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.scm-contact-form .grid--2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.scm-contact-form .grid-item,
+.scm-contact-form > form > label.grid-last {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.scm-contact-form label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.scm-contact-form input,
+.scm-contact-form textarea {
+  min-height: var(--control-h);
+  padding: 11px 13px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.scm-contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.scm-contact-form input:focus,
+.scm-contact-form textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+.scm-contact-form .form_foot {
+  margin-top: var(--space-2);
+}
+
+.scm-contact-form .wpcf7-list-item {
+  display: block;
+  margin: 0 0 var(--space-3);
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.scm-contact-form .wpcf7-list-item input {
+  min-height: 0;
+  width: 16px;
+  height: 16px;
+  margin-right: var(--space-2);
+  vertical-align: middle;
+  accent-color: var(--navy);
+}
+
+.scm-contact-form .wpcf7-form-control.button,
+.scm-contact-form input[type="submit"] {
+  @extend .scm-button;
+  @extend .scm-button--gold;
+  height: var(--control-h);
+  padding: 0 var(--space-8);
+  border: 0;
+  cursor: pointer;
+}
+
+.scm-contact-success {
+  display: none;
+  min-height: 400px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-10);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.scm-contact-success:not([hidden]) {
+  display: flex;
+}
+
+.scm-contact-success__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-5);
+  border: 1px solid #2e9e5b;
+  border-radius: 50%;
+  color: #2e9e5b;
+}
+
+.scm-contact-success h2 {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+.scm-contact-success p {
+  max-width: 48ch;
+  color: var(--muted);
+  margin: 0 0 var(--space-6);
+}
+
+/* Office panel — a real, finished branded location mark instead of a bare
+   "No Data" box; "Get directions" is a genuinely working link (needs no
+   API key), built from the real address. */
+.scm-office {
+  position: sticky;
+  top: var(--space-8);
+  border: 1px solid var(--line);
+  background: var(--sand);
+}
+
+.scm-office__mark {
+  position: relative;
+  min-height: 200px;
+  background:
+    repeating-linear-gradient(32deg, transparent 0 45px, rgba(6, 26, 37, .06) 46px 49px, transparent 50px 83px),
+    repeating-linear-gradient(118deg, transparent 0 70px, rgba(199, 161, 106, .22) 71px 76px, transparent 77px 115px),
+    #e9e5dc;
+  overflow: hidden;
+}
+
+.scm-office__pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border: 3px solid var(--white);
+  border-radius: 50% 50% 50% 0;
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: 0 8px 20px rgba(6, 26, 37, .2);
+}
+
+.scm-office__pin i {
+  transform: rotate(45deg);
+}
+
+.scm-office__copy {
+  padding: var(--space-8);
+}
+
+.scm-office__copy h3 {
+  font: 500 22px var(--font-display);
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.scm-office__copy address {
+  font-style: normal;
+  color: var(--ink-2);
+  line-height: var(--leading-body);
+}
+
+.scm-office__details {
+  list-style: none;
+  margin: var(--space-5) 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.scm-office__details li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-sm);
+}
+
+.scm-office__details li:last-child {
+  border-bottom: 0;
+}
+
+.scm-office__details span {
+  color: var(--muted);
+}
+
+.scm-office__note {
+  margin: var(--space-4) 0 0;
+  color: var(--muted-2);
+  font-size: var(--text-xs);
+  line-height: var(--leading-body);
+}
+
+@include bp-down(1050px) {
+  .scm-contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .scm-office {
+    position: static;
+  }
+}
+
+@include bp-down(900px) {
+  .scm-contact-methods-band__grid {
+    grid-template-columns: 1fr;
+  }
+  .scm-contact-method {
+    border-right: 0;
+    border-bottom: 1px solid var(--line-on-dark);
+    padding-left: 0;
+  }
+  .scm-contact-method:last-child {
+    border-bottom: 0;
+  }
+}
+
+@include bp-down(680px) {
+  .scm-contact-form .grid--2 {
+    grid-template-columns: 1fr;
+  }
+}

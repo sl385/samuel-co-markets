@@ -1,0 +1,100 @@
+/* ==== Page masthead (Foundations B8) ====
+   One component replacing the masthead markup duplicated across
+   templates/template-{about,home,service,funded-2025}.php and
+   SCO_Helpers::createMiniHeader() (see partials/components/masthead.php).
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-masthead {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.scm-masthead--dark {
+  background: var(--navy);
+  color: var(--on-dark);
+}
+
+.scm-masthead__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 260px;
+  align-items: center;
+  padding: var(--space-14) 0;
+}
+
+.scm-masthead--image .scm-masthead__grid {
+  grid-template-columns: 48% 52%;
+  min-height: 380px;
+  padding: 0;
+}
+
+.scm-masthead__copy {
+  max-width: 640px;
+}
+
+.scm-masthead--image .scm-masthead__copy {
+  padding: var(--space-14) var(--space-10) var(--space-14) 0;
+}
+
+.scm-masthead h1 {
+  font: 500 44px/1.05 var(--font-display);
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 var(--space-4);
+}
+
+.scm-masthead__lead {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  margin: 0 0 var(--space-6);
+}
+
+.scm-masthead--dark .scm-masthead__lead {
+  color: var(--on-dark-muted);
+}
+
+.scm-masthead__image {
+  height: 100%;
+  min-height: 380px;
+  background: center/cover no-repeat;
+}
+
+.scm-masthead__logos {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line-on-dark);
+}
+
+.scm-masthead__logos .scm-meta {
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.scm-masthead__logos ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.scm-masthead__logos img {
+  max-height: 28px;
+  width: auto;
+  filter: grayscale(1) brightness(2);
+  opacity: .8;
+}
+
+@include bp-down(1050px) {
+  .scm-masthead--image .scm-masthead__grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .scm-masthead--image .scm-masthead__copy {
+    padding: var(--space-10) 0;
+  }
+  .scm-masthead__image {
+    min-height: 240px;
+  }
+}

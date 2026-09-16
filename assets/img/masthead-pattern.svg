@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="848" height="848" viewBox="0 0 848 848">
+  <g id="Group_34" data-name="Group 34" transform="translate(848 848) rotate(180)" opacity="0.1" style="mix-blend-mode: multiply;isolation: isolate">
+    <path id="Path_45" data-name="Path 45" d="M117.913,0V282.666L400.579,0Z" transform="translate(164.754 0)" fill="#cbac6a"/>
+    <path id="Path_46" data-name="Path 46" d="M235.827,0V282.666L518.493,0Z" transform="translate(329.507 0)" fill="#35363b"/>
+    <path id="Path_48" data-name="Path 48" d="M0,117.914V400.58L282.666,117.914Z" transform="translate(0 164.754)" fill="#cbac6a"/>
+    <path id="Path_49" data-name="Path 49" d="M117.913,400.58V117.914H400.579Z" transform="translate(164.754 164.754)" fill="#35363b"/>
+    <path id="Path_52" data-name="Path 52" d="M0,235.827V518.493L282.666,235.827Z" transform="translate(0 329.507)" fill="#35363b"/>
+  </g>
+</svg>

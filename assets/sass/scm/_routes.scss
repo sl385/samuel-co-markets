@@ -1,0 +1,73 @@
+/* ==== Routes ====
+   "Choose your route" homepage section (partials/components/routes.php).
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-routes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* templates/template-research.php's 2-card hub (Markets / Briefings) */
+.scm-routes--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.scm-route {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  padding: var(--space-8);
+  border: 1px solid var(--line);
+  background: var(--white);
+  text-decoration: none;
+  color: inherit;
+}
+
+.scm-route--featured {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--on-dark);
+}
+
+.scm-route__number {
+  margin-bottom: auto;
+  color: var(--gold-deep);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.scm-route--featured .scm-route__number {
+  color: var(--gold);
+}
+
+.scm-route h3 {
+  margin: var(--space-10) 0 var(--space-2);
+  font: 500 30px var(--font-display);
+}
+
+.scm-route--featured h3 {
+  color: var(--on-dark);
+}
+
+.scm-route p {
+  color: var(--muted);
+  margin: 0 0 var(--space-4);
+}
+
+.scm-route--featured p {
+  color: var(--on-dark-muted);
+}
+
+@include bp-down(900px) {
+  .scm-routes {
+    grid-template-columns: 1fr;
+  }
+  .scm-route {
+    min-height: auto;
+  }
+  .scm-route h3 {
+    margin-top: var(--space-6);
+  }
+}

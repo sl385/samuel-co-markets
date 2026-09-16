@@ -1,0 +1,234 @@
+/* ==== Single product — "extras" below the buy box (spec D3 cont.) ====
+   woocommerce/content-product-extras.php. All real per-product ACF data
+   (what_do_you_get_content, benefits_content, faqs, linked course modules).
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-product-extra__prose .scm-prose {
+  max-width: var(--prose-max);
+}
+
+.scm-product-extra__subhead {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: var(--space-8) 0 var(--space-4);
+}
+
+/* Benefits grid — parsed from the real "Title - description" list items */
+.scm-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.scm-benefit {
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.scm-benefit__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--gold);
+  color: var(--gold-deep);
+  font: 700 var(--text-sm) var(--font-body);
+}
+
+.scm-benefit h3 {
+  font: 500 18px var(--font-display);
+  margin: 0 0 var(--space-2);
+}
+
+.scm-benefit p {
+  color: var(--muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+/* Course modules (real linked course, _sc_courses) */
+.scm-course-module {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.scm-course-module h3 {
+  font: 500 20px var(--font-display);
+  margin: 0 0 var(--space-3);
+}
+
+.scm-lesson-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.scm-lesson-list li {
+  padding: var(--space-2) 0;
+  color: var(--ink-2);
+  font-size: var(--text-base);
+  border-bottom: 1px solid var(--line);
+}
+
+.scm-lesson-list li:last-child {
+  border-bottom: 0;
+}
+
+/* FAQ — native <details>/<summary>, styled rather than reimplemented in JS.
+   Real call sites: woocommerce/content-product-extras.php, templates/
+   template-funded-2025.php — both wrap this in .scm-product-extra__faq
+   with a bare <h2> right above it (no margin-bottom anywhere, so it sat
+   flush against the FAQ list) and .scm-faq itself was artificially capped
+   at 850px instead of filling .scm-shell like everything around it. */
+.scm-product-extra__faq h2 {
+  margin-bottom: var(--space-3);
+}
+
+.scm-product-extra__faq > p {
+  color: var(--muted);
+  margin: 0 0 var(--space-8);
+}
+
+.scm-faq {
+  max-width: none;
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.scm-faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.scm-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  font: 700 var(--text-lg) var(--font-body);
+  cursor: pointer;
+  list-style: none;
+}
+
+.scm-faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.scm-faq__question i {
+  flex: none;
+  color: var(--gold-deep);
+  transition: transform var(--ease);
+}
+
+.scm-faq__item[open] .scm-faq__question i {
+  transform: rotate(45deg);
+}
+
+.scm-faq__answer {
+  max-width: 68ch;
+  padding: 0 var(--space-10) var(--space-5) 0;
+  color: var(--muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+}
+
+/* Final dark CTA band */
+.scm-product-cta__grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.scm-product-cta h2 {
+  font: 500 var(--display-md) var(--font-display);
+  margin: var(--space-2) 0 0;
+  /* .scm-on-dark only remaps tokens for whatever explicitly reads them —
+     color isn't inherited from the remap further down the tree (hit this
+     same bug on the prefooter heading and _about.scss's belief band). */
+  color: var(--ink);
+}
+
+.scm-product-cta__buy {
+  min-width: 280px;
+  padding: var(--space-6);
+  border: 1px solid var(--line-on-dark);
+  background: rgba(255, 255, 255, .04);
+  text-align: center;
+}
+
+.scm-product-cta__price {
+  display: block;
+  margin-bottom: var(--space-4);
+  font: 500 28px var(--font-display);
+  color: var(--gold-soft);
+}
+
+/* Same specificity fix as .woocommerce .scm-product__summary
+   .single_add_to_cart_button in _cards.scss — WooCommerce's own
+   .woocommerce button.button.alt rule is 3 classes deep. */
+.woocommerce .scm-product-cta__buy button.single_add_to_cart_button {
+  @extend .scm-button;
+  @extend .scm-button--gold;
+  width: 100%;
+  height: 52px;
+}
+
+/* Sticky mobile buy bar */
+.scm-mobile-buy {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--white);
+  box-shadow: 0 -12px 32px rgba(6, 26, 37, .17);
+}
+
+.scm-mobile-buy[hidden] {
+  display: none;
+}
+
+.scm-mobile-buy strong {
+  display: block;
+  font-size: var(--text-base);
+}
+
+.scm-mobile-buy span {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 681px) {
+  .scm-mobile-buy {
+    display: none !important;
+  }
+}
+
+@include bp-down(900px) {
+  .scm-benefit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include bp-down(680px) {
+  .scm-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+  .scm-product-cta__grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .scm-product-cta__buy {
+    min-width: 0;
+  }
+}

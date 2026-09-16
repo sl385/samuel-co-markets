@@ -1,0 +1,1488 @@
+/*
+
+ <li class="team__member">
+                    <figure>
+                        <img src="<?php echo _i( 'temp/person.png'); ?>" alt="" />
+                        <figcaption>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipelitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                        </figcaption>
+                    </figure>
+                    <div>
+                        <header>
+                            <h3>Persons Name</h3>
+                        </header>
+                        <ul>
+                            <li><a href="#"><i class="fa-brand fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+*/ 
+
+.team__member {
+    outline: none;
+    figure {
+        margin-bottom: 1em;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 35px;
+            color: $white;
+            
+            background-color: rgba($dark, .85);
+            @extend .type--18;
+            @media screen and ( max-width: 1024px ) {
+                font-size: 1.35rem;
+            }
+            line-height: 2.0rem;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all .5s ease-in-out;
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+       
+    }
+
+
+
+    &:hover {
+        figcaption {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+    a {
+        text-decoration: none
+    }
+
+  
+    h3 {
+        @extend .type--subs-30;
+        font-weight: $semibold;
+       
+    }
+
+    h4 {
+    
+            display: block;
+            @extend .type--20;
+            color: $brand;
+            font-weight: 400;
+            margin-top: 5px;
+   
+    }
+
+    div > div {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    ul {
+        transform: translateY(1px);
+        margin-left: 10px;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    ul li:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    .fa-solid,
+    .fa-brands {
+        color: $brand;
+        &:hover {
+            color: $dark;
+        }
+    }
+}
+
+/* === Logos */ 
+.logos-content {
+    overflow: hidden;
+}
+
+.logos {
+  
+     .slick-slide {
+        margin: 0 5vw;
+    }
+    .slick-track {
+        display: flex !important;
+        align-items: center;
+    }
+
+    img {
+        max-width: 237px;
+        height: auto;
+    }
+}
+
+
+/* === Section Strip
+
+
+ <section class="section section--strip">
+        <div class="container">
+            <figure>
+                <img src="<?php echo _i( 'temp/strip-image.png'); ?>" alt="" />
+            </figure>
+            <article>
+                <header class="strip__header">
+                    <h2>In-Person <span>Junior Trader Programme</h2>
+                </header>
+                <div class="strip__content">
+                    <p>The Junior trader programme is a two-week programme and a great starting point for an individual wanting to grow their knowledge of the financial markets. </p>
+                    <p>Before being accepted on the programme you will go through a two-stage interview process to ensure you’re the right fit for our trading team. Then upon completion of the programme and after one month of demo trading to hone your trading skills, you will be given a live account starting at $25,000 on a 50:50 profit share with Samuel & Co Trading. This is the start of your trading journey and the table below outlines the progression steps with the company once you are trading live.</p>
+                </div>
+                <a href="#" class="button">Read More</a>
+            </article>
+        </div>
+    </section>
+
+*/ 
+
+.section--strip {
+
+    @media screen and ( max-width: 768px ) {
+    padding: 0;
+    }
+
+    p,a {
+        color: #fff;
+    }
+
+    p:first-of-type {
+        font-weight: $semibold;
+    }
+
+    h2 {
+
+        margin-bottom: 1em;
+        @extend .type--40;
+        color: $brand;
+        span {
+            color: $white;
+            display: block;
+            @extend .type--subs-45;
+        }
+    }
+
+    @extend .section--dark;
+
+    .container {
+        width: 100%;
+    }
+
+    position: relative;
+
+    article {
+        margin: 0 3.7vw 0 3.75vw;
+        padding-bottom: 2em;
+    }
+
+    .button {
+        margin-top: 1em;
+    }
+
+    figure {
+        padding: 3em 3.75vw;
+        position: relative;
+        background: linear-gradient(270deg, rgba(53,54,59,1) 0%, rgba(53,54,59,1) 30%, rgba(203,172,106,1) 30.1%, rgba(203,172,106,1) 100%);
+        
+        margin-bottom: 2em;
+    }
+
+
+    &.section--strip-reverse {
+        figure {
+            background: linear-gradient(270deg, rgba(203,172,106,1) 0%, rgba(203,172,106,1) 70%, rgba(53,54,59,1) 70.1%, rgba(53,54,59,1) 100%);
+        }
+    }
+
+    @media screen and ( min-width: 768px ) {
+
+        .container {
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        figure {
+            background: none !important;
+            padding: 0;
+            flex-basis: 35%;
+        }
+
+        article {
+            padding: 0;
+            margin: 0;
+            flex-basis: 55%;
+            max-width: 535px;
+        }
+
+        background: linear-gradient(270deg, rgba(203,172,106,1)  0%, rgba(203,172,106,1) 30%, rgba(53,54,59,1) 30.1%, rgba(53,54,59,1) 100%);
+
+        &.section--strip-reverse {
+            background: linear-gradient(270deg, rgba(53,54,59,1) 0%, rgba(53,54,59,1) 70%, rgba(203,172,106,1) 70.1%, rgba(203,172,106,1) 100%);
+        }
+
+        &:not(.section--strip-reverse) {
+            figure {
+                order: 2;
+            }
+            article {
+                order: 1;
+            }
+        }
+
+    }
+
+    @media screen and ( min-width: 1200px ) {
+        figure {
+            flex-basis: 45%;
+        }
+    }
+
+}
+
+
+/* ==== Block Grids */ 
+
+.block-grid {
+
+    figure {
+        @extend .u-ofc;
+        background: #eee;
+        height: 370px;
+    }
+
+    @media screen and ( min-width: 1400px ) {
+
+    }
+
+    .block-grid__item:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    .block-grid__item > *:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    @media screen and ( min-width: 768px ) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: center;
+        > * {
+            flex-basis: 48%;
+        }
+        > *:first-child {
+            margin-right: 4%;
+        }
+    }
+
+    @media screen and ( min-width: 768px ) {
+        justify-content: space-between;
+        > * {
+            flex-basis: 32%;
+        }
+        > *:first-child {
+            margin-right: 0;
+        }
+
+        .block-grid__item {
+            margin-bottom: 0 !important;
+            display: flex;
+            flex-direction: column;
+            figure {
+                flex: 1;
+                min-height: 467px;
+            }
+            > * {
+                margin-bottom: 30px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+
+        .block-grid__item:nth-of-type(2) {
+            figure {
+                order: 3;
+                margin-bottom: 0px;
+            }
+            .block-grid__card:nth-of-type(1) {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            .block-grid__card:nth-of-type(2) {
+                order: 2;
+                margin-bottom: 30px;
+            }
+           
+        }
+
+    }
+
+    &.block--grid-alt {
+        @media screen and ( min-width: 768px ) {
+            display: block;
+
+            > *:not(:last-child) {
+                margin-bottom: 3em !important;
+            }
+
+            .block-grid__item {
+                flex-direction: row;
+                flex-basis: 100%;
+                align-items: stretch;
+                justify-content: space-between;
+                figure {
+                    flex-basis: 48%;
+                    margin-bottom: 0;
+                    min-height: 1px;
+                    flex: unset;
+                    height: auto;
+                }
+
+               
+            }
+
+            .block-grid__column {
+                flex-basis: 48%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                > *:not(:last-child) {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        @media screen and ( min-width: 768px ) {
+            .block-grid__item {
+                flex-direction: row;
+                figure { 
+                    flex-basis: 60%;
+                }
+                .block-grid__column {
+                    flex-basis: 37%;
+                }
+            }
+
+             .block-grid__item:nth-of-type(2) .block-grid__card:nth-of-type(2) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+}
+
+/* ==== FAQ ======== 
+
+ <details class="faq" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="faq__question" >
+                        <strong  itemprop="name">What platforms are you algorithms compatible with?</strong>
+                        <i class="fas fa-chevron-down"></i>
+                    </summary>
+                    <div class="fa__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text"><p>Our algorithms are compatible with MetaTrader4 and MetaTrader5. Each purchase is coded to a single trading account. If you change your account a recode fee will apply. Unless otherwise stated. </p></div>
+                    </div>
+                </details>
+
+*/
+
+.faq {
+    border-bottom: 1px solid #707070;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.faq i {
+    transition: all .2s ease-in-out;
+}
+  
+.faq summary {
+    padding: .5em 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;  
+    cursor: pointer;
+}
+
+.faq div {
+    color: $brand;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq[open] summary {
+    
+    margin-bottom: .5em;
+}
+
+.faq[open] div{
+    padding: .5em 0;
+}
+
+.faq[open] i {
+    transform: rotate(180deg);
+}
+
+/* 
+
+            <div class="social-box">
+                <i class="fab fa-telegram"></i>
+                <h3><?php the_field('telegram_subscribers'); ?></h3>
+                <span>Telegram Subscribers</span>
+            </div>
+*/ 
+
+.social-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .fab {
+        font-size: 3.1rem;
+        @media screen and ( min-width: 900px ) {
+            font-size: 4rem;
+        }
+    }
+    a {
+        color: $brand;
+        &:hover {
+            color: $light;
+        }
+    }
+
+    h3 {
+        color: $white;
+        font-size: 3.0rem;
+        font-weight: $semibold;
+        margin: 10px 0;
+        &:after {
+            content: "K";
+        }
+        @media screen and ( min-width: 900px ) {
+            font-size: 5.0rem;
+            margin: 20px 0;
+        }
+    }
+
+    .social-box {
+        flex-basis: 48%;
+        margin-bottom: 2em;;
+        @media screen and ( min-width: 600px ) {
+            flex-basis: 32.5%;
+            text-align: center;
+        }
+
+        @media screen and ( min-width: 1300px ) {
+            flex-basis: auto;
+            text-align: left;
+        }
+      
+    }
+    span {
+        @media screen and ( max-width: 400px ) {
+            font-size: 1.6rem;
+        }
+
+        
+    }
+}
+
+/* 
+<div class="processes">
+            <?php while( have_rows('process_boxes') ) : the_row(); ?>
+                <div class="process-box">
+                    <h3><?php the_sub_field('title'); ?></h3>
+                    <?php echo wpautop( get_sub_field('content') ); ?>
+                </div>
+            <?php endwhile; ?>
+        </div>
+*/ 
+
+.processes {
+    .process-box {
+
+        &:nth-of-type(1) {
+            .gfx--grid {
+                bottom: -25px;
+                left: 30px;
+            }
+            .gfx:last-child {
+                top: 15px;
+                right: 10px;
+            }
+        }
+    
+        &:nth-of-type(2) {
+            .gfx--grid {
+                top: 20px;
+                right: -20px;
+            }
+            .gfx--circle {
+                bottom: 0px;
+                left: 30px;
+            }
+        }
+
+        &:nth-of-type(3) {
+            .gfx--arrow-d {
+                position: absolute;
+                bottom: 30px;
+                left: -20px;
+            }
+            .gfx--circle--o {
+                bottom: -50px;
+                right: -50px;
+            }
+        }
+
+    }
+
+  
+
+}
+
+.process-box {
+    padding: 50px 30px;
+    background: #fff;
+    position: relative;
+
+    .gfx {
+        position: absolute;
+    }
+
+    
+   
+   
+    h3 {
+        @extend .type--40;
+        font-weight: $semibold;
+        color: $dark;
+        margin-bottom: 1em;
+    }
+ 
+}
+
+.process--track {
+
+    display: flex;
+    justify-content: space-between;
+    > * {
+        max-width: 413px;
+    }
+
+    
+}
+
+.processes {
+   
+}
+
+/* === SLick JS */ 
+
+.slick-dots {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	margin-top: 2em;
+}
+
+.slick-dots li  {
+	width: 10px;
+	height: 10px;
+	position: relative;
+	display: inline-block;
+	background: transparent;
+    border: 1px solid $white;
+	border-radius: 50%;
+    .section--newsthumbs &,
+	.section--light & {
+        border-color: $dark;
+    }
+}
+
+.slick-dots li:not(:last-child) {
+	margin-right: 5px;
+}
+
+.slick-dots li.slick-active {
+	background: $white;
+    .section--newsthumbs &,
+    .section--light & {
+        background: $dark;
+    }
+}
+
+.slick-dots li button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-indent: -1000em;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+
+
+/* === Email Sign Up */ 
+.section--mailer {
+
+    position: relative;
+    overflow: hidden;
+    @media screen and ( min-width: 1024px ) {
+        &:before {
+            content: "";
+            width: 391px;
+            height: 338px;
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            background-image: url('../img/mail-left.png');
+        }
+
+        &:after {
+            content: "";
+            width: 249px;
+            height: 196px;
+            position: absolute;
+            top: 40px;
+            right: 5vw;
+            background-image: url('../img/mail-right.png');
+        }
+    }
+}
+
+/* ====== 
+
+Person Card
+
+========= */ 
+
+.person--featured {
+
+   
+
+    h3 {
+        @extend .type--subs-45;
+    }
+    
+    article {
+        @extend .type--default;
+    }
+
+    header {
+        margin-bottom: 1em;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        ul {
+            display: flex;
+            position: relative;
+            z-index: 111;
+            margin-left: 1em;
+            li:first-child {
+                margin-right: 10px;
+            }
+            a {
+                color: $brand;
+                transition: all .2s ease-in-out;
+                &:hover {
+                   
+                    color: $dark;
+                    
+                }
+              
+            }
+        }
+    }
+
+    figure {
+        background-color: $dark;
+        background-image: url('../img/featured-team-bg.png');
+        background-position: 110% -50px;
+        background-repeat: no-repeat;
+        margin-bottom: 2em;
+    }
+
+    .embed-container {
+        border: 5px solid $brand;
+   
+    }
+
+    .team-video {
+        margin: 2em 0 4em 0;
+    }
+
+    @media screen and ( max-width: 1024px ) {
+        article {
+            color: $brand;
+        }
+    }
+
+  
+    @media screen and ( min-width: 1024px ) {
+
+        background-image: url('../img/featured-team-bg.png');
+        background-position: 110% -50px;
+        background-repeat: no-repeat;
+
+        margin-bottom: 300px;
+
+        position: relative;
+
+        background-color: $dark;
+
+        padding: 25px;
+        padding-bottom: 150px;
+
+        figure {
+            background: none;
+        }
+
+        header {
+            align-items: flex-end;
+            transform: translateY(-2px);
+            ul li a {
+                
+                font-size: 2.5rem;
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        article div {
+            margin-bottom: 30px;
+        }
+
+        h3 {
+          
+            color: $white;
+            
+        }
+
+        color: $brand;
+
+        figure {
+            
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: calc( 100% + 55px );
+            max-width: 540px;
+            max-height: 597px;
+            img {
+                max-width: 100%;
+            }
+            overflow: hidden;
+        }
+
+        .team-video {
+            position: absolute;
+            bottom: 0;
+            transform: translateY(50%);
+            width: 567px;
+            height: 320px;
+            margin:  0;;
+        }
+
+    }
+
+    @media screen and ( min-width: 1280px ) {
+        padding: 80px 123px 150px 123px;
+
+        header, article {
+            max-width: 719px;
+        }
+
+        .team-video {
+            transform: translateX(-40px) translateY(65%);
+        }
+
+       
+
+    }
+
+}
+
+/* === Map Canvas 
+
+ <div class="map-canvas">
+            <div class="map-canvas__ui">
+                <img src="<?php echo _i('map.png'); ?>" alt="" />
+                <i class="fas fa-marker"></i>
+            </div>
+            <aside class="map-canvas__key">
+                        
+            </aside>
+        </div>
+
+
+*/ 
+
+@media screen and ( max-width: 1340px ) {
+    .map-canvas {
+        .fa-solid {
+            display: none;
+        }
+        .map-canvas__key {
+            display: none;
+        }
+
+       
+
+        .map-canvas__ui { 
+            position: relative;
+        }
+    }
+}
+
+.map-canvas {
+
+    .map-canvas__ui {
+       
+        margin-bottom: 2em;
+    }
+
+}
+
+.map-canvas__key {
+    display: none !important;
+}
+
+.map-d {
+    display: none;
+}
+
+@media screen and ( min-width: 1024px ) {
+    .map-m {
+        display: none;
+    }
+    .map-d {
+        display: block;
+    }
+}
+
+@media screen and ( min-width: 1340px ) {
+    .map-canvas {
+        .fa-solid {
+            color: $brand;
+            position: absolute;
+        }
+
+        .map-canvas__ui {
+            position: relative;
+            width: 1340px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .map-canvas__key ul {
+            display: flex;
+        }
+
+        .map-key {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 2.0rem;
+            span {
+                width: 30px;
+                height: 30px;
+                
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1em;
+                &:not(:last-child) {
+                    margin-right: 1em;
+                }
+            }
+        }
+    }
+}
+
+@media screen and ( min-width: 1600px ) {
+    .map-canvas {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .map-canvas__key {
+            flex: 1;
+        }
+
+        .map-key li {
+            flex-basis: 48%;
+            margin-right: 0 !important;
+        }
+    }
+}
+
+/* ==== Position */ 
+
+.map-canvas__ui {
+  
+    [data-key="au"] {
+        bottom: 160px;
+        right: 220px;
+    }
+
+    [data-key="nz"] {
+       
+        bottom: 90px;
+        right: 65px;
+    }
+
+    [data-key="ch"] {
+        bottom: 370px;
+        right: 350px;
+    }
+
+    [data-key="ru"] {
+        top: 210px;
+        right: 400px;
+    }
+
+    [data-key="uk"] {
+        top: 240px;
+        left: 600px;
+    }
+
+    [data-key="ja"] {
+        right: 228px;
+        top: 320px;
+    }
+
+    [data-key="br"] {
+        left: 430px;
+        bottom: 195px;
+    }
+
+    [data-key="ca"] {
+        left: 330px;
+        top: 260px;
+    }
+
+    [data-key="us"] {
+        left: 340px;
+        top: 340px;
+    }
+
+    [data-key="me"] {
+        left: 262px;
+         top: 420px
+    }
+
+    [data-key="sw"] {
+        left: 650px;
+        top: 200px;
+    }
+
+    [data-key="be"] {
+        left: 620px;
+        top: 270px;
+    }
+
+    [data-key="su"] {
+        left: 630px;
+        top: 285px;
+    }
+
+    [data-key="de"] {
+        left: 640px;
+        top: 265px;
+    }
+
+
+    [data-key="tu"] {
+        top: 360px;
+        left: 620px;
+    }
+
+
+    [data-key="ar"] {
+        bottom: 60px;
+        left: 370px;
+    }
+
+
+    [data-key="co"] {
+        left: 360px;
+        bottom: 240px;
+
+    }
+
+    [data-key="ua"] {
+        left: 800px;
+        bottom: 320px;
+    }
+
+    [data-key="ni"] {
+        left: 800px;
+        top: 300px;
+    }
+
+}
+
+.map-key {
+
+.key {
+    span {
+        background-image: url('../img/flags.png');
+      
+    }
+ 
+}
+
+.key--ni {
+    span {
+        background-position: -8px -2px;
+    }
+}
+
+.key--be {
+    span {
+        background-position: -8px -53px;
+    }
+}
+
+.key--sw {
+    span {
+        background-position: -8px -105px;
+    }
+}
+
+.key--tu {
+    span {
+        background-position: -8px -158px;
+    }
+}
+
+.key--ca {
+    span {
+        background-position: -8px -209px;
+    }
+}
+
+.key--ar {
+    span {
+        background-position: -8px -263px;
+    }
+}
+
+.key--br {
+    span {
+        background-position: -8px -314px;
+    }
+}
+
+.key--ch {
+    span {
+        background-position: -8px -360px;
+    }
+}
+
+.key--au {
+    span {
+        background-position: -8px -408px;
+    }
+}
+
+
+.key--de {
+    span {
+        background-position: -50px -2px;
+    }
+}
+
+.key--uk {
+    span {
+        background-position: -50px -53px;
+    }
+}
+
+.key--su {
+    span {
+        background-position: -50px -105px;
+    }
+}
+
+.key--us {
+    span {
+        background-position: -50px -157px;
+    }
+}
+
+.key--me {
+    span {
+        background-position: -50px -209px;
+    }
+}
+
+.key--co {
+    span {
+        background-position: -50px -263px;
+    }
+}
+
+.key--ja {
+    span {
+        background-position: -50px -314px;
+    }
+}
+
+.key--ua {
+    span {
+        background-position: -50px -360px;
+    }
+}
+
+.key--nz {
+    span {
+        background-position: -50px -408px;
+    }
+}
+
+
+
+}
+
+
+
+/* ==== Trade Matrix */ 
+
+
+.section--matrix .section__title p {
+    max-width: 967px;
+}
+
+
+.trade-matrix {
+
+    font-size: 1.6rem;
+
+    .button {
+        font-size: 1.4rem;
+        background-color: #fff;
+        color: $brand;
+        border: 2px solid $brand;
+    }
+
+    .filter-actions .button,
+    .button.active {
+        background: $brand;
+        color: #fff;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    .table-filter h3 {
+        font-weight: $semibold;
+        margin-bottom: 10px;
+    }
+
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: none;
+
+        box-shadow: 0 0 50px rgba(0,0,0,.1);
+
+        th,td {
+            padding: 1em;
+           
+        }
+
+        tr:first-of-type {
+            th {
+                background: $dark;
+                color: $brand;
+                font-weight: $semibold;;
+            }
+        }
+
+        tr:not(:first-of-type) {
+            font-weight: $semibold;
+        }
+
+        tr:not(:first-of-type) td:nth-of-type(2n-1) {
+            background: $light;
+        }
+
+        tr:not(:first-of-type)  {
+            td,th {
+            border-bottom: 1px solid #D9D9D9 ;
+            }
+        }
+
+
+        
+
+        tr td {
+            text-align: center;
+        }
+
+        th[scope="row"] {
+            color: $brand;
+            min-width: 200px;
+            text-align: left;
+        }
+
+    }
+
+
+    .opt-filter {
+       
+        flex-wrap: wrap;
+        font-weight: $semibold;
+        dd {
+         color: $brand;  
+         padding-left: 220px;
+         margin-top: -25px;
+         margin-bottom: 1em;
+        }
+    }
+
+    .opt-action {
+        p {
+            margin-bottom: 8px;
+            color: $brand;
+            font-weight: $semibold;
+            strong {
+                color: $dark;
+            }
+        }
+    }
+
+   
+
+    .table--headers {
+        margin-bottom: 30px;
+    }
+
+    .button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+
+    @media screen and ( max-width: 920px ) {
+        .table--headers > * {
+            margin-bottom: 2em;
+        }
+    }
+
+    @media screen and ( min-width: 920px ) {
+
+        
+
+        .table--headers {
+            display: flex;
+        }
+
+        .table--headers > *:not(:last-child) {
+            margin-right: 30px;
+        }
+
+        .filter-actions {
+            justify-self: flex-end;
+        }
+    }
+
+    @media screen and ( min-width: 1360px ) {
+        table {
+
+            th,td {
+                padding: 2em;
+            
+            }
+
+        }
+
+        .table--headers > *:not(:last-child) {
+            margin-right: 50px;
+        }
+    }
+
+    &.trade-matrix--person {
+
+        .button-tenk,
+        .button-fiftyk {
+            pointer-events: none;
+            opacity: .25;
+        }
+
+        .table-filter {
+            .opt-filter {
+                display: none !important;
+            }
+            .opt-person-25 {
+                display: inline-block !important;
+            }
+        }
+    }
+
+
+   
+
+}
+
+
+.buttons--matrix {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.buttons--matrix > *:first-child {
+    margin-right: 30px;
+}
+
+@media screen and ( max-width: 900px ) {
+    .buttons--matrix > * {
+        margin-top: 10px;
+        margin-right: 0 !important;
+    }
+}
+
+@media screen and ( max-width: 600px ) {
+    .buttons--matrix > * {
+        display: block; 
+       
+    }
+}
+
+
+/* Modal
+
+  <div class="modal">
+        <div class="modal__box">
+           <header>
+                <h2>Apply Now <i class="fas fa-times"></i></h2>
+            </header>
+            <div class="modal__content">
+             
+                <?php echo do_shortcode( '[contact-form-7 id="491" title="JTP Form"]' ); ?>
+            </div>
+        </div>
+    </div>
+
+*/ 
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.5);
+    z-index:  11111111;
+    top: 0;
+    left: 0;
+    transition: all .3s ease-in-out;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .fas {
+        cursor: pointer;
+        &:hover {
+            color: $brand;
+        }
+    }
+  
+    font-size: 1.8rem;
+
+    header {
+
+        .fas {
+            font-size: 2.4rem;
+        }
+       
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1em;
+        
+       
+        h2 {
+            
+            @extend .type--subs-35;
+
+            span {
+                color: $brand;
+                display: block;
+                @extend .type--24;
+                margin-top: 5px;
+            }
+           
+        }
+    }
+
+    .modal__box {
+        max-width: 650px;
+        background: $white;
+        padding: 15px;
+        box-shadow: 0 0 50px rgba(0,0,0,.1);
+        @media screen and ( min-width: 768px ) {
+            padding: 50px;
+        }
+    }
+
+    .modal__content {
+        overflow-y: auto;
+        max-height: 70vh;
+    }
+
+    .form_foot {
+        font-size: 1.2rem;
+        div:first-child {
+         margin: 1em 0;
+
+        }
+    }
+
+    .wpcf7-list-item-label br {
+        display: none;
+    }
+}

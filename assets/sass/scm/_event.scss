@@ -1,0 +1,66 @@
+/* ==== Event ====
+   single-event.php + partials/components/event-info.php. Values reference
+   CSS custom properties in _tokens.scss. */
+
+.scm-event-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-14);
+  align-items: start;
+}
+
+.scm-event-info {
+  padding: var(--space-8);
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: 0 16px 40px rgba(6, 26, 37, .06);
+}
+
+.scm-event-info h3 {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: var(--space-2) 0 var(--space-5);
+}
+
+.scm-event-info__row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.scm-event-info__row span {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.scm-event-info__availability {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-5) 0;
+  color: #2e9e5b;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.scm-event-info__availability i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.scm-event-info__availability--sold-out {
+  color: var(--down);
+}
+
+.scm-event-info .scm-actions-row {
+  flex-wrap: wrap;
+}
+
+@include bp-down(1050px) {
+  .scm-event-layout {
+    grid-template-columns: 1fr;
+  }
+}

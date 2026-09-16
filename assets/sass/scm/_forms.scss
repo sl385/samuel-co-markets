@@ -1,0 +1,227 @@
+/* ==== Form controls (Foundations A6) ====
+   Tokenized text/email/tel/textarea/select/checkbox/radio, default + on-dark +
+   inline + error/success states. CF7 forms (mailing list band, join modal) and
+   the hero signup get this via .scm-field; the hero's own .scm-signup
+   (_hero.scss) predates this and is left as-is rather than risk a regression
+   with no visual check available (see docs/BUILD-NOTES.md). */
+
+.scm-field {
+  display:block;
+  width:100%;
+  height:var(--control-h);
+  padding:0 14px;
+  border:1px solid var(--line-strong);
+  background:var(--white);
+  color:var(--ink);
+  font:var(--text-base) var(--font-body);
+  border-radius:0;
+}
+
+textarea.scm-field {
+  height:auto;
+  min-height:120px;
+  padding:12px 14px;
+  resize:vertical;
+}
+
+.scm-field:focus {
+  outline:none;
+  border-color:var(--gold-deep);
+}
+
+.scm-field::placeholder {
+  color:var(--muted);
+}
+
+.scm-field[disabled] {
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/* on-dark — mailing-list band, member areas */
+.scm-on-dark .scm-field,
+.scm-prefooter .scm-field {
+  background:transparent;
+  border-color:var(--line-on-dark);
+  color:var(--on-dark);
+}
+
+/* inline — input + button in one row (hero signup, mailing-list band) */
+.scm-field-row {
+  display:flex;
+  gap:8px;
+}
+
+.scm-field-row .scm-field {
+  flex:1;
+}
+
+/* validation */
+.scm-field--error {
+  border-color:var(--down);
+}
+
+.scm-field-help {
+  display:block;
+  margin-top:4px;
+  font-size:var(--text-sm);
+  color:var(--muted);
+}
+
+.scm-field-help--error {
+  color:var(--down);
+}
+
+.scm-field-help--success {
+  color:var(--up);
+}
+
+/* checkbox / radio row (consent checkbox, filter options) */
+.scm-check {
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  font-size:var(--text-sm);
+  color:var(--muted);
+}
+
+.scm-check input {
+  margin-top:3px;
+  flex:none;
+}
+
+.scm-check a {
+  color:inherit;
+  text-decoration:underline;
+}
+
+/* WooCommerce's own buttons (login, place order, update cart, coupon apply,
+   etc.) — WordPress's real, unstyled default plugin markup, everywhere it
+   appears, not just the spots we've built real components for. Same reasoning
+   as the CF7 fix below: one selector, not a per-page override. */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce-page a.button,
+.woocommerce-page button.button,
+.woocommerce-page input.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--control-h);
+  padding: 0 19px;
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  background: var(--gold);
+  color: var(--ink);
+  font: 700 var(--text-base) var(--font-body);
+  text-transform: none;
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease);
+}
+
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce-page a.button:hover,
+.woocommerce-page button.button:hover,
+.woocommerce-page input.button:hover {
+  background: var(--gold-deep);
+  border-color: var(--gold-deep);
+  color: var(--ink);
+}
+
+.woocommerce a.button.disabled,
+.woocommerce button.button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Contact Form 7 forms (mailing-list band, sidebar CTA, join modal) render their
+   own markup with no scm-* classes — style the plugin's own selectors directly
+   so every CF7 form on the site gets the same tokenized look instead of the
+   browser/plugin default (previously a plain, unstyled, grey submit button). */
+.wpcf7-form p {
+  margin:0 0 var(--space-3);
+}
+
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form input[type="url"],
+.wpcf7-form textarea,
+.wpcf7-form select {
+  @extend .scm-field;
+}
+
+.wpcf7-form input[type="submit"] {
+  // !important throughout: a legacy global rule (assets/sass/legacy/local/forms.scss
+  // territory — bare `input[type=submit]`) sets a pill radius and a muted gold
+  // fill with its own !important on border-radius, so a normal specificity win
+  // on this selector still lost the shape fight. Every CF7 form on the site
+  // renders through this exact selector, so scoping the override here (rather
+  // than editing the shared legacy rule other old templates still use) is safe.
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:var(--control-h) !important;
+  padding:0 19px !important;
+  border:1px solid var(--gold) !important;
+  border-radius:0 !important;
+  background:var(--gold) !important;
+  color:var(--ink) !important;
+  font:700 var(--text-base) var(--font-body) !important;
+  text-transform:none !important;
+  cursor:pointer !important;
+  transition:background var(--ease), border-color var(--ease) !important;
+}
+
+.wpcf7-form input[type="submit"]:hover {
+  background:var(--gold-deep) !important;
+  border-color:var(--gold-deep) !important;
+}
+
+.wpcf7-form input[type="checkbox"] {
+  margin-right:6px;
+}
+
+/* Real CF7 validation/response messages — previously just a bare color
+   and font-size with no background/border, so they fell back to the CF7
+   plugin's own default plain box and didn't distinguish success from
+   error. Real error/success color-coding now (left-border pattern, same
+   as the WooCommerce account notices in _account.scss), using CF7's own
+   real status classes (wpcf7-mail-sent-ok / -validation-errors /
+   -mail-sent-ng / -spam-blocked / -aborted). */
+.wpcf7 .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
+  display:block;
+  background:none !important;
+  padding:0 !important;
+  margin-top:4px;
+  text-transform:none;
+  font-size:var(--text-sm) !important;
+  color:var(--down) !important;
+}
+
+.wpcf7 .wpcf7-response-output {
+  margin:var(--space-3) 0 0 !important;
+  padding:var(--space-4) var(--space-5) !important;
+  border:1px solid var(--line) !important;
+  border-left:3px solid var(--ink) !important;
+  border-radius:0 !important;
+  background:var(--sand);
+  color:var(--ink-2);
+  font-size:var(--text-sm);
+  text-align:left;
+}
+
+.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ok {
+  border-left-color:var(--up) !important;
+}
+
+.wpcf7 .wpcf7-response-output.wpcf7-validation-errors,
+.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ng,
+.wpcf7 .wpcf7-response-output.wpcf7-spam-blocked,
+.wpcf7 .wpcf7-response-output.wpcf7-aborted {
+  border-left-color:var(--down) !important;
+}

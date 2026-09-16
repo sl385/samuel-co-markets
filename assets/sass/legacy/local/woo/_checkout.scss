@@ -1,0 +1,22 @@
+
+
+// -- Thankyou 
+
+.woocommerce ul.order_details li {
+    float: none;
+    text-transform: none;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $light;
+    &:before {
+        display: none;
+    }
+    strong {
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        display: inline;
+    }
+}
+

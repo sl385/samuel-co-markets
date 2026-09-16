@@ -1,0 +1,17 @@
+/* ==== Numbered marker (Foundations A9) ====
+   Gold circle, white numeral. _brief.scss has its own long-standing
+   .scm-brief-points li:before with the same look for the Morning Brief list;
+   this is the general-purpose version (process steps, etc.) — same visual,
+   usable outside a counter-based <ol>. */
+
+.scm-marker {
+  display:inline-grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--white);
+  font:700 var(--text-sm) var(--font-body);
+  flex:none;
+}

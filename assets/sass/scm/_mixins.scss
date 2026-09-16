@@ -1,0 +1,26 @@
+/* ==== Sass mixins (structure only — no colour/size values live here) ==== */
+@mixin bp-down($px) { @media (max-width: $px) { @content; } }
+@mixin bp-up($px)   { @media (min-width: $px) { @content; } }
+
+@mixin display($size: var(--display-md)) {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: $size;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+}
+@mixin eyebrow {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+@mixin gold-dash($width: 28px) {
+  content: '';
+  display: inline-block;
+  width: $width;
+  border-top: 1px solid var(--gold);
+}
+@mixin cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }

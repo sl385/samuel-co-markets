@@ -1,0 +1,64 @@
+/* =========================================================
+   Samuel & Co 2026 — single compiled stylesheet
+   Build: npm run build   (see package.json)
+
+   The full legacy stylesheet (assets/sass/legacy/, ~6,700 lines ported from
+   the 2022 theme) is DELIBERATELY NOT IMPORTED HERE any more — dropped
+   12 Sep 2026 rather than migrated section by section forever (see
+   docs/BUILD-NOTES.md). It's twice the size of everything we've built,
+   compiles in unconditionally on every page whether used or not, and was
+   the direct cause of two real specificity fights already (CF7 buttons,
+   the product grid). The files are still on disk if anything genuinely
+   needs porting, but nothing here pulls them in by default any more.
+
+   Anything not yet covered by a real .scm-* component renders either as
+   plain unstyled HTML, or — where marked — wrapped in .scm-no-component
+   (scm/no-component.scss) as an honest placeholder: a bordered box that
+   says what's missing, not a half-finished fake design. WooCommerce's own
+   bundled frontend CSS still loads independently of this file (nothing
+   filters it off) and covers real baseline structure — cart/checkout/
+   account tables etc. — where we haven't built a real component yet.
+
+   Tokens are CSS custom properties in scm/_tokens.scss; Sass here is
+   structure only. */
+
+/* ==== 2026 design system (scm-*) */
+@import "scm/tokens";
+@import "scm/mixins";
+@import "scm/base";
+@import "scm/typography";
+@import "scm/buttons";
+@import "scm/chips";
+@import "scm/markers";
+@import "scm/forms";
+@import "scm/header";
+@import "scm/hero";
+@import "scm/routes";
+@import "scm/proof";
+@import "scm/ticker";
+@import "scm/tabs";
+@import "scm/brief";
+@import "scm/cards";
+@import "scm/member";
+@import "scm/learn";
+@import "scm/education";
+@import "scm/footer";
+@import "scm/article";
+@import "scm/hub-pages";
+@import "scm/about";
+@import "scm/contact";
+@import "scm/pagination";
+@import "scm/masthead";
+@import "scm/site";
+@import "scm/container";
+@import "scm/modal";
+@import "scm/funding-matrix";
+@import "scm/event";
+@import "scm/account";
+@import "scm/course-player";
+@import "scm/cart-checkout";
+@import "scm/markets-page";
+@import "scm/product-page";
+@import "scm/search";
+@import "scm/no-component";
+@import "scm/responsive";

@@ -1,0 +1,285 @@
+/*
+<div class="course_ui">
+            <aside class="course__contents">
+            <?php if( have_rows('modules') ) : ?>
+                <?php $c=1; $i=1; while( have_rows('modules') ) : the_row(); ?>
+                    <div class="course__module">
+                        <h2><?php echo $c; ?>. <?php echo get_sub_field('module_name'); ?></h2>
+                        <?php if( have_rows('module_lessons') ) : ?>
+                        <div class="module__lessons">
+                            <ul>
+                        <?php while( have_rows('module_lessons') ) : the_row(); ?>
+                                <li><a href="#"><?php echo $c; ?>.<?php echo $i; ?> <?php echo get_sub_field('lesson_name'); ?></a></li>
+                        <?php $i++; endwhile; ?>
+                            </ul>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+                <?php $c++; endwhile; ?>
+            <?php endif; ?>
+            </aside>
+            <div class="lesson__ui">
+                
+            </div>
+        </div>
+*/  
+
+.course_ui {
+    .video-container {
+        margin-bottom: 2em;
+        width: 100%;
+   
+    }
+
+    position: relative;
+
+    #lesson_content {
+        margin-bottom: 2em;
+    }
+
+    #lesson_name {
+        margin-bottom: .5em;
+        @extend .type--subs-30 ;
+    }
+
+   
+}
+
+.lesson__ui {
+    video {
+        background-color: #eee;
+    }
+}
+
+.loader {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+   
+    align-items: center;
+    justify-content: center;
+    z-index:111111111;
+    background: rgba(255,255,255,.85);
+    top: 0;
+    left: 0;
+    text-align: center;
+    p {
+        margin-top: 15px;
+    }
+
+    &.active {
+        display: flex;
+    }
+}
+
+
+.course__module {
+
+    background: $white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0,0,0,.1);
+
+    header {
+        
+       
+        .fas {
+            display: none;
+        }
+       
+        display: flex;
+        justify-content: space-between;
+        h2 {
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+            font-weight: $semibold;
+            position: relative;
+            padding-left: 30px;
+           
+            span {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            @media screen and ( min-width: 1024px ) {
+                font-size: 2.2rem;
+                line-height: 2.4rem;
+            }
+            font-weight: $semibold;
+            margin: 0;
+        }
+    }
+
+    margin-bottom: 1em;
+
+    &.active {
+        ul {
+            display: block;
+        }
+    }
+
+   
+
+    ul {
+        padding: 20px 0 10px 0;
+
+        //display: none;
+
+        &.active {
+            display: block;
+        }
+
+        li.disabled {
+            pointer-events: none;
+        }
+
+        li.lesson-complete {
+            opacity: .5;
+            &:hover {
+                opacity: 1;
+            }
+            a {
+                &:after {
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: "Font Awesome 5 Free"; 
+                    margin-left: 10px;
+                    font-weight: 900; 
+                    content: "\f00c";
+                    color: $brand;
+                }
+            }
+        }
+
+        li a {
+            display: flex;
+            strong {
+                margin-right: 10px;
+            }
+        }
+       
+        font-size: 1.8rem;
+        strong {
+            color: #000;
+            font-weight: $semibold;
+            min-width: 95px;
+        }
+        a {
+            color: $brand;
+            text-decoration: none;
+        }
+        
+        li:not(:last-child) {
+            margin-bottom: .5em;
+        }
+    }
+
+    .disabled {
+        opacity: .25;
+       
+    }
+}
+
+@media screen and ( min-width: 1024px ) {
+    .course_ui {
+        display: flex;
+        justify-content: space-between;
+
+        aside {
+            width: 300px;
+            min-width: 300px;
+            margin-right: 30px;
+        }
+
+        .lesson__ui {
+            flex: 1;
+        }
+    }
+}
+
+@media screen and ( min-width: 1280px ) {
+    .course_ui {
+        aside {
+            width: 420px;
+            min-width: 420px;
+        }
+    }
+
+}
+
+@media screen and ( max-width: 1024px ) {
+    .course_ui {
+        display: flex;
+        flex-direction: column;
+        aside {
+            order: 2;
+            margin-top: 1em;
+        }
+        .lesson__ui {
+            order: 1;
+        }
+    }
+    .video-controls {
+        display: none;
+    }
+}
+
+
+
+.course__contents--single {
+   
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 50px rgba(0,0,0,.1);
+        margin-bottom: 1em;
+        background: #fff;
+ 
+    .course__module {
+        padding: 0;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 0;
+        h2 {
+            display: none;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                margin-bottom: 10px;
+
+            }
+        }
+    }
+}
+
+/* Minimal, deliberately shallow token pass (typography + colour only — no
+   markup/structure touched). single-course.php is a stateful, JS-driven video
+   player already flagged in docs/LEGACY-CODE-REVIEW.md as needing a proper
+   LMS extraction, not a cosmetic reskin — going further here without testing
+   against a real logged-in, enrolled session risks styling over something
+   that doesn't actually work. See docs/BUILD-NOTES.md. */
+.course_header {
+  font: 500 34px var(--font-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.course__module header h2 {
+  font: 500 18px var(--font-display);
+}
+
+.course__module header h2 span {
+  color: var(--gold-deep);
+}
+
+#button-next {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-body);
+}

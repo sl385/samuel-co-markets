@@ -1,0 +1,118 @@
+/* ==== Modal overlay ====
+   Shared by header.php's "Join Now" CF7 modal (product/service pages) and
+   footer.php's team-bio modal (About page). Both are legacy markup, toggled
+   open via a ported jQuery `.addClass('active')` (assets/js/js.js) — that JS
+   was always there, but with the legacy stylesheet dropped neither modal had
+   a "closed" state left to define, so both rendered inline and visible on
+   every page they're on. This is the fix: hidden by default, `.active`
+   shows it as a centered overlay. Values reference CSS custom properties in
+   _tokens.scss. */
+
+.modal,
+.team-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: rgba(6, 26, 37, .82);
+  overflow-y: auto;
+}
+
+.modal.active,
+.team-modal.active {
+  display: flex;
+}
+
+.modal__box,
+.team-modal__content {
+  position: relative;
+  background: var(--white);
+  max-width: 560px;
+  width: 100%;
+  max-height: calc(100vh - var(--space-12));
+  overflow-y: auto;
+  padding: var(--space-10);
+  margin: auto;
+}
+
+.modal__content header,
+.team-modal__content header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.modal__content header h2,
+.team-modal__title {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: 0;
+}
+
+.modal .fa-times,
+.team__member--exit {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  font-size: 16px;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal .fa-times:hover,
+.team__member--exit:hover {
+  color: var(--ink);
+}
+
+/* Team-modal specific chrome */
+.team-modal__image {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  float: left;
+  margin: 0 var(--space-5) var(--space-4) 0;
+  background: var(--sand);
+}
+
+.team-modal__image[src=""] {
+  display: none;
+}
+
+.team-modal__social {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+
+  a {
+    color: var(--gold);
+    font-size: 16px;
+  }
+}
+
+.team-modal__sub {
+  font-size: var(--text-sm);
+  color: var(--gold-deep);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  margin: 0 0 var(--space-4);
+  clear: both;
+}
+
+.team-modal__contents {
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink-2);
+}
+
+@include bp-down(680px) {
+  .modal__box,
+  .team-modal__content {
+    padding: var(--space-6);
+  }
+}

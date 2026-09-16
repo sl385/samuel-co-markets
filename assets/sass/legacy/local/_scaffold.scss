@@ -1,0 +1,119 @@
+.container {
+    width: 90%;
+    max-width: 1600px;
+    margin: auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container--m {
+    max-width: 1458px;
+}
+
+.container--s {
+    max-width: 1365px;
+}
+
+.container--xs {
+    max-width: 1046px;
+}
+
+.section {
+    padding: 3em 0;
+    @media screen and ( min-width: 768px ) {
+        padding: 6em 0;
+    }
+}
+
+.section--stories-alt {
+    @media screen and ( min-width: 768px ) {
+        padding-bottom: 0em;
+    }
+}
+
+.section--product-head {
+    padding: 3em 0;
+}
+
+.section--nobase {
+    padding-bottom: 0;
+}
+
+.section--dark {
+    background: $dark;
+    color: $brand;
+}
+
+.section--light {
+    background-color: $light;
+}
+
+.section--dark p a {
+    color: $brand;
+}
+
+.section--dark h1,
+.section--dark h2 {
+    color: $white;
+}
+
+.section--mini {
+    padding: 3em 0;
+}
+
+.section--product h2 {
+    margin-bottom: .5em;
+}
+
+.section--gfx  {
+    position: relative;
+    overflow: hidden;
+}
+
+.container--layout {
+    figure {
+        margin-bottom: 2em;
+    }
+    @media screen and ( min-width: 768px ) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        figure {
+            flex-basis: 48%;
+            margin-bottom: 0;
+        }
+        article {
+            flex-basis: 48%;
+        }
+    }
+    @media screen and ( min-width: 1200px ) {
+        figure {
+            flex-basis: 60%;
+        }
+        article {
+            flex-basis: 35%;
+        }
+    }
+
+    &.container--layout-reverse {
+        @media screen and ( min-width: 768px ) {
+            figure {
+                order: 2;
+                text-align: right;
+            }
+            article {
+                order: 1;
+            }
+        }
+    }
+}
+
+.section__action {
+    text-align: center;
+    margin-top: 2em;
+    @media screen and ( min-width: 1024px ) {
+        margin-top: 3em;
+    }
+}

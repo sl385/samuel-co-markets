@@ -1,0 +1,101 @@
+/* ==== Search ====
+   templates/template-search.php (landing page), search.php (results),
+   partials/components/search-form.php + search-result.php.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-search-page {
+  max-width:760px;
+}
+
+.scm-search-form {
+  display:flex;
+  gap:8px;
+  margin-bottom:var(--space-8);
+}
+
+.scm-search-form .scm-field {
+  flex:1;
+}
+
+.scm-search-form button {
+  display:grid;
+  place-items:center;
+  width:var(--control-h);
+  height:var(--control-h);
+  border:1px solid var(--navy);
+  background:var(--navy);
+  color:var(--on-dark);
+  cursor:pointer;
+}
+
+.scm-search-form--lg {
+  max-width:640px;
+}
+
+.scm-search-form--lg .scm-field,
+.scm-search-form--lg button {
+  height:60px;
+}
+
+.scm-search-form--lg .scm-field {
+  font-size:var(--text-md);
+}
+
+.scm-search-count {
+  color:var(--muted);
+  font-size:var(--text-sm);
+  margin:0 0 var(--space-6);
+}
+
+.scm-search-results {
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-6);
+}
+
+.scm-search-result {
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:var(--space-5);
+  padding-bottom:var(--space-6);
+  border-bottom:1px solid var(--line);
+}
+
+.scm-search-result:not(:has(.scm-search-result__image)) {
+  grid-template-columns:1fr;
+}
+
+.scm-search-result__image {
+  display:block;
+  aspect-ratio:1;
+  overflow:hidden;
+}
+
+.scm-search-result__image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.scm-search-result__body h3 {
+  font:500 20px var(--font-display);
+  margin:var(--space-1) 0 var(--space-2);
+}
+
+.scm-search-result__body p {
+  color:var(--ink-2);
+  margin:0;
+}
+
+.scm-search-empty {
+  color:var(--muted);
+}
+
+@include bp-down(560px) {
+  .scm-search-result {
+    grid-template-columns:1fr;
+  }
+  .scm-search-result__image {
+    max-width:160px;
+  }
+}

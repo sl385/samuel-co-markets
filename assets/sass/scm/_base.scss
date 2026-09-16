@@ -1,0 +1,90 @@
+/* ==== Base ====
+   Reset-level rules and the .scm-shell container.
+   Values reference CSS custom properties in _tokens.scss. */
+
+* {
+  box-sizing:border-box;
+}
+
+/* Any of our own classes that also set `display` (e.g. `.foo{display:flex}`)
+   otherwise silently beats the browser's default [hidden] rule at equal
+   specificity, since author CSS always wins over the UA stylesheet — this
+   already caused one real bug (the design-review gallery's lightbox showing
+   on load) and the funding-matrix toggle panels are exactly this shape
+   (`class="matrix-v2__column" hidden`). One global rule instead of
+   `[hidden]` guards scattered per component. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:var(--leading-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+img {
+  max-width:100%;
+  height:auto;
+  display:block;
+  /* The media library (wp-content/uploads) isn't migrated to this local install,
+     so every real content image 404s. Browsers still size a broken <img> from
+     its width/height attributes, so without a cap a broken image with large
+     attributes (common in WP block content) blows up to a huge grey box and
+     wrecks the layout around it. This keeps a broken image small instead —
+     it does not fix the missing-media problem, see docs/BUILD-NOTES.md. */
+  max-height:640px;
+}
+
+a {
+  color:inherit;
+}
+
+.scm-shell {
+  width:min(1450px,calc(100% - 86px));
+  margin:0 auto;
+}
+
+/* Containers (Foundations A13) */
+.scm-shell--prose {
+  width:min(var(--prose-max), calc(100% - 34px));
+  margin:0 auto;
+}
+
+.scm-shell--article-hero {
+  width:min(1180px, calc(100% - 34px));
+  margin:0 auto;
+}
+
+/* Hairlines (Foundations A12) */
+.scm-hairline {
+  border:0;
+  border-top:1px solid var(--line);
+  margin:0;
+}
+
+.scm-hairline--strong {
+  border-top-color:var(--line-strong);
+}
+
+.scm-hairline--v {
+  border:0;
+  border-left:1px solid var(--line);
+}
+
+/* Reusable dark section band — pair with .scm-on-dark so descendants reading
+   --ink/--muted/--line get the dark remap (see _tokens.scss). Compound
+   selector (not just .scm-section--dark) so this reliably beats
+   .scm-section's own `background: var(--white)` (_typography.scss) —
+   otherwise the winner is whichever file happens to load last. */
+.scm-section.scm-section--dark {
+  background: var(--navy);
+  border-bottom-color: var(--line-on-dark);
+}

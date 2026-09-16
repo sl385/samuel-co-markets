@@ -1,0 +1,90 @@
+/* ==== Design tokens ====
+   Single source of truth for the 2026 design system. Everything is a CSS custom
+   property so it can be themed at runtime (dark bands, member areas) without a
+   Sass rebuild. Sass is used for structure, nesting and mixins only.
+   Reference: reference/PHOTO-2026-09-10-11-51-31.jpg */
+
+:root {
+  /* Colour — brand */
+  --navy:        #061a25;   /* primary dark: ticker, education band, member CTA */
+  --navy-2:      #0d2a36;   /* raised surface on navy */
+  --gold:        #c7a16a;   /* primary accent: buttons, rules, eyebrow dashes */
+  --gold-deep:   #937046;   /* eyebrow text, meta labels */
+  --gold-soft:   #dfbe88;   /* gold on dark backgrounds */
+
+  /* Colour — neutrals */
+  --ink:         #0c1d28;   /* headings, body on light */
+  --ink-2:       #30434f;   /* lead paragraphs */
+  --muted:       #68747b;   /* secondary copy */
+  --muted-2:     #8a9094;   /* captions, footnotes */
+  --paper:       #fbfaf7;   /* page background */
+  --white:       #ffffff;
+  --sand:        #f4f1ea;   /* soft section background */
+  --line:        #ddd8ce;   /* hairlines, card borders */
+  --line-strong: #bcb5aa;   /* button borders */
+
+  /* Colour — on dark */
+  --on-dark:     #ffffff;
+  --on-dark-muted: #cbd6da;
+  --line-on-dark: rgba(255, 255, 255, .12);
+
+  /* Colour — data */
+  --up:          #2e9e5b;   /* ticker positive */
+  --down:        #d64545;   /* ticker negative */
+
+  /* Type */
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif; /* free stand-in for Tiempos/GT Sectra — see docs/BUILD-NOTES.md */
+  --font-body:    elza, Arial, Helvetica, sans-serif;   /* Typekit kit zqz1tva, already loaded in header.php */
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;  /* ticker figures */
+
+  /* rem, not px — the reset keeps html/body at the browser default 16px,
+     so 1rem = 16px here. Bumped up a step across the board (16 Sep 2026):
+     the old px scale (9/11/13/15/17/20) read too small on desktop,
+     especially --text-base on homepage card copy. */
+  --text-xs:   0.75rem;   /* 12px — eyebrows, footnotes (was 9px) */
+  --text-sm:   0.875rem;  /* 14px — meta, nav (was 11px) */
+  --text-base: 1rem;      /* 16px — body in cards, brief copy (was 13px) */
+  --text-md:   1.125rem;  /* 18px (was 15px) */
+  --text-lg:   1.25rem;   /* 20px — article prose (was 17px) */
+  /* Display sizes fluid-scale with clamp() instead of jumping at a
+     breakpoint — min size at a ~360px phone, max at the shell's own
+     1450px design width, scaling in between. Body/label sizes above stay
+     fixed rem: at 16-20px they're not too big on mobile the way a 68px
+     hero h1 would be, so they don't need it. */
+  --text-xl:    clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);    /* 20→24px — hero lead */
+  --display-sm: clamp(1.5rem, 1.3rem + 1vw, 1.75rem);       /* 24→28px — card/aside headings */
+  --display-md: clamp(1.875rem, 1.5rem + 1.5vw, 2.25rem);   /* 30→36px — section h2 */
+  --display-lg: clamp(2.25rem, 1.7rem + 2.5vw, 3rem);       /* 36→48px — Morning Brief headline */
+  --display-xl: clamp(2.75rem, 1.9rem + 4vw, 4.25rem);      /* 44→68px — hero h1 */
+
+  --tracking-eyebrow: 2.7px;
+  --tracking-display: -1.8px;
+  --leading-tight: 1.02;
+  --leading-body: 1.55;
+
+  /* Space (4px base) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-14: 56px; --space-16: 64px; --space-20: 80px;
+
+  /* Layout */
+  --shell-max: 1450px;
+  --shell-gutter: 43px;
+  --prose-max: 820px;
+  --header-h: 84px;
+  --control-h: 46px;   /* buttons + inputs share a height */
+
+  /* Shape + motion */
+  --radius: 0;         /* the design is square-cornered throughout */
+  --radius-pill: 999px;
+  --ease: .18s ease;
+  --shadow-text: 0 2px 12px rgba(0, 0, 0, .45);
+}
+
+/* Dark surfaces re-map the semantic tokens so components don't need variants. */
+.scm-on-dark, .scm-ticker, .scm-education, .scm-member, .scm-prefooter, .scm-subnav, .scm-header {
+  --ink: var(--on-dark);
+  --muted: var(--on-dark-muted);
+  --line: var(--line-on-dark);
+  --gold-deep: var(--gold-soft);
+}

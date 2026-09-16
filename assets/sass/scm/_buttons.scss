@@ -1,0 +1,147 @@
+/* ==== Buttons ====
+   Foundations A1 (button) + A2 (text link). Every variant/size/state from
+   docs/COMPONENT-SPEC.md; see partials/components/styleguide-section.php for a
+   rendered sample of each. Values reference CSS custom properties in _tokens.scss. */
+
+.scm-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  height:var(--control-h);
+  padding:0 19px;
+  text-decoration:none;
+  border:1px solid var(--line-strong);
+  font:700 var(--text-base) var(--font-body);
+  background:var(--white);
+  color:var(--ink);
+  cursor:pointer;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:background var(--ease), border-color var(--ease), color var(--ease), opacity var(--ease);
+}
+
+.scm-button:hover {
+  border-color:var(--ink);
+}
+
+.scm-button:focus-visible {
+  outline:2px solid var(--gold-deep);
+  outline-offset:2px;
+}
+
+.scm-button:disabled,
+.scm-button.is-disabled {
+  opacity:.45;
+  cursor:not-allowed;
+  border-color:var(--line);
+}
+
+.scm-button.is-loading {
+  color:transparent;
+  position:relative;
+  pointer-events:none;
+}
+
+.scm-button.is-loading::after {
+  content:'';
+  position:absolute;
+  width:14px;
+  height:14px;
+  border:2px solid currentColor;
+  border-right-color:transparent;
+  border-radius:50%;
+  color:var(--ink);
+  animation:scm-spin .6s linear infinite;
+}
+
+@keyframes scm-spin {
+  to { transform:rotate(360deg); }
+}
+
+/* primary — gold fill */
+.scm-button--gold {
+  background:var(--gold);
+  border-color:var(--gold);
+}
+
+.scm-button--gold:hover {
+  background:var(--gold-deep);
+  border-color:var(--gold-deep);
+}
+
+.scm-button--gold.is-loading::after {
+  color:var(--ink);
+}
+
+/* secondary is the default (white, hairline border) — no extra class needed */
+
+/* on-dark — gold on navy, used inside .scm-on-dark / .scm-ticker / .scm-education etc. */
+.scm-button--on-dark {
+  background:transparent;
+  border-color:var(--line-on-dark);
+  color:var(--on-dark);
+}
+
+.scm-button--on-dark:hover {
+  border-color:var(--gold-soft);
+  color:var(--gold-soft);
+}
+
+/* text / ghost — no border, underline affordance on hover */
+.scm-button--text {
+  border-color:transparent;
+  background:none;
+  padding:0;
+  height:auto;
+  text-decoration:underline;
+  text-decoration-color:transparent;
+  text-underline-offset:3px;
+}
+
+.scm-button--text:hover {
+  text-decoration-color:currentColor;
+}
+
+.scm-button--block {
+  width:100%;
+}
+
+/* size — small */
+.scm-button--sm {
+  height:40px;
+  padding:0 14px;
+  font-size:var(--text-sm);
+}
+
+.scm-actions-row {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:0;
+  flex-wrap:wrap;
+}
+
+/* Text link (A2) — "View all →" style underline, gold rule */
+.scm-underlink {
+  text-decoration:none;
+  border-bottom:1px solid var(--gold);
+  padding-bottom:2px;
+  font-size:var(--text-sm);
+  font-weight:700;
+  transition:opacity var(--ease);
+}
+
+.scm-underlink:hover {
+  opacity:.65;
+}
+
+.scm-underlink:focus-visible {
+  outline:2px solid var(--gold-deep);
+  outline-offset:2px;
+}
+
+.scm-underlink--on-dark {
+  color:var(--on-dark);
+  border-bottom-color:var(--gold-soft);
+}

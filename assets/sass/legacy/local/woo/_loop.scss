@@ -1,0 +1,5 @@
+/* Confirmed dead 12 Sep 2026 — was .card__actions del/ins price styling for
+   the legacy product-loop card, which content-product.php no longer emits
+   (reskinned onto .scm-card, see docs/BUILD-NOTES.md). Grepped: zero matches
+   in any active template. Left as an empty file rather than removed from the
+   @import list, so a future dead-code pass doesn't have to rediscover this. */

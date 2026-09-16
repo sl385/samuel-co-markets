@@ -1,0 +1,28 @@
+/* ==== Status chip (Foundations A8) ====
+   Generic up/down/neutral value chip. The market ticker (_ticker.scss) has its
+   own long-standing .scm-tick--up/--down that predates this; this is the
+   general-purpose version for use anywhere else a directional value appears. */
+
+.scm-chip {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font:700 var(--text-sm) var(--font-mono);
+  padding:2px 8px;
+  border-radius:var(--radius-pill);
+}
+
+.scm-chip--up {
+  color:var(--up);
+  background:color-mix(in srgb, var(--up) 12%, transparent);
+}
+
+.scm-chip--down {
+  color:var(--down);
+  background:color-mix(in srgb, var(--down) 12%, transparent);
+}
+
+.scm-chip--neutral {
+  color:var(--muted);
+  background:var(--sand);
+}

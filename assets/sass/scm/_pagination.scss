@@ -1,0 +1,45 @@
+/* ==== Pagination (Foundations B11) ====
+   Styles WordPress core's own the_posts_pagination()/paginate_links() markup
+   (.pagination .page-numbers) — no custom component needed, this is real
+   WP-generated markup on the real blog/category archives.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.pagination {
+  margin-top: var(--space-10);
+}
+
+.pagination .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.pagination .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--control-h);
+  height: var(--control-h);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font: 700 var(--text-base) var(--font-body);
+  text-decoration: none;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.pagination .page-numbers:hover {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.pagination .page-numbers.current {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--on-dark);
+}
+
+.pagination .page-numbers.dots {
+  border-color: transparent;
+}

@@ -1,0 +1,169 @@
+.cards {
+    li {
+        visibility: visible;
+        opacity: 1;
+        transition: all .2s ease-in-out;
+        display: block;
+    }
+    li.hidden {
+       visibility: hidden;
+       opacity: 0;
+       display: none;
+    }
+    margin-top: 60px;
+    .card {
+        height:  100%;
+        text-decoration: none;
+        background-color: $brand;
+        padding: 0 25px 25px 25px;
+        text-align: center;
+        h3 {
+            color: $light;
+            @extend .type--subs-35;
+            margin-bottom: .5em;
+            padding-bottom: .75em;
+            border-bottom: 2px solid $white;
+        }
+
+        p {
+            color: #fff;
+            margin-bottom: 1em;
+        }
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .button {
+            @extend .button--dark;
+            align-self: center;
+        }
+        .button-group {
+            align-self: center;
+            justify-content: center;
+        }
+        figure {
+            margin-bottom: 1em;
+            margin-top: -60px;
+        }
+
+        .price {
+            @extend .type--40;
+            color: $white;
+            margin: 1em 0;
+            font-weight: $semibold;
+        }
+
+        &.card--product img {
+            max-height: 329px;
+            width: auto;
+        }
+    
+    }
+
+    >*:nth-of-type(2n) .card {
+        background-color: $dark;
+        .button {
+            background-color: $brand;
+            color: $white;
+            &:hover {
+                background-color: $white;
+                color: $brand;
+            }
+        }
+        
+    }
+
+    &.cards--pretty {
+        .card {
+            padding: 0 70px 25px 70px;
+            position: relative;
+            > * {
+                position: relative;
+                z-index: 11;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 185px;
+                background: url('../img/card-pretty-left-alt.png') 0 20px;
+                background-repeat: no-repeat;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 185px;
+                background: url('../img/card-pretty-right-alt.png') 103% 55px;
+                background-repeat: no-repeat;
+            }
+        }
+
+        
+
+        
+
+    }
+  
+}
+
+.cards--pretty {
+    li:nth-of-type(2n) .card:after,
+    >*:nth-of-type(2n):after, 
+    .card:nth-of-type(2n):after {
+
+       // background: url('../img/card-pretty-left.png') 20px 20px no-repeat;
+        
+    }
+
+    li:nth-of-type(2n) .card:before,
+    >*:nth-of-type(2n):before, 
+    .card:nth-of-type(2n):before {
+        background: url('../img/card-pretty-right.png') 120% -50px no-repeat;
+    }
+}
+
+/* ==== Mini Cards */ 
+
+.mini-card {
+
+    padding: 30px;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    h3 {
+        color: $dark;
+        font-weight: $semibold;
+        margin-bottom: .5em;
+    }
+
+    p {
+        margin-bottom: 0;
+        margin-top: .75em;
+        color: $brand;
+        @extend .type--18;
+    }
+
+    svg {
+        height: 28px;
+        fill: $brand;
+        @media screen and ( max-width: 1200px ) {
+            height: 27px;
+        }
+    }
+
+    box-shadow: 0 0 50px rgba(0,0,0,.1);
+
+
+}
+
+

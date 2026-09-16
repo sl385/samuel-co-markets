@@ -1,0 +1,47 @@
+/* ==== No component ====
+   Honest placeholder for a section with no real .scm-* component yet — a
+   labelled box instead of either raw/broken HTML or a faked one-off design.
+   Add the class directly to any existing wrapper (`class="scm-no-component"`)
+   or use scm_component('no-component', ['label' => '...']). Values reference
+   CSS custom properties in _tokens.scss. */
+
+.scm-no-component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 120px;
+  padding: var(--space-8);
+  background: repeating-linear-gradient(
+    135deg,
+    var(--sand),
+    var(--sand) 10px,
+    var(--white) 10px,
+    var(--white) 20px
+  );
+  border: 2px dashed var(--line-strong);
+  text-align: center;
+  color: var(--muted);
+}
+
+.scm-no-component__tag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: var(--gold);
+  color: var(--ink);
+  font: 700 var(--text-xs) var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+}
+
+.scm-no-component strong {
+  font: 500 18px var(--font-display);
+  color: var(--ink);
+}
+
+.scm-no-component span {
+  font-size: var(--text-sm);
+  max-width: 480px;
+}

@@ -1,0 +1,49 @@
+.gfx {
+    display: block;
+    content: "";
+    &.gfx--arrow {
+        width: 86px;
+        height: 55px;
+        background: url('../img/gfx-arrow.png');
+    }
+    &.gfx--arrow-d {
+        width: 72px;
+        height: 45px;
+        background: url('../img/gfx-arrow-d.png');
+    }
+    &.gfx--circle {
+        width: 164px;
+        height: 164px;
+        background: url('../img/gfx-circle.png');
+    }
+    &.gfx--circle--half {
+        width: 126px;
+        height: 63px;
+        background: url('../img/gfx-circle-d.png');
+    }
+    &.gfx--grid {
+        width: 54px;
+        height: 54px;
+        background: url('../img/gfx-grid.png');
+    }
+    &.gfx--grid-b {
+        background: url('../img/gfx-grid-brand.png');
+    }
+    &.gfx--grid-d {
+        background: url('../img/gfx-grid-dark.png');
+    }
+    &.gfx--circle-lg {
+        width: 317px;
+        height: 317px;
+        background: url('../img/gfx-circle-lg.png');
+    }
+    &.gfx--circle--o {
+        width: 118px;
+        height: 118px;
+        background: url('../img/circle-o.png');
+    }
+
+    @media screen and ( max-width: 1024px ) {
+        display: none;
+    }
+}

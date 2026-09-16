@@ -1,0 +1,86 @@
+/* ==== Markets page (mock-up) ====
+   templates/template-markets.php — see that file's own header comment:
+   deliberately static/concept content, real post type TBC.
+   Values reference CSS custom properties in _tokens.scss. */
+
+/* Client review note — same "flag it, don't fake it" spirit as
+   .scm-no-component, but for "this is filled in, just provisional"
+   rather than "nothing built here yet". */
+.scm-review-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--gold);
+  border-left: 4px solid var(--gold);
+  background: var(--sand);
+}
+
+.scm-review-note__tag {
+  flex-shrink: 0;
+  padding: var(--space-1) var(--space-3);
+  background: var(--gold);
+  color: var(--ink);
+  font: 700 var(--text-xs) var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  white-space: nowrap;
+}
+
+.scm-review-note p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.scm-market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.scm-market-card {
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.scm-market-card .scm-meta {
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.scm-market-card strong {
+  display: block;
+  font: 700 var(--display-sm) var(--font-mono);
+  margin-bottom: var(--space-1);
+}
+
+.scm-market-card__change {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font: 700 var(--text-sm) var(--font-mono);
+}
+
+.scm-market-card--up .scm-market-card__change {
+  color: var(--up);
+}
+
+.scm-market-card--down .scm-market-card__change {
+  color: var(--down);
+}
+
+@include bp-down(1050px) {
+  .scm-market-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include bp-down(680px) {
+  .scm-review-note {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,21 @@
+/* Trimmed 12 Sep 2026 — every real masthead now goes through
+   partials/components/masthead.php (see docs/BUILD-NOTES.md: "mastheads
+   migrated to one component"). This used to be 339 lines covering
+   .masthead/.masthead--hero/--small/--bg/--contact/--hasnav/__logos and
+   .pages-nav — all now confirmed dead (grepped every non-parked template;
+   nothing references them any more). The one still-real exception:
+   .masthead__secondary, used by the secondary-content block in the dormant
+   templates/template-home.php (not the live homepage — front-page.php is —
+   but still a real ACF-driven section on a real, if currently unused,
+   template, so left in rather than guessed at). */
+
+.masthead__secondary {
+    h2 {
+        @extend .type--subs-35;
+        margin-bottom: .5em;
+        line-height: 1.15 !important;
+    }
+    @media screen and ( max-width: 768px ) {
+        text-align: left !important;
+    }
+}

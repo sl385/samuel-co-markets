@@ -1,0 +1,429 @@
+/* ==== Article ====
+   Single post / page / prose.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-article__header,.scm-page__header {
+  padding:80px 0 36px;
+}
+
+.scm-article__narrow {
+  max-width:820px;
+}
+
+.scm-article__meta {
+  font-size:var(--text-base);
+  color:var(--muted);
+}
+
+/* Superseded by .scm-shell--article-hero (_base.scss, Foundations A13) — no
+   markup uses .scm-article__hero any more. Left only as a comment marker: its
+   old `.scm-article__hero img { width:100%; ... }` rule used to silently catch
+   ANY <img> nested inside (including the byline avatar, once single.php grew
+   one) because single.php's new photo hero briefly carried both
+   `scm-article__hero` and `scm-article__hero--photo` as classes on the same
+   element. Removed rather than left as a landmine for the next class that
+   happens to combine with `scm-article__hero`. */
+
+.scm-prose {
+  font:17px/1.75 var(--font-display);
+  padding-top:40px;
+  padding-bottom:80px;
+}
+
+.scm-prose h2 {
+  font-size:34px;
+}
+
+.scm-prose h3 {
+  font-size:26px;
+}
+
+/* Breadcrumb (B10) */
+.scm-breadcrumb {
+  padding:var(--space-4) 0 0;
+}
+
+.scm-breadcrumb ol {
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-1);
+  list-style:none;
+  margin:0;
+  padding:0;
+  font-size:var(--text-sm);
+  color:var(--muted);
+}
+
+.scm-breadcrumb li:not(:last-child)::after {
+  content:"/";
+  margin-left:var(--space-1);
+  color:var(--line-strong);
+}
+
+.scm-breadcrumb a {
+  color:var(--muted);
+  text-decoration:none;
+}
+
+.scm-breadcrumb a:hover {
+  color:var(--gold-deep);
+}
+
+.scm-breadcrumb li[aria-current="page"] span {
+  color:var(--ink-2);
+}
+
+/* Author byline (C20) */
+.scm-byline {
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+  padding:var(--space-6) 0;
+  border-top:1px solid var(--line);
+}
+
+.scm-byline img {
+  border-radius:50%;
+}
+
+.scm-byline strong {
+  display:block;
+  font:500 15px var(--font-display);
+}
+
+.scm-byline__role {
+  display:block;
+}
+
+/* Prev / next post (C21) */
+.scm-prevnext {
+  border-top:1px solid var(--line);
+  padding:var(--space-8) 0;
+}
+
+.scm-prevnext__row {
+  display:flex;
+  justify-content:space-between;
+  gap:var(--space-6);
+}
+
+.scm-prevnext__link {
+  max-width:340px;
+  text-decoration:none;
+  color:var(--ink);
+}
+
+.scm-prevnext__link--next {
+  text-align:right;
+  margin-left:auto;
+}
+
+.scm-prevnext__link span:last-child {
+  display:block;
+  font:500 15px var(--font-display);
+  margin-top:var(--space-1);
+}
+
+.scm-prevnext__link:hover span:last-child {
+  text-decoration:underline;
+  text-decoration-color:var(--gold);
+}
+
+/* Article hero — full-bleed photo variant (reference/single_article.png) */
+.scm-article__hero--photo {
+  background-size:cover;
+  background-position:center;
+  padding:120px 0 var(--space-8);
+  min-height:420px;
+  display:flex;
+  align-items:flex-end;
+}
+
+.scm-article__hero--photo h1 {
+  font:500 var(--display-lg) var(--font-display);
+  letter-spacing:var(--tracking-display);
+  line-height:var(--leading-tight);
+  color:var(--on-dark);
+  margin:var(--space-3) 0;
+  max-width:820px;
+}
+
+.scm-article__lead {
+  max-width:640px;
+  font:var(--text-lg)/var(--leading-body) var(--font-body);
+  color:var(--on-dark-muted);
+  margin:0 0 var(--space-5);
+}
+
+/* Byline (C20) */
+.scm-byline {
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+  padding:var(--space-6) 0;
+  border-top:1px solid var(--line);
+}
+
+.scm-byline--on-dark {
+  border-top:0;
+  padding:0;
+}
+
+.scm-byline img {
+  border-radius:50%;
+}
+
+.scm-byline strong {
+  display:block;
+  font:500 15px var(--font-display);
+}
+
+.scm-byline .scm-meta {
+  color:var(--muted);
+  text-transform:none;
+  letter-spacing:normal;
+  font-size:var(--text-sm);
+}
+
+.scm-byline--on-dark .scm-meta {
+  color:var(--on-dark-muted);
+}
+
+/* Two-column article body: share icons / prose / sidebar */
+.scm-article__layout {
+  display:grid;
+  grid-template-columns:48px minmax(0, 1fr) 340px;
+  gap:var(--space-10);
+  padding:var(--space-10) 0 var(--space-16);
+  align-items:start;
+}
+
+.scm-article__body {
+  padding:0;
+}
+
+.scm-article__share-col {
+  position:sticky;
+  top:calc(var(--header-h) + var(--space-4));
+}
+
+@include bp-down(1050px) {
+  .scm-article__layout {
+    grid-template-columns:minmax(0, 1fr) 300px;
+  }
+  .scm-article__share-col {
+    display:none;
+  }
+}
+
+@include bp-down(680px) {
+  .scm-article__layout {
+    grid-template-columns:1fr;
+  }
+  .scm-article__hero--photo {
+    min-height:320px;
+    padding:90px 0 var(--space-6);
+  }
+  .scm-article__hero--photo h1 {
+    font-size:var(--display-md);
+  }
+}
+
+/* Share links (new, not in spec by name) */
+.scm-share {
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-4);
+  align-items:center;
+}
+
+.scm-share__label {
+  writing-mode:vertical-rl;
+  margin-bottom:var(--space-2);
+}
+
+.scm-share a {
+  color:var(--muted);
+  font-size:15px;
+}
+
+.scm-share a:hover {
+  color:var(--gold-deep);
+}
+
+/* Sidebar (reference/single_article.png) */
+.scm-article-sidebar__search {
+  display:flex;
+  margin-bottom:var(--space-8);
+}
+
+.scm-article-sidebar__search input {
+  border-right:0;
+}
+
+.scm-article-sidebar__search button {
+  width:46px;
+  height:var(--control-h);
+  border:1px solid var(--line-strong);
+  border-left:0;
+  background:var(--white);
+  cursor:pointer;
+}
+
+.scm-article-sidebar__block {
+  margin-bottom:var(--space-8);
+}
+
+.scm-article-sidebar__block h3 {
+  font:500 var(--text-xl) var(--font-display);
+  margin:0 0 var(--space-4);
+}
+
+.scm-article-sidebar__cta {
+  background:var(--navy);
+  padding:var(--space-6);
+}
+
+.scm-article-sidebar__cta p {
+  color:var(--on-dark-muted);
+  font-size:var(--text-base);
+  margin:var(--space-2) 0 var(--space-4);
+}
+
+.scm-related-list {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.scm-related-list li {
+  display:flex;
+  gap:var(--space-3);
+  padding:var(--space-3) 0;
+  border-top:1px solid var(--line);
+}
+
+.scm-related-list__image {
+  width:64px;
+  height:48px;
+  flex:none;
+  display:block;
+  overflow:hidden;
+  background:var(--sand);
+}
+
+.scm-related-list__image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.scm-related-list a {
+  text-decoration:none;
+  font:500 var(--text-base) var(--font-display);
+  color:var(--ink);
+}
+
+.scm-related-list a:hover {
+  text-decoration:underline;
+}
+
+.scm-category-list {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.scm-category-list li {
+  display:flex;
+  justify-content:space-between;
+  padding:var(--space-2) 0;
+  border-top:1px solid var(--line);
+  font-size:var(--text-sm);
+}
+
+.scm-category-list a {
+  text-decoration:none;
+  color:var(--ink-2);
+}
+
+.scm-category-list a:hover {
+  color:var(--gold-deep);
+}
+
+.scm-category-list span {
+  color:var(--muted);
+}
+
+/* Prose extras: pull quote + auto-numbered lists (C19) */
+.scm-prose blockquote {
+  margin:var(--space-8) 0;
+  padding:var(--space-5) var(--space-6);
+  background:var(--sand);
+  border-left:3px solid var(--gold);
+  font:italic 500 20px/1.5 var(--font-display);
+  color:var(--ink-2);
+}
+
+.scm-prose blockquote cite {
+  display:block;
+  margin-top:var(--space-2);
+  font:700 var(--text-xs) var(--font-body);
+  letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase;
+  font-style:normal;
+  color:var(--muted);
+}
+
+/* Real editorial/product content bullet lists — some of this content (e.g.
+   the Level 5 product's "what you'll receive" list) has bare <li> tags with
+   no <ul> wrapper at all (content pasted in without one, survived import),
+   so this targets li directly rather than ul > li — it's the only way to
+   reach those, and it styles properly-wrapped <ul><li> content identically.
+   .scm-prose ol > li below is more specific and wins for real <ol> lists. */
+.scm-prose li {
+  position:relative;
+  list-style:none;
+  padding-left:22px;
+  margin:0 0 var(--space-2);
+}
+
+.scm-prose li::before {
+  content:'•';
+  position:absolute;
+  left:2px;
+  color:var(--gold-deep);
+  font-weight:700;
+}
+
+.scm-prose ol {
+  list-style:none;
+  margin:var(--space-5) 0;
+  padding:0;
+  counter-reset:scm-ol;
+}
+
+.scm-prose ol > li {
+  counter-increment:scm-ol;
+  display:flex;
+  gap:var(--space-4);
+  padding:var(--space-3) 0;
+}
+
+.scm-prose ol > li::before {
+  content:counter(scm-ol);
+  /* Explicit position:static — insulates this against .scm-prose
+     li::before's position:absolute/left, which is more specific here on
+     every OTHER property but not these two (that rule never set them, so
+     cascade would otherwise fall through to the generic rule's values). */
+  position:static;
+  display:inline-grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--white);
+  font:700 var(--text-sm) var(--font-body);
+  flex:none;
+}

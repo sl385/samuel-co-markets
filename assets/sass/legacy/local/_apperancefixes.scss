@@ -1,0 +1,47 @@
+/// --- If you ever use Apperance > Customise paste it in here
+
+body {
+.section--product #wc-stripe-payment-request-button-separator {
+	display: none !important;
+}
+
+.section--product #wc-stripe-payment-request-wrapper {
+	display: none !important
+}
+
+@media screen and ( max-width: 560px ) {
+	.newsletter p {
+		display: block
+	}
+	.newsletter span {
+		margin-right: 0;
+	}
+	.newsletter input {
+		width: 100% !important;
+	}
+	.newsletter input[type="submit"] {
+		margin-top:20px
+	}
+	.newsletter input[type=email] {
+		width: 100% !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.m-cat-toggle {
+		margin-bottom: 0;
+	}
+}
+
+@media screen and ( min-width: 1024px ) {
+
+.woo-customer-layout .wp-content > .woocommerce > nav {
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+.grecaptcha-badge {
+	display: none !important;
+}
+}

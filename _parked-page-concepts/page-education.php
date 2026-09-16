@@ -1,0 +1,14 @@
+<?php get_header(); ?>
+<?php scm_component('hub-hero', [
+  'eyebrow' => 'EDUCATION',
+  'title' => 'Professional trading education, properly structured.',
+  'lead' => 'Move beyond disconnected videos and build a formal programme of study around financial markets, analysis, risk and trading practice.',
+  'image_class' => 'scm-hub-hero__image--education',
+  'quote' => 'Education should build judgement — not dependency.',
+  'primary' => ['Explore qualifications', '#qualifications'],
+  'secondary' => ['View membership', home_url('/membership/')],
+]); ?>
+<section class="scm-section" id="qualifications"><div class="scm-shell"><div class="scm-section-head"><div><span class="scm-eyebrow">QUALIFICATIONS</span><h2>Choose the right level.</h2></div></div><div class="scm-qualification-grid"><article class="scm-qualification-card"><span class="scm-meta">LEVEL 5</span><h3>Diploma in Financial Trading</h3><p>A structured route through financial markets, macro, analysis, risk management and trading process.</p><div class="scm-fact-grid"><span>Structured pathway</span><span>Assessed learning</span><span>Tutor support</span><span>Market application</span></div><a class="scm-button scm-button--gold" href="<?php echo esc_url(home_url('/product/level-5-diploma-in-financial-trading/')); ?>">Explore Level 5</a></article><article class="scm-qualification-card"><span class="scm-meta">LEVEL 7</span><h3>Diploma in Applied Financial Trading</h3><p>An advanced pathway focused on applied analysis, portfolio thinking, market structure, risk and higher-level decision making.</p><div class="scm-fact-grid"><span>Advanced study</span><span>Applied research</span><span>Assessment</span><span>Trader development</span></div><a class="scm-button scm-button--gold" href="<?php echo esc_url(home_url('/product/formula-for-success/')); ?>">Explore Level 7</a></article></div></div></section>
+<section class="scm-section scm-section--soft"><div class="scm-shell"><div class="scm-section-head"><div><span class="scm-eyebrow">WHY SAMUEL &amp; CO</span><h2>Built around the real market.</h2></div></div><div class="scm-lesson-grid"><article class="scm-lesson"><span class="scm-meta">01</span><h3>Market-led</h3><p>The curriculum connects theory back to live markets and current examples.</p></article><article class="scm-lesson"><span class="scm-meta">02</span><h3>Structured</h3><p>A defined learning path instead of a library of unrelated videos.</p></article><article class="scm-lesson"><span class="scm-meta">03</span><h3>Assessed</h3><p>Progress is demonstrated through work and application, not just completion.</p></article><article class="scm-lesson"><span class="scm-meta">04</span><h3>Established</h3><p>A trading education business operating since 2012.</p></article></div></div></section>
+<?php scm_component('success-stories', ['count' => 3]); ?>
+<?php get_footer(); ?>

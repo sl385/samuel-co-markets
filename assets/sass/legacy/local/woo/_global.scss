@@ -1,0 +1,73 @@
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt,
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button {
+    @extend .button;
+    &:hover {
+        background: $dark;
+    }
+
+}
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message {
+    background: $brand;
+    border-color: $dark;
+    color: $white;
+}
+
+.woocommerce-error::before, .woocommerce-info::before, .woocommerce-message::before {
+    color: $white;
+}
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message {
+    .button {
+        background-color: $dark;
+    }
+}
+
+.woocommerce span.onsale {
+    width: 50px;
+    height: 50px;
+    background: $brand;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 0;
+}
+
+
+.no-sub-desc .subscription-details {
+    display: none !important;
+}
+
+
+.aftersales-panel {
+    background: $dark;
+    padding: 25px;
+    h2 {
+        margin-bottom: 1em !important;
+    }
+    p {
+        color: $white;
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+    margin-bottom: 2em;
+    a {
+        color: #fff;
+    }
+
+    &.aftersales-panel--alt {
+        background: $brand;
+        h2 {
+            color: #fff;
+        }
+    }
+}

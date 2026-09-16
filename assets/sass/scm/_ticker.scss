@@ -1,0 +1,65 @@
+/* ==== Ticker ====
+   Market ticker strip (data is static for now — see static-ticker.php).
+   Scrolls continuously like a real ticker tape.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-ticker {
+  background:var(--navy);
+  color:white;
+  overflow:hidden;
+}
+
+.scm-ticker__bar {
+  display:flex;
+  align-items:stretch;
+}
+
+.scm-ticker__viewport {
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
+}
+
+.scm-ticker__track {
+  display:flex;
+  width:max-content;
+  animation:scm-ticker-scroll 50s linear infinite;
+}
+
+.scm-ticker__viewport:hover .scm-ticker__track {
+  animation-play-state:paused;
+}
+
+@keyframes scm-ticker-scroll {
+  from { transform:translateX(0); }
+  to { transform:translateX(-50%); }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .scm-ticker__track {
+    animation:none;
+  }
+}
+
+.scm-tick {
+  flex-shrink:0;
+  padding:12px 13px;
+  border-right:1px solid rgba(255,255,255,.12);
+  font-size:var(--text-xs);
+  white-space:nowrap;
+}
+
+.scm-tick strong {
+  display:block;
+  font-size:var(--text-sm);
+  margin-top:3px;
+}
+
+/* Figures + change, and the trailing "View full markets" link */
+.scm-tick strong { font-family: var(--font-mono); font-weight: 600; letter-spacing: 0; }
+.scm-tick__change { font-size:var(--text-xs); margin-left: 6px; font-family: var(--font-mono); }
+.scm-tick--up .scm-tick__change { color: var(--up); }
+.scm-tick--down .scm-tick__change { color: var(--down); }
+.scm-ticker__more { flex-shrink:0; display: flex; align-items: center; padding: 12px 0 12px 13px; font-size:var(--text-sm); text-decoration: none; color: var(--on-dark); white-space: nowrap; }

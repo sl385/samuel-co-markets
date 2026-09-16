@@ -1,0 +1,420 @@
+/* ==== My Account ====
+   WooCommerce's own default markup (.woocommerce-MyAccount-*), restyled —
+   see woocommerce/myaccount/dashboard.php for the real Next-Event /
+   Recent-Order cards. Values reference CSS custom properties in
+   _tokens.scss. */
+
+/* padding-top:0 — .scm-page__header (page.php, shared with every generic
+   page) already adds its own 36px underneath the h1; the GENERIC
+   .scm-page__body{padding-top:32px} (_site.scss) stacks on top of that on
+   every page, account included, for a big empty gap before the dashboard/
+   login content actually starts. Zeroed here rather than in the generic
+   rule, which other, non-account pages may genuinely need. */
+.woocommerce-account .scm-page__body,
+.woocommerce-account .scm-shell {
+  padding-top: 0;
+  padding-bottom: var(--space-16);
+}
+
+/* .woocommerce-MyAccount-navigation + .woocommerce-MyAccount-content are
+   siblings inside a bare .woocommerce div (myaccount/my-account.php) —
+   nothing else makes them a two-column layout. WooCommerce's own CSS
+   (.woocommerce-account .woocommerce-MyAccount-navigation{float:left;
+   width:30%}, ...-content{float:right;width:68%}) has higher specificity
+   than a plain class rule here and isn't reliably neutralised just by the
+   parent becoming a grid — the two children still measure their float/
+   width against it, producing a broken layout. Override both explicitly
+   rather than relying on the grid to cancel them implicitly. */
+.woocommerce:has(> .woocommerce-MyAccount-navigation) {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation,
+.woocommerce-account .woocommerce-MyAccount-content {
+  float: none;
+  width: auto;
+}
+
+/* Explicit placement — grid auto-placement was putting these in the wrong
+   columns for reasons that didn't reduce to any property this rule can see
+   (verified: no float, no order, no writing-mode difference at the point
+   auto-placement runs) — pinning them directly sidesteps it regardless of
+   the underlying cause. */
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  grid-column: 1;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  grid-column: 2;
+}
+
+.woocommerce-MyAccount-navigation {
+  background: var(--navy);
+  padding: var(--space-6) 0;
+}
+
+.woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.woocommerce-MyAccount-navigation-link a {
+  display: block;
+  padding: 11px var(--space-6);
+  color: var(--on-dark-muted);
+  text-decoration: none;
+  font-size: var(--text-base);
+  border-left: 2px solid transparent;
+}
+
+.woocommerce-MyAccount-navigation-link a:hover {
+  color: var(--on-dark);
+}
+
+.woocommerce-MyAccount-navigation-link.is-active a {
+  color: var(--on-dark);
+  border-left-color: var(--gold);
+  background: rgba(255, 255, 255, .04);
+}
+
+.woocommerce-MyAccount-content {
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: var(--space-10);
+}
+
+.scm-account-greeting {
+  font-size: var(--text-base);
+  color: var(--ink-2);
+  margin: 0 0 var(--space-8);
+}
+
+.scm-account-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.scm-dash-card {
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.scm-dash-card h3 {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: var(--space-2) 0 var(--space-2);
+}
+
+.scm-dash-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.scm-dash-card p {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  margin: 0 0 var(--space-3);
+}
+
+.scm-account-links {
+  font-size: var(--text-base);
+  color: var(--ink-2);
+  line-height: var(--leading-body);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+@include bp-down(900px) {
+  .scm-account-cards {
+    grid-template-columns: 1fr;
+  }
+  .woocommerce:has(> .woocommerce-MyAccount-navigation) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Login / Register / Lost password / Reset password — all real WooCommerce
+   core templates (woocommerce/myaccount/form-login.php,
+   form-lost-password.php; form-reset-password.php isn't overridden at all,
+   so this reaches it purely by targeting WooCommerce's own real classes),
+   previously completely unstyled beyond the shell/nav CSS above. No fields
+   added or removed, no markup changes — just styling WooCommerce's own
+   real output on a white card the same width as the rest of My Account. */
+/* Center the login/lost-password/reset-password card on the page.
+   WooCommerce's own core CSS (woocommerce.css) has
+   ".woocommerce form.checkout_coupon, .woocommerce form.login,
+   .woocommerce form.register { margin: 2em 0px; ... }" — two classes +
+   an element type (0,2,1), edging out a plain two-class rule here
+   (0,2,0) for the margin property specifically (this is exactly why
+   lost-password centered correctly already and plain login didn't: WC's
+   rule doesn't list .lost_reset_password at all). The real form carries
+   BOTH "woocommerce-form-login" and "login" (or "woocommerce-form-register"
+   and "register") — chaining them compounds to three classes (0,3,0),
+   which wins outright. */
+.woocommerce-account .woocommerce-form-login.login,
+.woocommerce-account .woocommerce-form-register.register,
+.woocommerce-account .woocommerce-ResetPassword,
+.woocommerce-account .woocommerce-form-reset-password {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.woocommerce-account .wp-title {
+  text-align: center;
+}
+
+/* The real page <h1> ("My account" / "Password Reset" — page.php's
+   .scm-page__header, a sibling of .woocommerce, not a descendant) — center
+   it too, but only on these three logged-out states (login, lost
+   password, reset password), not the logged-in dashboard. There's no
+   dedicated body class for "showing the login form" specifically, but
+   none of these three ever render the My Account nav sidebar, and the
+   logged-in dashboard always does — using that as the distinguishing
+   signal via :has() on the common body ancestor. */
+body.woocommerce-account:not(:has(.woocommerce-MyAccount-navigation)) .scm-page__header h1 {
+  text-align: center;
+}
+
+.woocommerce-account .woocommerce-ResetPassword > p:first-of-type,
+.woocommerce-account .woocommerce-form-reset-password > p:first-of-type {
+  text-align: center;
+}
+
+.woocommerce-account .woocommerce-ResetPassword .form-row:has(button),
+.woocommerce-account .woocommerce-form-reset-password .form-row:has(button),
+.woocommerce-account .woocommerce-LostPassword {
+  text-align: center;
+}
+
+.woocommerce-account .u-columns.col2-set {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  max-width: none;
+}
+
+.woocommerce-account .u-columns.col2-set .woocommerce-form {
+  max-width: none;
+}
+
+.woocommerce-account .u-column1 {
+  padding-right: var(--space-10);
+  border-right: 1px solid var(--line);
+}
+
+.woocommerce-account .wp-title {
+  font: 500 28px var(--font-display);
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 var(--space-6);
+}
+
+.woocommerce-account .woocommerce-form-row {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+}
+
+.woocommerce-account .woocommerce-form-row label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.woocommerce-account .woocommerce-form-row label .required {
+  color: var(--down);
+  text-decoration: none;
+}
+
+.woocommerce-account .woocommerce-Input {
+  height: var(--control-h);
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--text-base) var(--font-body);
+  width: 100%;
+}
+
+.woocommerce-account .woocommerce-Input:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+.woocommerce-account .form-row:has(.woocommerce-form-login__rememberme) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+}
+
+.woocommerce-account .woocommerce-form__label-for-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.woocommerce-account .woocommerce-form__input-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold-deep);
+}
+
+.woocommerce-account .woocommerce-button,
+.woocommerce-account .woocommerce-Button {
+  @extend .scm-button;
+  @extend .scm-button--gold;
+  height: var(--control-h);
+  padding: 0 var(--space-8);
+  border: 0;
+  cursor: pointer;
+}
+
+.woocommerce-account .woocommerce-LostPassword {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.woocommerce-account .woocommerce-LostPassword a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.woocommerce-account .woocommerce-ResetPassword p,
+.woocommerce-account .woocommerce-form-reset-password > p:first-of-type {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  margin: 0 0 var(--space-6);
+}
+
+/* Real WooCommerce notices (wrong password, reset-link-sent, etc.) —
+   completely unstyled before, falling back to WooCommerce's own bundled
+   default look which clashed with everything around it. */
+.woocommerce-account .woocommerce-error,
+.woocommerce-account .woocommerce-message,
+.woocommerce-account .woocommerce-info {
+  display: block;
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ink);
+  background: var(--sand);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  list-style: none;
+}
+
+.woocommerce-account .woocommerce-message {
+  border-left-color: var(--up);
+}
+
+.woocommerce-account .woocommerce-error {
+  border-left-color: var(--down);
+}
+
+.woocommerce-account .woocommerce-error li {
+  margin: 0;
+}
+
+@include bp-down(680px) {
+  .woocommerce-account .u-columns.col2-set {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .woocommerce-account .u-column1 {
+    padding-right: 0;
+    padding-bottom: var(--space-8);
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* "Your Courses" widget (woocommerce/account/courses.php) — real enrolled
+   courses + real lesson-completion progress, styled as the reference
+   mock-up's "Continue learning" cards (thumbnail, progress bar, Continue
+   button) rather than the previous bare unstyled link list. */
+.scm-my-courses__heading {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: var(--space-8) 0 var(--space-5);
+}
+
+.scm-my-courses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.scm-my-course {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+}
+
+.scm-my-course__art {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.scm-my-course__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scm-my-course__body h3 {
+  font: 500 var(--display-sm) var(--font-display);
+  margin: 0 0 var(--space-2);
+}
+
+.scm-my-course__meta {
+  display: block;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+}
+
+.scm-my-course__bar {
+  height: 6px;
+  max-width: 260px;
+  background: var(--line);
+}
+
+.scm-my-course__bar span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+}
+
+.scm-my-course__cta {
+  height: var(--control-h);
+  padding: 0 var(--space-6);
+  white-space: nowrap;
+}
+
+@include bp-down(680px) {
+  .scm-my-course {
+    grid-template-columns: 90px 1fr;
+  }
+  .scm-my-course__cta {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}

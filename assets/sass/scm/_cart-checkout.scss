@@ -1,0 +1,85 @@
+/* ==== Cart / Checkout ====
+   Real WooCommerce core templates (woocommerce/cart/, woocommerce/checkout/),
+   no markup changes — styling WooCommerce's own real classes. Bound by
+   WooCommerce's own structure (table layout, field markup), so this is a
+   polish pass on top of it rather than a rebuild.
+   Values reference CSS custom properties in _tokens.scss. */
+
+/* Purple "alt" buttons (WooCommerce's own default) — same specificity
+   approach as the single-product add-to-cart button and the account
+   forms: match the .woocommerce prefix + element type it uses rather
+   than reach for !important. */
+.woocommerce-cart .button,
+.woocommerce-checkout .button,
+.woocommerce-checkout #place_order {
+  @extend .scm-button;
+  @extend .scm-button--gold;
+  height: var(--control-h);
+  padding: 0 var(--space-8);
+  border: 0;
+}
+
+.woocommerce-cart table.shop_table,
+.woocommerce-checkout table.shop_table {
+  border: 1px solid var(--line);
+  border-collapse: collapse;
+}
+
+.woocommerce-cart table.shop_table th,
+.woocommerce-checkout table.shop_table th {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--muted);
+}
+
+.woocommerce-cart table.shop_table td,
+.woocommerce-checkout table.shop_table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.woocommerce-cart .quantity .qty,
+.woocommerce-checkout .input-text,
+.woocommerce-checkout select,
+.woocommerce-checkout textarea {
+  height: var(--control-h);
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--text-base) var(--font-body);
+}
+
+.woocommerce-checkout .input-text:focus,
+.woocommerce-checkout select:focus,
+.woocommerce-checkout textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+.woocommerce-checkout textarea,
+/* Order Notes — was the browser's tiny default single-line-ish textarea
+   height, cramped for actual use. */
+#order_comments {
+  height: auto;
+  min-height: 110px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.woocommerce-checkout label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.woocommerce-checkout #order_review,
+.woocommerce-cart-collaterals .cart_totals {
+  border: 1px solid var(--line);
+  padding: var(--space-6);
+  background: var(--paper);
+}

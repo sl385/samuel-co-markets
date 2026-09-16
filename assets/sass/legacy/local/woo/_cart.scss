@@ -1,0 +1,41 @@
+table.cart {
+    th {
+        background: $dark;
+        color: $brand;
+        font-weight: $semibold;
+    }
+    tbody tr:nth-last-of-type(2n) {
+        td {
+            background: $light;
+        }
+    }
+     a.remove {
+        color: $dark !important;
+        &:hover {
+            color: $white !important;
+            background-color: $dark;
+        }
+    }
+
+    .coupon {
+        display: flex;
+        align-items: stretch;
+        input {
+            min-width: 200px;
+        }
+        @media screen and (max-width: 550px) {
+            flex-direction: column;
+            > * {
+                width:  100%;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+
+.cart_totals {
+    th {
+        background: $light;
+    }
+}

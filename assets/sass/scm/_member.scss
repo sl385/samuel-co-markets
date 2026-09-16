@@ -1,0 +1,137 @@
+/* ==== Member ====
+   Research layout + Join Markets sticky CTA.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-research-layout {
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:26px;
+  align-items:start;
+}
+
+.scm-member {
+  background:var(--navy);
+  color:var(--white);
+  padding:25px;
+  position:sticky;
+  top:20px;
+}
+
+.scm-member .scm-eyebrow {
+  color:var(--gold-soft);
+  margin-bottom:10px;
+}
+
+.scm-member h3 {
+  font:500 29px/1.04 var(--font-display);
+  margin:0 0 11px;
+}
+
+.scm-member p {
+  font-size:var(--text-sm);
+  line-height:1.55;
+  color:#d2dde2;
+  margin:0 0 15px;
+}
+
+.scm-member ul {
+  list-style:none;
+  margin:15px 0 0;
+  padding:0;
+}
+
+.scm-member li {
+  font-size:var(--text-sm);
+  margin:7px 0;
+}
+
+.scm-member li:before {
+  content:'✓';
+  color:var(--gold);
+  margin-right:7px;
+}
+
+.scm-member li:before { content: '✓'; }
+.scm-member__note { font-size:var(--text-xs); color: var(--on-dark-muted); margin: 10px 0 0; }
+
+/* Trader Hub full-width band (partials/components/member-cta.php) —
+   replaces the old sticky-sidebar-only shape for this component's use on
+   the homepage. .scm-hub-art is a plain decorative panel (no stock photo
+   standing in for a real Trader Hub screenshot we don't have). */
+.scm-hub {
+  padding: 0;
+  overflow: hidden;
+}
+
+.scm-hub__grid {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  min-height: 420px;
+}
+
+.scm-hub__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-14) 0;
+  max-width: 480px;
+}
+
+.scm-hub__copy h2 {
+  /* Same recurring bug as _typography.scss's .scm-section-head h2 and
+     _about.scss's prefooter heading — .scm-on-dark remaps --ink for
+     descendants that read it, but color only follows the remap where a
+     rule declares it explicitly; this h2 had no declared color at all, so
+     it inherited body's plain dark ink straight through the dark band. */
+  color: var(--on-dark);
+}
+
+.scm-hub__copy p {
+  color: var(--on-dark-muted);
+  margin: var(--space-3) 0 0;
+}
+
+.scm-hub__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-5);
+  margin: var(--space-6) 0;
+  padding: 0;
+  list-style: none;
+  color: var(--on-dark);
+  font-size: var(--text-sm);
+}
+
+.scm-hub__list li:before {
+  content: '✓';
+  margin-right: var(--space-2);
+  color: var(--gold);
+}
+
+.scm-hub__art {
+  position: relative;
+  background-color: #071b25;
+  background-size: cover;
+  background-position: center;
+}
+
+.scm-hub__art:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(20, 56, 70, .55), rgba(7, 27, 37, .75));
+}
+
+@include bp-down(900px) {
+  .scm-hub__grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .scm-hub__art {
+    min-height: 260px;
+  }
+  .scm-hub__copy {
+    padding: var(--space-10) 0;
+    max-width: none;
+  }
+}

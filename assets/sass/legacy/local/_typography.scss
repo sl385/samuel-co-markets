@@ -1,0 +1,207 @@
+html {
+    font-size:62.5%;
+}
+
+body {
+    font-family: elza, sans-serif;;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: $dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 2.0rem;
+        line-height: 2.5rem;
+    }
+}
+
+a {
+    color: $dark;
+}
+
+strong,b {
+    font-weight: $semibold;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.type--default {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+
+    @media screen and ( min-width: 1200px ) {
+        font-size: 2.0rem;
+        line-height: 2.5rem;
+    }
+}
+
+.type--heading-80 {
+    line-height: 1;
+    font-size: 4.5rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 6.0rem;
+    }
+    @media screen and ( min-width: 1500px ) {
+        font-size: 8.0rem;
+    }
+}
+
+.type--heading-80s {
+    line-height: 1;
+    font-size: 3.7rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 8.0rem;
+    }
+}
+
+.type--subs-70 {
+    line-height: 1;
+    font-size: 3.5rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 7.0rem;
+    }
+}
+
+.type--subs-45 {
+    line-height: 1;
+    font-size: 3.0rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 4.5rem;
+    }
+}
+
+.type--subs-30 {
+    line-height: 1;
+    font-size: 2.0rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 3.0rem;
+    }
+}
+
+.type--subs-35 {
+    line-height: 1;
+    font-size: 2.0rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 3.5rem;
+    }
+}
+
+.type--subs-28 {
+    line-height: 1;
+    font-size: 2.4rem;
+    line-height: 2.7rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 2.8rem;
+        line-height: 3.5rem;
+    }
+}
+
+.type--40 {
+    line-height: 1;
+    font-size: 2.2rem;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 4.0rem;
+        line-height: 4.4rem;
+    }
+}
+
+
+.type--24 {
+    line-height: 1;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 2.1rem;
+        line-height: 2.4rem;
+    }
+    @media screen and ( min-width: 1500px ) {
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+    }
+}
+
+.type--20 {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 2.0rem;
+        line-height: 2.4rem;
+    }
+}
+
+h1.course_header {
+    line-height: 1;
+    font-size: 3.5rem;
+    font-weight: $semibold;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 5.5rem;
+    }
+    margin-bottom: 1em;
+}
+
+
+.type--18 {
+    line-height: 1;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    @media screen and ( min-width: 1400px ) {
+        font-size: 1.6rem;
+        line-height: 2.8rem;
+    }
+}
+
+h1 {
+    @extend .type--heading-80;
+    margin-bottom: .3em;
+}
+
+h2 {
+    @extend .type--subs-45;
+}
+
+.section__title {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.section__title-alt {
+    color: $brand;
+}
+
+.section__title p {
+    margin: .5em auto 0 auto;
+    color: $brand;
+    max-width: 620px;
+}
+
+.section__title--wide p {
+    max-width: 820px;
+}
+
+.lead-in {
+    @extend .type--subs-30;
+    font-weight: 400;
+}
+
+header .lead-in {
+    max-width: 1056px;
+}
+
+.disclaimer {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    @media screen and ( min-width: 1200px ) {
+        font-size: 1.6rem;
+        line-height: 2.0rem;
+    }
+}

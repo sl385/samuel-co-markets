@@ -1,0 +1,76 @@
+.wpcf7-form-control-wrap {
+	position: relative;
+	display: block;
+	span {
+		&.wpcf7-not-valid-tip {
+			background: $brand;
+			color: #000;
+			display: block;
+            padding: 1em;
+            margin-bottom:1em;
+			border: 2px solid $brand;
+			border-top: none;
+			font-size: 14px;
+		}
+	}
+	input.wpcf7-not-valid {
+		margin-bottom: 0;
+		border: 2px solid $brand;
+		border-bottom: none;
+	}
+}
+
+	div.wpcf7-response-output {
+		clear: both;
+		margin-top: 2em;
+		padding: 1.5em;
+		font-size: 14px;
+		
+		&.wpcf7-validation-errors {
+			border: 2px solid $brand;
+			color: #000;
+			background: $brand;
+			font-size: 14px;
+		}
+		&.wpcf7-mail-sent-ok {
+			color: #000;
+			border: 2px solid $brand;
+			background: $brand;
+			
+		}
+	}
+
+
+	.signup--side {
+		.wpcf7-form-control-wrap {
+			.wpcf7-validation-errors {
+				border: 2px solid #000;
+				color: $brand;
+				background: #000;
+				
+			}
+			.wpcf7-not-valid-tip {
+				color: $brand;
+				background: #000;
+			}
+		}
+		div.wpcf7-response-output {
+			border: none;
+			background-color: #000 !important;
+			padding: 10px !important;
+			border: none;
+			margin: 0;
+		}
+	}
+
+
+	.signup--foot {
+		div.wpcf7-response-output {
+			border: none;
+			background-color: $brand !important;
+			padding: 10px !important;
+			border: none;
+			margin: 0;
+			color: #000;
+		}
+	}

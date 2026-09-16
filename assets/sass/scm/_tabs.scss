@@ -1,0 +1,33 @@
+/* ==== Pill navigation (Foundations A7) ====
+   The one filter/tab/pill-nav pattern site-wide — partials/components/pill-nav.php
+   is the only markup source for it now (previously three near-duplicate
+   implementations with different CSS each; see docs/BUILD-NOTES.md). Used for:
+   the homepage "What's Moving Markets" JS filter, the News & Research category
+   filter (real links), and the masthead's sub-nav (on-dark variant). Client-side
+   filtering (where used) handled in assets/js/markets.js via data-filter /
+   data-filter-target. */
+.scm-tabs {
+  display: flex; flex-wrap: wrap; gap: var(--space-2);
+  margin: 0 0 var(--space-5); padding: 0; list-style: none;
+  li { margin: 0; }
+  a, button {
+    display: inline-block; padding: 6px 14px; border-radius: var(--radius-pill);
+    border: 1px solid transparent; background: none; cursor: pointer;
+    font: 700 var(--text-sm) var(--font-body); color: var(--muted); text-decoration: none;
+    transition: color var(--ease), background var(--ease);
+    &:hover { color: var(--ink); }
+    &.is-active { background: var(--navy); color: var(--on-dark); }
+  }
+}
+
+/* On-dark variant — masthead sub-nav sits on a navy band, so the default
+   (navy-fill active state, muted-grey rest state) needs inverting. */
+.scm-tabs--on-dark {
+  a, button {
+    color: var(--on-dark-muted);
+    &:hover { color: var(--on-dark); }
+    &.is-active { background: var(--gold); color: var(--ink); }
+  }
+}
+
+.scm-card.is-hidden { display: none; }

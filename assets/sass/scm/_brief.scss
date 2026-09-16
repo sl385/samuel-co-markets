@@ -1,0 +1,143 @@
+/* ==== Brief ====
+   Morning Brief lead story + 3-card supporting strip (US Open + 2 "coming
+   soon" cards — see partials/components/morning-brief.php).
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-brief {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: var(--space-10);
+  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.scm-brief__lead {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scm-brief__lead h2 {
+  font-size: var(--display-lg);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 0 14px;
+}
+
+.scm-brief__lead p {
+  color: var(--ink-2);
+  margin: 0 0 var(--space-4);
+}
+
+.scm-brief-points__title {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+
+.scm-brief-points {
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.scm-brief-points li {
+  position: relative;
+  padding-left: 20px;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  margin: 6px 0;
+}
+
+.scm-brief-points li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold-deep);
+}
+
+.scm-brief__image {
+  min-height: 320px;
+  position: relative;
+  background: var(--sand);
+  overflow: hidden;
+}
+
+.scm-brief__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scm-brief-supporting {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.scm-mini-story {
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  background: var(--white);
+  text-decoration: none;
+  color: inherit;
+}
+
+.scm-mini-story__copy h3 {
+  font: 500 17px/1.25 var(--font-display);
+  margin: var(--space-2) 0 var(--space-2);
+}
+
+.scm-mini-story__art {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.scm-mini-story__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scm-mini-story__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(6, 26, 37, .35);
+  color: var(--on-dark);
+  font-size: 14px;
+}
+
+.scm-mini-story--soon {
+  grid-template-columns: 1fr;
+  border-style: dashed;
+  background: var(--paper);
+}
+
+.scm-mini-story--soon h3 {
+  color: var(--ink-2);
+}
+
+.scm-mini-story--soon p {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+@include bp-down(1050px) {
+  .scm-brief {
+    grid-template-columns: 1fr;
+  }
+  .scm-brief-supporting {
+    grid-template-columns: 1fr;
+  }
+}

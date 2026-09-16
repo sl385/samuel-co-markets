@@ -1,0 +1,255 @@
+/* ==== Cards ====
+   Post card + card grids.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-card-grid {
+  display:grid;
+  gap:14px;
+  /* WooCommerce's own loop wraps cards in a <ul> (loop/loop-start.php) — reset
+     list defaults so .scm-card-grid works the same on a <ul> as on a <div>. */
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.scm-card-grid--4 {
+  grid-template-columns:repeat(4,1fr);
+}
+
+.scm-card-grid--3 {
+  grid-template-columns:repeat(3,1fr);
+}
+
+.scm-card {
+  border:1px solid var(--line);
+  background:var(--white);
+}
+
+.scm-card__image {
+  display:block;
+  height:144px;
+  background:#ddd;
+  overflow:hidden;
+}
+
+.scm-card__image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.scm-card__body {
+  padding:13px;
+}
+
+.scm-card h3 {
+  font:500 18px/1.12 var(--font-display);
+  margin:6px 0 8px;
+}
+
+.scm-card h3 a {
+  text-decoration:none;
+}
+
+.scm-card p {
+  font-size:var(--text-sm);
+  line-height:1.5;
+  color:#6b777d;
+  margin:0;
+}
+
+/* Event card (spec C23) — partials/components/card-event.php */
+.scm-card__image--event {
+  position:relative;
+}
+
+.scm-card__date-badge {
+  position:absolute;
+  top:10px;
+  left:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background:var(--navy);
+  color:var(--white);
+  padding:6px 10px;
+  line-height:1.15;
+
+  span:first-child {
+    font-size:var(--text-sm);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+
+  span:last-child {
+    font:500 18px var(--font-display);
+  }
+}
+
+.scm-card--event h3 {
+  margin-top:4px;
+}
+
+.scm-card__event-cost {
+  margin:6px 0 12px !important;
+  font-weight:600;
+  color:var(--ink) !important;
+}
+
+.scm-card--event .scm-button--sm {
+  font-size:var(--text-sm);
+  padding:8px 14px;
+}
+
+.scm-card--past .scm-card__image--event img {
+  filter:grayscale(.4);
+  opacity:.75;
+}
+
+/* Single product (D3) — .woocommerce div.scm-product beats the legacy
+   .woocommerce div.product flex rule (assets/sass/legacy/local/woo/_single.scss)
+   on specificity, rather than fighting it with !important. */
+.woocommerce div.scm-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  padding: var(--space-10) 0;
+}
+
+.scm-product__gallery img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+
+.scm-product__summary .product_title {
+  font: 500 34px var(--font-display);
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 var(--space-3);
+}
+
+.scm-product__summary .price {
+  display: block;
+  font: 700 24px var(--font-body);
+  color: var(--gold-deep);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.scm-product__summary .woocommerce-product-details__short-description {
+  font-size: var(--text-md);
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+/* .woocommerce button.button.alt (WooCommerce's own purple "alt" button —
+   the exact thing flagged in the design-team mock-up review) is 3 classes
+   deep; .scm-product__summary .single_add_to_cart_button was only 2 and
+   lost on specificity despite loading later. Matching the .woocommerce
+   prefix here beats it on specificity instead of reaching for !important
+   (same approach as .woocommerce div.scm-product above). */
+.woocommerce .scm-product__summary button.single_add_to_cart_button {
+  @extend .scm-button;
+  @extend .scm-button--gold;
+  height: 52px;
+  padding: 0 var(--space-8);
+  font-size:var(--text-base);
+}
+
+/* No quantity stepper next to it any more (every real product is a one-off
+   course/programme/licence, see woocommerce/single-product/add-to-cart/simple.php)
+   — let the button take the full width it used to share with the box. */
+.woocommerce .scm-product__summary button.single_add_to_cart_button.scm-add-to-cart-full {
+  width: 100%;
+}
+
+/* Real per-product notices — includes/woocommerce/woo.php's addDisclaimerText()
+   / addNBText() (fields _disclaimer / _nb_text), e.g. Fusion 3.0's real note
+   that the box artwork is illustrative only. Was an unstyled <small>. */
+.scm-product__summary .disclaimer {
+  display: block;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  font-style: italic;
+}
+
+@include bp-down(1050px) {
+  .woocommerce div.scm-product {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product card (D1) — same .scm-card, plus price/add-to-cart footer row.
+   WooCommerce prints its own `.price`/`del`/`ins` markup we don't control the
+   tags of, so this styles those directly rather than adding new classes. */
+.scm-card__product-footer {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--space-3);
+  margin-top:var(--space-3);
+}
+
+.scm-card__product-footer .price {
+  font:700 var(--text-base) var(--font-body);
+  color:var(--ink);
+}
+
+.scm-card__product-footer .price del {
+  color:var(--muted);
+  font-weight:400;
+  margin-right:var(--space-2);
+}
+
+.scm-card__product-footer .price ins {
+  text-decoration:none;
+}
+
+/* Testimonial card (C24) */
+.scm-testimonial {
+  border:1px solid var(--line);
+  background:var(--white);
+  padding:var(--space-4);
+}
+
+.scm-testimonial__head {
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+  margin-bottom:var(--space-3);
+}
+
+.scm-testimonial__avatar img {
+  border-radius:50%;
+  display:block;
+}
+
+.scm-testimonial__stars {
+  display:block;
+  color:var(--gold);
+  font-size:var(--text-sm);
+  letter-spacing:2px;
+}
+
+.scm-testimonial__name {
+  display:block;
+  font:500 15px var(--font-display);
+}
+
+.scm-testimonial blockquote {
+  margin:0 0 var(--space-3);
+  font:var(--text-base)/var(--leading-body) var(--font-display);
+  color:var(--ink-2);
+}
+
+.scm-testimonial__payout {
+  display:inline-block;
+  font-size:var(--text-xs);
+  text-transform:uppercase;
+  letter-spacing:var(--tracking-eyebrow);
+  color:var(--gold-deep);
+}

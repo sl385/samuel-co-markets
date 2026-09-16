@@ -1,0 +1,28 @@
+/* ==== Container (Foundations A13) ====
+   .container was a legacy class (assets/sass/legacy/local/_scaffold.scss,
+   no longer imported — see docs/BUILD-NOTES.md "legacy CSS dropped
+   entirely"), but it's still real markup in every legacy ACF template
+   (About, Contact, the three Service pages, Get Funded, single-course,
+   the events archive) — dropping the legacy import left all of those with
+   NO width constraint at all ("pages that look like arse with no
+   container"). Re-implemented here on tokens rather than left dead or
+   re-imported wholesale. Values reference CSS custom properties in
+   _tokens.scss. */
+
+.container {
+  width: 90%;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+}
+
+.container--m {
+  max-width: 1250px;
+}
+
+.container--s {
+  max-width: var(--prose-max);
+}
+
+.container--xs {
+  max-width: 760px;
+}

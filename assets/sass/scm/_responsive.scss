@@ -1,0 +1,147 @@
+/* ==== Responsive ====
+   Breakpoints. TODO: fold these into the component partials that own them.
+   Values reference CSS custom properties in _tokens.scss. */
+
+@media (max-width: 1050px) {
+  .scm-header__inner {
+    grid-template-columns:1fr auto;
+  }
+  .scm-nav {
+    display:none;
+  }
+  .scm-nav.is-open {
+    display:block;
+    position:absolute;
+    left:0;
+    right:0;
+    top:84px;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    padding:20px 42px;
+    /* Light drawer floating below the (now navy) header — reset the on-dark
+       token remap so its links render dark-on-white, not white-on-white. */
+    --ink: #0c1d28; --muted: #68747b; --line: #ddd8ce; --gold-deep: #937046;
+  }
+  .scm-nav.is-open .scm-nav__list {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .scm-menu-toggle {
+    display:inline-block;
+  }
+  .scm-hero__grid {
+    grid-template-columns:1fr;
+  }
+  .scm-hero__copy {
+    padding-right:0;
+  }
+  .scm-hero__visual {
+    min-height:420px;
+  }
+  .scm-proof__grid {
+    grid-template-columns:1fr 1fr;
+  }
+  .scm-ticker__grid {
+    grid-template-columns:repeat(3,1fr);
+  }
+  .scm-brief,.scm-research-layout,.scm-learn,.scm-education__grid {
+    grid-template-columns:1fr;
+  }
+  .scm-card-grid--4,.scm-card-grid--3 {
+    grid-template-columns:1fr 1fr;
+  }
+  .scm-member {
+    position:relative;
+    margin-top:20px;
+  }
+  .scm-usopen {
+    border-left:0;
+    border-top:1px solid var(--line);
+    padding:22px 0 0;
+  }
+  .scm-footer__grid {
+    grid-template-columns:1fr;
+  }
+  .scm-footer__legal {
+    text-align:left;
+  }
+}
+
+@media (max-width: 680px) {
+  .scm-shell {
+    width:calc(100% - 34px);
+  }
+  .scm-header {
+    height:70px;
+  }
+  .scm-established,.scm-text-link,.scm-search-link {
+    display:none;
+  }
+  .scm-brand__main {
+    font-size:15px;
+  }
+  .scm-brand__sub {
+    font-size:var(--text-xs);
+  }
+  .scm-header__actions .scm-button {
+    height:40px;
+    padding:0 15px;
+  }
+  .scm-hero__copy {
+    padding:48px 0;
+  }
+  .scm-hero h1 {
+    font-size:50px;
+  }
+  .scm-hero__lead {
+    font-size:18px;
+  }
+  .scm-signup {
+    display:block;
+  }
+  .scm-signup input,.scm-signup .scm-button {
+    width:100%;
+    margin-bottom:8px;
+  }
+  .scm-hero__values {
+    right:22px;
+    top:24px;
+  }
+  .scm-hero__quote {
+    left:22px;
+    right:22px;
+  }
+  .scm-proof__grid {
+    grid-template-columns:1fr;
+  }
+  .scm-proof__grid>div {
+    padding:16px 0;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .scm-ticker__grid {
+    grid-template-columns:1fr 1fr;
+  }
+  .scm-section {
+    padding:42px 0;
+  }
+  .scm-brief__lead h2 {
+    font-size:38px;
+  }
+  .scm-actions-row {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .scm-card-grid--4,.scm-card-grid--3,.scm-learn-grid {
+    grid-template-columns:1fr;
+  }
+  .scm-education__grid {
+    display:block;
+  }
+  .scm-qualification {
+    margin:8px 0 0;
+  }
+  .scm-article h1,.scm-page h1 {
+    font-size:43px;
+  }
+}

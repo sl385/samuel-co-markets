@@ -1,0 +1,42 @@
+/* ==== Proof ====
+   Four-up proof bar under the hero.
+   Values reference CSS custom properties in _tokens.scss. */
+
+.scm-proof {
+  background:var(--white);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.scm-proof__grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.scm-proof__grid>div {
+  padding:20px 25px;
+  border-right:1px solid var(--line);
+}
+
+.scm-proof__grid>div:first-child {
+  padding-left:0;
+}
+
+.scm-proof__grid>div:last-child {
+  border-right:0;
+}
+
+.scm-proof strong {
+  display:block;
+  font:500 15px var(--font-display);
+  margin-bottom:2px;
+}
+
+.scm-proof span {
+  font-size:var(--text-sm);
+  color:var(--muted);
+}
+
+/* Icon + text layout from the reference */
+.scm-proof__grid > div { display: flex; align-items: center; gap: var(--space-3); }
+.scm-proof__icon { font-size: 22px; color: var(--gold); width: 28px; text-align: center; flex: none; }
