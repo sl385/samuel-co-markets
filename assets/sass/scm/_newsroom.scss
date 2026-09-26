@@ -1,0 +1,198 @@
+/* ==== Newsroom (homepage redesign, 26 Sep 2026) ====
+   Hero grid, featured/overlay cards, news list, Markets at a glance,
+   founder band, featured products. Values reference _tokens.scss. */
+
+.scm-section--flush { padding-top: var(--space-6); }
+.scm-empty { color: var(--muted); font-size: var(--text-sm); }
+
+/* --- Tag chip (topic label on image cards) */
+.scm-tag {
+  display: inline-block; padding: 4px 8px; margin-bottom: var(--space-3);
+  background: #1e6fb8; color: var(--white);
+  font: 700 var(--text-xs) var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; text-decoration: none;
+}
+
+/* --- Hero grid: feature | stack | brief panel */
+.scm-hero-grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 0.95fr; gap: var(--space-4);
+  min-height: 520px;
+}
+.scm-hero-grid__stack { display: grid; grid-template-rows: repeat(3, 1fr); gap: var(--space-4); }
+
+/* --- Featured story (image with gradient + text bottom-left) */
+.scm-feature, .scm-overlay {
+  position: relative; display: flex; align-items: flex-end; overflow: hidden;
+  background: var(--navy) center/cover no-repeat; color: var(--on-dark);
+  --ink: var(--on-dark); --muted: var(--on-dark-muted);
+  &:before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,26,37,0) 30%, rgba(6,26,37,.55) 60%, rgba(6,26,37,.92) 100%); }
+  a { color: inherit; text-decoration: none; }
+}
+.scm-feature__link, .scm-overlay__link { position: absolute; inset: 0; z-index: 1; }
+.scm-feature__body, .scm-overlay__body { position: relative; z-index: 2; padding: var(--space-8); }
+.scm-feature { min-height: 520px; }
+.scm-feature h2 { font: 500 var(--display-lg) / var(--leading-tight) var(--font-display); letter-spacing: var(--tracking-display); margin: 0 0 var(--space-3); text-shadow: var(--shadow-text); }
+.scm-feature p { font-size: var(--text-md); line-height: var(--leading-body); color: var(--on-dark-muted); margin: 0 0 var(--space-3); max-width: 60ch; }
+.scm-feature__meta, .scm-overlay__meta { display: block; font-size: var(--text-xs); color: var(--on-dark-muted); letter-spacing: .3px; }
+
+.scm-overlay { min-height: 150px; }
+.scm-overlay__body { padding: var(--space-4); }
+.scm-overlay .scm-tag { margin-bottom: var(--space-2); }
+.scm-overlay h3 { font: 500 var(--text-md) / 1.2 var(--font-display); margin: 0 0 var(--space-1); text-shadow: var(--shadow-text); }
+
+/* --- Morning Brief panel */
+.scm-brief-panel {
+  background: var(--navy); color: var(--on-dark); padding: var(--space-8); display: flex; flex-direction: column;
+  .scm-eyebrow { margin-bottom: var(--space-4); }
+  h3 { font: 500 var(--display-md) / var(--leading-tight) var(--font-display); letter-spacing: var(--tracking-display); margin: 0 0 var(--space-4); }
+  p { font-size: var(--text-base); line-height: var(--leading-body); color: var(--on-dark-muted); margin: 0 0 var(--space-5); }
+}
+.scm-brief-panel__points {
+  list-style: none; margin: 0 0 var(--space-6); padding: 0;
+  li { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); padding: var(--space-2) 0; }
+  i { width: 22px; text-align: center; color: var(--gold); }
+}
+.scm-brief-panel .scm-newsletter { margin-top: auto; }
+/* Stacked variant: email input full width, gold button beneath (the footer's
+   version is a single row). Beats _footer.scss's row rules on specificity. */
+.scm-brief-panel .scm-newsletter .newsletter,
+.scm-brief-panel .scm-newsletter .newsletter p,
+.scm-brief-panel .scm-newsletter .wpcf7-form-control-wrap { display: block; width: 100%; flex: none; }
+.scm-brief-panel .scm-newsletter input[type="email"] {
+  display: block; width: 100%; margin-bottom: var(--space-3);
+  background: rgba(255,255,255,.06); border: 1px solid var(--line-on-dark); color: var(--on-dark);
+  &::placeholder { color: var(--on-dark-muted); }
+  &:focus { border-color: var(--gold); }
+}
+.scm-brief-panel .scm-newsletter input[type="submit"] { display: block; width: 100%; }
+.scm-brief-panel .scm-newsletter .wpcf7-list-item-label { color: var(--on-dark-muted); font-size: var(--text-xs); }
+.scm-brief-panel .scm-newsletter .wpcf7-list-item-label a { color: var(--on-dark); }
+
+/* --- Latest News + Markets at a glance */
+.scm-newsroom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-10); }
+.scm-newsroom > * { min-width: 0; }   /* the glance table must not widen the track */
+.scm-glance { overflow-x: auto; }
+
+.scm-news-list { border-top: 1px solid var(--line); }
+.scm-news-row {
+  display: grid; grid-template-columns: 56px 1fr auto; gap: var(--space-4); align-items: baseline;
+  padding: var(--space-4) 0; border-bottom: 1px solid var(--line);
+  h3 { font: 600 var(--text-base) / 1.35 var(--font-body); margin: 0; }
+  h3 a { text-decoration: none; color: var(--ink); &:hover { text-decoration: underline; } }
+  p { font-size: var(--text-sm); color: var(--muted); margin: var(--space-1) 0 0; line-height: 1.5; }
+}
+.scm-news-row__time { font: 500 var(--text-xs) var(--font-mono); color: var(--muted-2); white-space: nowrap; }
+.scm-news-row__topic { font: 700 var(--text-xs) var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; &:hover { color: var(--gold-deep); } }
+.scm-news-row--thumb { grid-template-columns: 56px 96px 1fr auto; align-items: start; }
+.scm-news-row__thumb { display: block; width: 96px; height: 64px; overflow: hidden; background: var(--sand); img { width: 100%; height: 100%; object-fit: cover; display: block; } }
+.scm-news-list--archive { margin-top: var(--space-6); }
+.scm-archive-lead { margin: var(--space-6) 0; .scm-feature { min-height: 420px; } }
+.scm-topic-pills { margin-top: calc(var(--space-3) * -1); .scm-tabs a { font-weight: 500; } }
+
+/* --- Markets at a glance */
+.scm-glance { position: relative; border: 1px solid var(--line); background: var(--white); padding: var(--space-4); }
+.scm-tabs--sm { margin-bottom: var(--space-3); a, button { padding: 5px 12px; font-size: var(--text-xs); } }
+.scm-glance__table {
+  width: 100%; border-collapse: collapse; font-size: var(--text-sm);
+  th, td { text-align: left; padding: 9px var(--space-2); border-bottom: 1px solid var(--line); white-space: nowrap; }
+  thead th { font: 700 var(--text-xs) var(--font-body); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  tbody th { font-weight: 600; color: var(--ink); }
+  td { font-family: var(--font-mono); color: var(--ink-2); }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+}
+.scm-glance__chg--up { color: var(--up); }
+.scm-glance__chg--down { color: var(--down); }
+.scm-spark { display: block; polyline { fill: none; stroke-width: 1.5; stroke: var(--up); } }
+.scm-spark--down polyline { stroke: var(--down); }
+.scm-glance__note { margin: var(--space-3) 0 0; font-size: var(--text-xs); color: var(--muted-2); font-style: italic; }
+.scm-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* --- Editorial card variant (topic eyebrow, byline at the foot) */
+.scm-card--editorial {
+  border: 0; background: transparent;
+  .scm-card__image { height: 190px; }
+  .scm-card__body { padding: var(--space-4) 0 0; }
+  h3 { font-size: var(--display-sm); letter-spacing: -.5px; margin: var(--space-2) 0; }
+  p { font-size: var(--text-sm); color: var(--muted); }
+}
+.scm-eyebrow--tight { margin-bottom: 0; }
+.scm-meta--byline { display: block; margin-top: var(--space-3); color: var(--muted-2); text-transform: none; letter-spacing: 0; font-weight: 400; }
+
+/* --- Founder band */
+.scm-founder {
+  background: var(--navy); color: var(--on-dark);
+  .scm-eyebrow { margin-bottom: var(--space-4); }
+}
+.scm-founder__grid { display: grid; grid-template-columns: 1.1fr 1.3fr 1fr; min-height: 380px; }
+.scm-founder--no-photo .scm-founder__grid { grid-template-columns: 1.5fr 1fr; }
+.scm-founder__photo { background: var(--navy-2) center/cover no-repeat; min-height: 300px; }
+.scm-founder__copy {
+  padding: var(--space-12) var(--space-10);
+  h2 { font: 500 var(--display-md) / var(--leading-tight) var(--font-display); letter-spacing: var(--tracking-display); margin: 0 0 var(--space-4); color: var(--on-dark); }
+  p { font-size: var(--text-base); line-height: var(--leading-body); color: var(--on-dark-muted); margin: 0 0 var(--space-6); max-width: 48ch; }
+}
+.scm-founder__latest {
+  padding: var(--space-12) var(--space-8); border-left: 1px solid var(--line-on-dark);
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--line-on-dark); &:last-child { border-bottom: 0; } }
+  li i { width: 22px; text-align: center; color: var(--gold); margin-top: 3px; }
+  li a { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--on-dark); text-decoration: none; font-size: var(--text-sm); font-weight: 600; line-height: 1.35; &:hover { text-decoration: underline; } }
+  li span { display: block; font-size: var(--text-xs); color: var(--on-dark-muted); margin-top: 3px; }
+}
+
+/* --- Featured products ("Take your knowledge further") */
+.scm-knowledge { background: var(--sand); }
+.scm-knowledge__head {
+  text-align: center; max-width: 720px; margin: 0 auto var(--space-10);
+  h2 { margin: 0 0 var(--space-3); }
+  p { font-size: var(--text-md); color: var(--ink-2); margin: 0; }
+}
+.scm-knowledge__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+.scm-knowledge__card {
+  position: relative; background: var(--white); border: 1px solid var(--line); padding: 0 var(--space-5) var(--space-5);
+  h3 { font: 500 var(--display-sm) / 1.15 var(--font-display); margin: var(--space-2) 0 var(--space-2); }
+  h3 a { text-decoration: none; }
+  p { font-size: var(--text-sm); color: var(--muted); line-height: 1.5; margin: 0 0 var(--space-4); min-height: 3em; }
+}
+.scm-knowledge__image { display: block; height: 150px; margin: 0 calc(var(--space-5) * -1) var(--space-8); background: var(--navy) center/cover no-repeat; }
+.scm-knowledge__icon {
+  position: absolute; top: 126px; left: var(--space-5); width: 48px; height: 48px; border-radius: 50%;
+  background: var(--navy); color: var(--gold); display: grid; place-items: center; font-size: 18px; border: 3px solid var(--white);
+}
+.scm-button--sm { height: 40px; padding: 0 var(--space-4); font-size: var(--text-sm); }
+.scm-review-note--inline { margin: var(--space-6) 0 0; font-size: var(--text-sm); }
+
+/* --- Ticker light variant */
+.scm-ticker--light {
+  background: var(--sand); color: var(--ink);
+  --ink: #0c1d28; --muted: #68747b; --line: #ddd8ce; --gold-deep: #937046; --on-dark: #0c1d28;
+  border-bottom: 1px solid var(--line);
+  .scm-tick { border-right-color: var(--line); }
+  .scm-ticker__more { color: var(--ink); }
+}
+.scm-ticker__note { flex-shrink: 0; display: flex; align-items: center; padding: 12px 0 12px 13px; font-size: var(--text-xs); color: var(--muted); white-space: nowrap; }
+
+/* --- Responsive */
+@include bp-down(1050px) {
+  .scm-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .scm-brief-panel { grid-column: 1 / -1; }
+  .scm-feature { min-height: 420px; }
+  .scm-newsroom { grid-template-columns: 1fr; }
+  .scm-founder__grid, .scm-founder--no-photo .scm-founder__grid { grid-template-columns: 1fr; }
+  .scm-founder__photo { min-height: 260px; }
+  .scm-founder__latest { border-left: 0; border-top: 1px solid var(--line-on-dark); }
+  .scm-knowledge__grid { grid-template-columns: 1fr 1fr; }
+  .scm-ticker__note { display: none; }
+}
+@include bp-down(680px) {
+  .scm-hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .scm-hero-grid__stack { grid-template-rows: none; }
+  .scm-feature { min-height: 360px; }
+  .scm-feature__body { padding: var(--space-5); }
+  .scm-news-row { grid-template-columns: 48px 1fr; }
+  .scm-news-row__topic { grid-column: 2; }
+  .scm-news-row--thumb { grid-template-columns: 48px 1fr; }
+  .scm-news-row__thumb { display: none; }
+  .scm-glance { overflow-x: auto; }
+  .scm-founder__copy, .scm-founder__latest { padding: var(--space-8) var(--space-5); }
+  .scm-knowledge__grid { grid-template-columns: 1fr; }
+}

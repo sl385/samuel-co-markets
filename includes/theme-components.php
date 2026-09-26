@@ -147,3 +147,40 @@ function scm_acf_icon_url($value, $size = 'thumbnail') {
     if (!$file || !file_exists($file)) return '';
     return wp_get_attachment_image_url($id, $size) ?: '';
 }
+
+/* ---- Newsroom helpers (26 Sep 2026 homepage redesign) ---------------- */
+
+/**
+ * The post's "topic": the client creates child categories under News /
+ * Research (e.g. News > Commodities). Returns the first child category, or
+ * the first category if the post has none, or null.
+ */
+function scm_topic($post_id = null) {
+    $post_id = $post_id ?: get_the_ID();
+    $cats = get_the_category($post_id);
+    if (!$cats) return null;
+    foreach ($cats as $c) { if ($c->parent) return $c; }
+    return $cats[0];
+}
+
+/** "2 hours ago" for the last 7 days, otherwise "14 Mar 2026". */
+function scm_time_ago($post_id = null) {
+    $post_id = $post_id ?: get_the_ID();
+    $ts = get_post_time('U', true, $post_id);
+    if (time() - $ts < 7 * DAY_IN_SECONDS) return human_time_diff($ts) . ' ago';
+    return get_the_date('j M Y', $post_id);
+}
+
+/** Post IDs already shown on the page, so later sections don't repeat them. */
+function scm_shown_ids($add = null) {
+    static $ids = [];
+    if ($add !== null) $ids = array_unique(array_merge($ids, (array) $add));
+    return $ids;
+}
+
+/** Top-level categories (excluding uncategorised), for pill navs. */
+function scm_top_categories() {
+    $cats = get_terms(['taxonomy' => 'category', 'hide_empty' => true, 'parent' => 0]);
+    if (!$cats || is_wp_error($cats)) return [];
+    return array_values(array_filter($cats, fn($c) => !in_array($c->slug, ['uncategorised', 'uncategorized'], true)));
+}

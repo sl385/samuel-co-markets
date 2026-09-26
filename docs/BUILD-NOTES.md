@@ -1641,3 +1641,33 @@ rather than touching the generic rule other pages may rely on.
 
 Full regression sweep (markets, research, briefings, my-account, home)
 all 200, no PHP fatals.
+
+## 26 Sep 2026 — homepage rebuilt to the newsroom design; news-style archives
+
+New homepage design supplied (editorial newsroom: featured story + stacked
+cards + Morning Brief panel, Latest News list + Markets at a glance, Analysis &
+Research, founder column band, featured products). `front-page.php` rebuilt
+from new components; the previous route/member/learn/education sections are
+no longer on the homepage (components still exist for other pages).
+
+- New components: `card-feature`, `card-overlay`, `news-row`, `brief-panel`,
+  `static-markets-glance` (**static**, same data-feed gap as the ticker),
+  `founder-band`, `featured-products`. `card-post` gained an `editorial`
+  variant (topic eyebrow, time · read · author). `static-ticker` gained a
+  `light` variant + note.
+- Topics: the client creates **child categories** under News / Research;
+  `scm_topic()` returns the child (else the parent) for tags/eyebrows. Nothing
+  to configure — until topics exist every tag reads "News"/"Research".
+- Featured products: WooCommerce products starred as Featured (max 4); falls
+  back to the four newest with an editor-only note.
+- Founder band: posts by the `samuel.leach` user (ACF override), no photo →
+  no image column. ACF group "Homepage — newsroom sections" holds the copy.
+- `index.php` is now the news-style archive for the posts page, category and
+  topic archives: masthead, category pills + topic pills, featured first
+  post, then a dense list (News) or editorial cards (everything else).
+- Homepage sections de-duplicate via `scm_shown_ids()`.
+- Styles in `assets/sass/scm/_newsroom.scss`; glance tabs + CF7 button
+  relabel in `markets.js`.
+
+Verified on this laptop (MAMP): home, /news/, /category/news/,
+/category/research/ all 200, no PHP warnings; screenshots at 1440 and 390.

@@ -33,6 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Newsletter wrappers can relabel the shared CF7 form's submit button
+  // (e.g. the Morning Brief panel says "Get the Brief" not "Subscribe").
+  document.querySelectorAll('[data-newsletter][data-cta]').forEach(wrap => {
+    wrap.querySelectorAll('input[type="submit"]').forEach(btn => { btn.value = wrap.dataset.cta; });
+  });
+
+  // "Markets at a glance" tabs (partials/components/static-markets-glance.php)
+  document.querySelectorAll('[data-glance]').forEach(glance => {
+    const tabs = glance.querySelectorAll('[data-panel]');
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(t => { const on = t === tab; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', String(on)); });
+      glance.querySelectorAll('.scm-glance__panel').forEach(p => { p.hidden = p.id !== tab.dataset.panel; });
+    }));
+  });
+
   // Team card -> bio modal (partials/components/team-card.php + footer.php .team-modal)
   const teamModal = document.querySelector('.team-modal');
   if (teamModal) {

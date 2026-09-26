@@ -86,3 +86,37 @@ add_action('acf/init', function () {
         ],
     ]);
 });
+
+// Homepage v2 (26 Sep 2026 newsroom design): Morning Brief panel, founder
+// column band, knowledge section headings. Same options page, own group so
+// the original "Homepage (2026)" group is untouched.
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_local_field_group')) return;
+    acf_add_local_field_group([
+        'key' => 'group_scm_home_v2',
+        'title' => 'Homepage — newsroom sections',
+        'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'sco-general-settings']]],
+        'menu_order' => 1,
+        'fields' => [
+            ['key' => 'field_scm_bp_tab', 'label' => 'Morning Brief panel', 'type' => 'tab'],
+            ['key' => 'field_scm_bp_title', 'label' => 'Title', 'name' => 'scm_brief_title', 'type' => 'text', 'instructions' => 'Default: Your daily edge, before the bell.'],
+            ['key' => 'field_scm_bp_text', 'label' => 'Text', 'name' => 'scm_brief_text', 'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_scm_bp_points', 'label' => 'Bullet points', 'name' => 'scm_brief_points', 'type' => 'textarea', 'rows' => 4, 'instructions' => 'One per line, max 4.'],
+            ['key' => 'field_scm_bp_cta', 'label' => 'Button label', 'name' => 'scm_brief_cta', 'type' => 'text', 'instructions' => "Default: Get the Brief — It's Free"],
+
+            ['key' => 'field_scm_fd_tab', 'label' => 'Founder column', 'type' => 'tab'],
+            ['key' => 'field_scm_fd_user', 'label' => 'Author', 'name' => 'scm_founder_user', 'type' => 'user', 'return_format' => 'id', 'allow_null' => 1, 'instructions' => '"Latest from" lists this author\'s newest posts. Default: Samuel Leach.'],
+            ['key' => 'field_scm_fd_photo', 'label' => 'Photo', 'name' => 'scm_founder_photo', 'type' => 'image', 'return_format' => 'url', 'preview_size' => 'medium', 'instructions' => 'No photo = the band renders without the image column (a stock photo is never used for a named person).'],
+            ['key' => 'field_scm_fd_eyebrow', 'label' => 'Eyebrow', 'name' => 'scm_founder_eyebrow', 'type' => 'text', 'instructions' => 'Default: From Samuel Leach'],
+            ['key' => 'field_scm_fd_title', 'label' => 'Title', 'name' => 'scm_founder_title', 'type' => 'text'],
+            ['key' => 'field_scm_fd_text', 'label' => 'Text', 'name' => 'scm_founder_text', 'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_scm_fd_cta', 'label' => 'Button label', 'name' => 'scm_founder_cta', 'type' => 'text'],
+            ['key' => 'field_scm_fd_url', 'label' => 'Button URL', 'name' => 'scm_founder_url', 'type' => 'url', 'instructions' => 'Default: the author\'s archive page.'],
+
+            ['key' => 'field_scm_kn_tab', 'label' => 'Knowledge section', 'type' => 'tab'],
+            ['key' => 'field_scm_kn_title', 'label' => 'Title', 'name' => 'scm_knowledge_title', 'type' => 'text', 'instructions' => 'Default: Take your knowledge further'],
+            ['key' => 'field_scm_kn_text', 'label' => 'Text', 'name' => 'scm_knowledge_text', 'type' => 'text'],
+            ['key' => 'field_scm_kn_note', 'label' => 'Products', 'type' => 'message', 'message' => 'Shows WooCommerce products marked <strong>Featured</strong> (the star in Products → All Products), up to four. If none are starred, the four newest products are shown.'],
+        ],
+    ]);
+});

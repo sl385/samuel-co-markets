@@ -39,13 +39,14 @@ Text domain / prefix: `samuel-co-markets` / `scm_`. Design classes are `scm-*`.
   Full-size page mockups are coming and will land in `reference/` too. Component
   inventory and the UX master prompt: `docs/COMPONENT-SPEC.md`.
 
-## Status (11 Sep 2026)
-- Port complete, theme active locally, homepage renders from partials.
-- ON HOLD for build work until all page mockups are in. Pending decisions: display
-  serif (Tiempos / GT Sectra / free Source Serif 4); body sans is Elza (Typekit) or
-  Inter. Next steps agreed: update tokens to the design-system sheet's small-text
-  scale (20/17/15/13), build the six specified components on a styleguide page,
-  replace FontAwesome with an inline SVG line-icon set, then build page by page.
+## Status (26 Sep 2026)
+- Working branch: `2026-theme-build` (both laptops). Homepage rebuilt to the
+  newsroom design (see docs/BUILD-NOTES.md, 26 Sep). Archives (`index.php`) are
+  news-style. Topics = child categories under News/Research, client-managed.
+- Open: market data feed (ticker + Markets at a glance are static), custom
+  line-icon set (still FontAwesome), course player restyle, cart/checkout beyond
+  the polish pass, and the LEGACY-CODE-REVIEW §1–4 items (course admin
+  injection points first).
 - CSS: `assets/sass/screen.scss` → `assets/css/screen.css` via `npm run build` (dart-sass,
   `package.json`). Import order: legacy vars/mixins/reset → legacy functional partials
   (`assets/sass/legacy/`, everything except header/footer/home) → `assets/sass/scm/`
