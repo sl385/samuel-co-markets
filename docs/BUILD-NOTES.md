@@ -1671,3 +1671,11 @@ no longer on the homepage (components still exist for other pages).
 
 Verified on this laptop (MAMP): home, /news/, /category/news/,
 /category/research/ all 200, no PHP warnings; screenshots at 1440 and 390.
+
+## 26 Sep 2026 (cont.) — Research category archive
+
+`category-research.php` (template hierarchy, no page needed): masthead, category
++ topic pills, featured story + two overlay cards, one block per topic (child
+category, latest three), founder band, then the remaining posts as editorial
+cards with pagination. Page 2+ is pills + cards only. `scm_topic()` now prefers
+the category being viewed when a post has no child topic.

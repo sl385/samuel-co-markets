@@ -160,6 +160,12 @@ function scm_topic($post_id = null) {
     $cats = get_the_category($post_id);
     if (!$cats) return null;
     foreach ($cats as $c) { if ($c->parent) return $c; }
+    // No child topic: on a category archive prefer the category being viewed,
+    // so a post filed under both News and Research reads "Research" on /research/.
+    if (is_category()) {
+        $q = get_queried_object();
+        foreach ($cats as $c) { if ($q && $c->term_id === $q->term_id) return $c; }
+    }
     return $cats[0];
 }
 
