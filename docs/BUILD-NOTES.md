@@ -1684,7 +1684,7 @@ the category being viewed when a post has no child topic.
 
 Per Steve: softer text, rounded edges. Done as tokens + one partial loaded
 last (`assets/sass/scm/_soft.scss`) so it can be dialled or removed:
-`--radius-sm 8 / --radius 12 / --radius-lg 16` (was 0), `--display-weight 400`
+`--radius-sm 8 / --radius 12 / --radius-lg 16` (was 0), `--display-weight` 500 for Fraunces, 400 otherwise
 (was 500 hardcoded in ~77 rules — the partial applies it to every display
 heading), `--tracking-display -0.6px` (was -1.8), `--leading-body 1.6`, ink
 and muted greys lifted a step. Paragraph text uses `--ink-2`. Buttons and
@@ -1700,3 +1700,5 @@ dm-sans, jakarta. Google Fonts link prints at wp_head priority 5, the
 `--font-display` override at priority 99 (after wp_print_styles, or the
 stylesheet's :root wins). The hardcoded link in header.php is gone. Body sans
 (Elza) unchanged.
+
+Display font decided: **Fraunces** (30 Sep 2026). Default in code, tokens and ACF.

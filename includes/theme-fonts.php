@@ -5,7 +5,7 @@
  * The display face is a token (--font-display). This file lets it be chosen:
  *   1. ?font=<key> on any URL (preview; anyone can use it, nothing is saved)
  *   2. S&Co Settings → Design → Display font (ACF option; the real choice)
- *   3. default: source-serif
+ *   3. default: fraunces (chosen 30 Sep 2026)
  * The chosen Google Fonts stylesheet is printed in <head> and --font-display
  * is overridden inline. Editors also get a small floating switcher on the
  * front end (bottom-left) to flick between options on the page they're on.
@@ -15,8 +15,8 @@ if (!defined('ABSPATH')) exit;
 
 function scm_display_fonts() {
     return [
-        'source-serif' => ['label' => 'Source Serif 4 (current)', 'stack' => "'Source Serif 4', Georgia, serif", 'google' => 'Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600', 'note' => 'Transitional, crisp. The square-editorial default.'],
-        'fraunces'     => ['label' => 'Fraunces', 'stack' => "'Fraunces', Georgia, serif", 'google' => 'Fraunces:opsz,wght,SOFT@9..144,400,100;9..144,500,100', 'note' => 'Soft, warm, slightly quirky. Closest to Finimize.'],
+        'source-serif' => ['label' => 'Source Serif 4', 'stack' => "'Source Serif 4', Georgia, serif", 'google' => 'Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600', 'note' => 'Transitional, crisp. The square-editorial default.'],
+        'fraunces'     => ['label' => 'Fraunces (default)', 'stack' => "'Fraunces', Georgia, serif", 'google' => 'Fraunces:opsz,wght,SOFT@9..144,400,100;9..144,500,100', 'note' => 'Soft, warm, slightly quirky. Closest to Finimize.'],
         'newsreader'   => ['label' => 'Newsreader', 'stack' => "'Newsreader', Georgia, serif", 'google' => 'Newsreader:opsz,wght@6..72,400;6..72,500', 'note' => 'Gentle editorial serif, newspaper feel without the sharpness.'],
         'lora'         => ['label' => 'Lora', 'stack' => "'Lora', Georgia, serif", 'google' => 'Lora:wght@400;500;600', 'note' => 'Rounded, friendly, very readable at card sizes.'],
         'literata'     => ['label' => 'Literata', 'stack' => "'Literata', Georgia, serif", 'google' => 'Literata:opsz,wght@7..72,400;7..72,500', 'note' => 'Bookish, soft terminals, calm.'],
@@ -33,7 +33,7 @@ function scm_display_font_key() {
         if (isset($fonts[$k])) return $k;
     }
     $k = function_exists('get_field') ? (string) get_field('scm_display_font', 'option') : '';
-    return isset($fonts[$k]) ? $k : 'source-serif';
+    return isset($fonts[$k]) ? $k : 'fraunces';
 }
 
 add_action('wp_head', function () {
@@ -51,7 +51,7 @@ add_action('wp_head', function () {
     $fonts = scm_display_fonts();
     $key = scm_display_font_key();
     $f = $fonts[$key];
-    echo '<style id="scm-display-font">:root{--font-display:' . $f['stack'] . ';}' . ($key === 'fraunces' ? ':root{--display-weight:500;}' : '') . '</style>' . "\n";
+    echo '<style id="scm-display-font">:root{--font-display:' . $f['stack'] . ';}' . ($key !== 'fraunces' ? ':root{--display-weight:400;}' : '') . '</style>' . "\n";
 }, 99);
 
 // Floating switcher. Shown to everyone for now (review phase) — restore the
@@ -64,7 +64,7 @@ add_action('wp_footer', function () {
     <div class="scm-font-switch" id="scm-font-switch">
       <label>Display font
         <select onchange="var u=new URL(location.href);u.searchParams.set('font',this.value);location.href=u;">
-          <?php foreach ($fonts as $k => $f): ?><option value="<?php echo esc_attr($k); ?>"<?php selected($k, $key); ?>><?php echo esc_html($f['label']); ?><?php echo $k === ($saved ?: 'source-serif') ? ' ✓ saved' : ''; ?></option><?php endforeach; ?>
+          <?php foreach ($fonts as $k => $f): ?><option value="<?php echo esc_attr($k); ?>"<?php selected($k, $key); ?>><?php echo esc_html($f['label']); ?><?php echo $k === ($saved ?: 'fraunces') ? ' ✓ saved' : ''; ?></option><?php endforeach; ?>
         </select>
       </label>
       <small><?php echo esc_html($fonts[$key]['note']); ?> Save the choice in S&amp;Co Settings → Design.</small>

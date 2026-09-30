@@ -33,7 +33,8 @@
   --down:        #d64545;   /* ticker negative */
 
   /* Type */
-  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif; /* free stand-in for Tiempos/GT Sectra — see docs/BUILD-NOTES.md */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif; /* chosen 30 Sep 2026; switchable — includes/theme-fonts.php */
+  --display-weight: 500;        /* Fraunces at 400 is too light; 400 for the other serifs */
   --font-body:    elza, Arial, Helvetica, sans-serif;   /* Typekit kit zqz1tva, already loaded in header.php */
   --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;  /* ticker figures */
 
@@ -59,7 +60,6 @@
 
   --tracking-eyebrow: 2.7px;
   --tracking-display: -0.6px;   /* was -1.8px; softened 30 Sep */
-  --display-weight: 400;        /* was 500 everywhere; _soft.scss applies this */
   --leading-tight: 1.02;
   --leading-body: 1.6;
 
