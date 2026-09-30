@@ -1689,3 +1689,14 @@ last (`assets/sass/scm/_soft.scss`) so it can be dialled or removed:
 heading), `--tracking-display -0.6px` (was -1.8), `--leading-body 1.6`, ink
 and muted greys lifted a step. Paragraph text uses `--ink-2`. Buttons and
 inputs need `!important` radius because _forms/_buttons pin 0 with !important.
+
+## 30 Sep 2026 (cont.) — display font switcher
+
+`includes/theme-fonts.php`: the display face is now chosen, not hardcoded.
+`?font=<key>` previews on any URL; S&Co Settings → Design → Display font saves
+it; editors get a floating switcher bottom-left on the front end. Options:
+source-serif (default), fraunces, newsreader, lora, literata, instrument,
+dm-sans, jakarta. Google Fonts link prints at wp_head priority 5, the
+`--font-display` override at priority 99 (after wp_print_styles, or the
+stylesheet's :root wins). The hardcoded link in header.php is gone. Body sans
+(Elza) unchanged.

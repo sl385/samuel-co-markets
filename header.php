@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="https://use.typekit.net/zqz1tva.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap">
+<?php /* display font stylesheet is printed by includes/theme-fonts.php (wp_head, priority 5) */ ?>
 <?php wp_head(); ?>
 <?php if (apply_filters('scm_cookie_consent_enabled', false)): ?>
 <!-- Cookie Consent (Silktide) — was popping up on every single page during the

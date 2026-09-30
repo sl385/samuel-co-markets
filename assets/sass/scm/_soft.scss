@@ -64,3 +64,14 @@ p { color: var(--ink-2); }
 
 /* Hairline borders read heavy next to rounded corners: soften the card border */
 .scm-card, .scm-glance, .scm-knowledge__card, .scm-route, .scm-testimonial { border-color: #e6e1d8; }
+
+/* Editor-only display-font switcher (includes/theme-fonts.php) */
+.scm-font-switch {
+  position: fixed; left: 16px; bottom: 16px; z-index: 9999; max-width: 300px;
+  background: var(--white); color: #1a2933; border: 1px solid #ddd8ce; border-radius: 12px;
+  padding: 12px 36px 12px 14px; box-shadow: 0 8px 30px rgba(0,0,0,.15); font: 13px/1.4 var(--font-body);
+  label { display: block; font-weight: 600; }
+  select { display: block; width: 100%; margin-top: 6px; padding: 6px 8px; border: 1px solid #bcb5aa; border-radius: 8px; font: inherit; }
+  small { display: block; margin-top: 8px; color: #6f7c85; }
+  button { position: absolute; top: 6px; right: 8px; border: 0; background: none; font-size: 18px; cursor: pointer; color: #6f7c85; }
+}
