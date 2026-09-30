@@ -54,9 +54,10 @@ add_action('wp_head', function () {
     echo '<style id="scm-display-font">:root{--font-display:' . $f['stack'] . ';}' . ($key === 'fraunces' ? ':root{--display-weight:500;}' : '') . '</style>' . "\n";
 }, 99);
 
-// Editor-only floating switcher.
+// Floating switcher. Shown to everyone for now (review phase) — restore the
+// current_user_can('edit_theme_options') guard before launch.
 add_action('wp_footer', function () {
-    if (!current_user_can('edit_theme_options') || is_admin()) return;
+    if (is_admin() || apply_filters('scm_font_switcher_hidden', false)) return;
     $fonts = scm_display_fonts(); $key = scm_display_font_key();
     $saved = function_exists('get_field') ? (string) get_field('scm_display_font', 'option') : '';
     ?>
