@@ -1,0 +1,66 @@
+/* ==== Soft layer (30 Sep 2026) ====
+   Finimize / Quiver-style softening applied on top of the components:
+   rounded corners on every contained element, lighter display weight, looser
+   tracking. Loaded last. Values come from _tokens.scss (--radius*,
+   --display-weight, --tracking-display); dial them there. Remove this import
+   to go back to the square editorial look. */
+
+/* Display type: lighter weight, looser tracking */
+.scm-hero h1, .scm-section h2, .scm-education h2, .scm-article h1, .scm-page h1,
+.scm-masthead h1, .scm-feature h2, .scm-overlay h3, .scm-brief-panel h3, .scm-founder h2,
+.scm-knowledge h2, .scm-knowledge__card h3, .scm-card h3, .scm-route h3, .scm-member h3,
+.scm-usopen h3, .scm-qualification h3, .scm-prose h2, .scm-prose h3, .scm-hub-hero h1,
+.scm-section-head h2, .scm-account h2, .scm-product__summary .product_title {
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+}
+.scm-card h3, .scm-overlay h3, .scm-knowledge__card h3 { line-height: 1.22; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+p { color: var(--ink-2); }
+.scm-on-dark p, .scm-founder p, .scm-brief-panel p, .scm-feature p, .scm-overlay p { color: var(--on-dark-muted); }
+
+/* Corners — cards and panels */
+.scm-card, .scm-card--editorial .scm-card__image, .scm-glance, .scm-knowledge__card, .scm-route,
+.scm-testimonial, .scm-member, .scm-qualification, .scm-price-card, .scm-lesson, .scm-qualification-card,
+.scm-news-row__thumb, .scm-team-card, .scm-event-info, .scm-rules-panel, .scm-funding-tier, .scm-account__panel,
+.scm-review-note, .scm-no-component, .scm-modal__box, .scm-search-result, .scm-article-sidebar > *,
+.scm-story-slide, .scm-testimonial__avatar img, .scm-prose img, .scm-prose figure, .scm-prose blockquote,
+.scm-product__gallery img, .woocommerce div.scm-product .woocommerce-product-gallery__image,
+.scm-dashboard-card, .woocommerce-MyAccount-navigation, .woocommerce-MyAccount-content {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.scm-feature, .scm-overlay, .scm-brief-panel, .scm-founder__photo, .scm-founder__latest,
+.scm-hub-hero__image, .scm-hero__visual, .scm-brief__image, .scm-learn__visual, .scm-education .scm-qualification {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.scm-knowledge__image { border-radius: var(--radius) var(--radius) 0 0; }
+.scm-card__image { border-radius: 0; }               /* parent .scm-card clips it */
+.scm-card--editorial { overflow: visible; }          /* borderless card: image carries the radius */
+.scm-card--editorial .scm-card__image { border-radius: var(--radius); }
+
+/* Corners — controls. _forms.scss and _buttons.scss pin radius:0 with
+   !important for the CF7/Woo fights, so this has to as well. */
+.scm-button, .scm-button--sm, .wpcf7-form input[type="submit"], .woocommerce .button, .woocommerce button.button,
+.woocommerce a.button, .woocommerce input.button, .woocommerce #respond input#submit,
+.woocommerce .scm-product__summary button.single_add_to_cart_button, .scm-newsletter input[type="submit"],
+.scm-signup .scm-button, #place_order {
+  border-radius: var(--radius-sm) !important;
+}
+.scm-field, .scm-signup input, .scm-newsletter input[type="email"], .wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"], .wpcf7-form input[type="tel"], .wpcf7-form textarea, .wpcf7-form select,
+.woocommerce-checkout input.input-text, .woocommerce-checkout textarea, .woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea, .woocommerce-cart .coupon input, .scm-search-form input {
+  border-radius: var(--radius-sm) !important;
+}
+.scm-tag, .scm-card__date-badge, .scm-chip, .scm-image-caption { border-radius: var(--radius-sm); }
+.scm-tag { padding: 4px 10px; }
+.scm-pagination a, .scm-pagination span, .page-numbers { border-radius: var(--radius-sm); }
+.scm-glance__table thead th:first-child, .scm-glance__table tbody th { border-radius: 0; }
+.scm-ticker--light { border-bottom: 0; }
+.scm-ticker--light .scm-tick { border-right: 0; }
+.scm-brief-panel .scm-newsletter input[type="email"] { background: rgba(255,255,255,.08); }
+
+/* Hairline borders read heavy next to rounded corners: soften the card border */
+.scm-card, .scm-glance, .scm-knowledge__card, .scm-route, .scm-testimonial { border-color: #e6e1d8; }

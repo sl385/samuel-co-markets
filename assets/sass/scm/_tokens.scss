@@ -13,9 +13,9 @@
   --gold-soft:   #dfbe88;   /* gold on dark backgrounds */
 
   /* Colour — neutrals */
-  --ink:         #0c1d28;   /* headings, body on light */
-  --ink-2:       #30434f;   /* lead paragraphs */
-  --muted:       #68747b;   /* secondary copy */
+  --ink:         #1a2933;   /* headings, body on light (softened 30 Sep) */
+  --ink-2:       #3f515d;   /* lead paragraphs */
+  --muted:       #6f7c85;   /* secondary copy */
   --muted-2:     #8a9094;   /* captions, footnotes */
   --paper:       #fbfaf7;   /* page background */
   --white:       #ffffff;
@@ -58,9 +58,10 @@
   --display-xl: clamp(2.75rem, 1.9rem + 4vw, 4.25rem);      /* 44→68px — hero h1 */
 
   --tracking-eyebrow: 2.7px;
-  --tracking-display: -1.8px;
+  --tracking-display: -0.6px;   /* was -1.8px; softened 30 Sep */
+  --display-weight: 400;        /* was 500 everywhere; _soft.scss applies this */
   --leading-tight: 1.02;
-  --leading-body: 1.55;
+  --leading-body: 1.6;
 
   /* Space (4px base) */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
@@ -75,7 +76,9 @@
   --control-h: 46px;   /* buttons + inputs share a height */
 
   /* Shape + motion */
-  --radius: 0;         /* the design is square-cornered throughout */
+  --radius-sm: 8px;    /* buttons, inputs, tags */
+  --radius: 12px;      /* cards, panels (softened 30 Sep — was 0, square) */
+  --radius-lg: 16px;   /* large panels, hero cards */
   --radius-pill: 999px;
   --ease: .18s ease;
   --shadow-text: 0 2px 12px rgba(0, 0, 0, .45);

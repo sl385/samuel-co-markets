@@ -1679,3 +1679,13 @@ Verified on this laptop (MAMP): home, /news/, /category/news/,
 category, latest three), founder band, then the remaining posts as editorial
 cards with pagination. Page 2+ is pills + cards only. `scm_topic()` now prefers
 the category being viewed when a post has no child topic.
+
+## 30 Sep 2026 — "soft" layer (Finimize / Quiver feel)
+
+Per Steve: softer text, rounded edges. Done as tokens + one partial loaded
+last (`assets/sass/scm/_soft.scss`) so it can be dialled or removed:
+`--radius-sm 8 / --radius 12 / --radius-lg 16` (was 0), `--display-weight 400`
+(was 500 hardcoded in ~77 rules — the partial applies it to every display
+heading), `--tracking-display -0.6px` (was -1.8), `--leading-body 1.6`, ink
+and muted greys lifted a step. Paragraph text uses `--ink-2`. Buttons and
+inputs need `!important` radius because _forms/_buttons pin 0 with !important.
