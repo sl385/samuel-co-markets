@@ -1704,3 +1704,18 @@ stylesheet's :root wins). The hardcoded link in header.php is gone. Body sans
 Display font decided: **Fraunces** (30 Sep 2026). Default in code, tokens and ACF.
 
 Display font changed to **Figtree** (1 Oct 2026) after review. Titles at 600.
+
+## 1 Oct 2026 — Beehiiv integration for the Morning Brief
+
+`includes/theme-beehiiv.php` + `partials/components/newsletter-form.php`.
+Native form (hero inline, Morning Brief panel stacked) → POST
+`/wp-json/scm/v1/subscribe` → Beehiiv Subscriptions API server-side. Config:
+`BEEHIIV_API_KEY` / `BEEHIIV_PUBLICATION_ID` in wp-config.php (preferred) or
+S&Co Settings → Integrations (ACF; also welcome-email toggle, UTM source,
+success copy). Validation: email, consent required, honeypot, 5/10min per IP.
+Unconfigured → 503 with a plain message; editors see a config note under the
+form. Pushes `newsletter_signup` to dataLayer on success. The footer
+"Market perspective" band still uses CF7 493 (different list) — switch it to
+`scm_component('newsletter-form')` if the client wants everything in Beehiiv.
+Gotcha: in the stacked layout the input needs `flex: none` or the column
+flex basis collapses its height to 18px.

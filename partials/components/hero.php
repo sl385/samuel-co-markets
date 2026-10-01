@@ -16,7 +16,6 @@ $image = scm_opt('scm_hero_image', _i('editorial/london-session.webp'));
 $values = scm_opt_lines('scm_hero_values', ['Discipline', 'Knowledge', 'Opportunity', 'A Brighter', 'Tomorrow']);
 $quote = scm_opt('scm_hero_quote', 'Better information leads to better decisions.');
 $cite  = scm_opt('scm_hero_quote_cite', 'Samuel Leach · Founder, Samuel & Co Trading');
-$form  = scm_opt('scm_signup_form', '[contact-form-7 id="493" title="Subscription Sign Up Form"]');
 ?>
 <section class="scm-hero">
   <div class="scm-hero__grid">
@@ -24,13 +23,8 @@ $form  = scm_opt('scm_signup_form', '[contact-form-7 id="493" title="Subscriptio
       <h1><?php echo implode('<br>', array_map('esc_html', $title_lines)); ?></h1>
       <p class="scm-hero__lead"><?php echo esc_html($lead); ?></p>
       <p class="scm-hero__sub"><?php echo esc_html($sub); ?></p>
-      <div id="morning-brief-signup" class="scm-newsletter" data-newsletter>
-        <span class="scm-hero__signup-label">Get the Morning Brief — free every weekday</span>
-        <?php echo do_shortcode($form); ?>
-        <div class="scm-newsletter-success" hidden>
-          <strong>You're on the list.</strong>
-          <span>Look out for your confirmation email.</span>
-        </div>
+      <div id="morning-brief-signup">
+        <?php scm_component('newsletter-form', ['cta' => 'Get the Morning Brief — Free', 'source' => 'homepage-hero', 'layout' => 'inline', 'label' => 'Get the Morning Brief — free every weekday']); ?>
       </div>
       <small>Delivered every weekday morning. Free. Unsubscribe anytime.</small>
     </div>

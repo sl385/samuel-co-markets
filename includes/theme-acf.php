@@ -136,3 +136,25 @@ add_action('acf/init', function () {
         ],
     ]);
 });
+
+// Integrations (1 Oct 2026): Beehiiv. Constants in wp-config.php take precedence
+// over these fields (see includes/theme-beehiiv.php).
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_local_field_group')) return;
+    acf_add_local_field_group([
+        'key' => 'group_scm_integrations',
+        'title' => 'Integrations',
+        'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'sco-general-settings']]],
+        'menu_order' => 3,
+        'fields' => [
+            ['key' => 'field_scm_bh_tab', 'label' => 'Beehiiv (Morning Brief)', 'type' => 'tab'],
+            ['key' => 'field_scm_bh_note', 'type' => 'message', 'message' => 'Preferred: define <code>BEEHIIV_API_KEY</code> and <code>BEEHIIV_PUBLICATION_ID</code> in wp-config.php so the key is never stored in the database. These fields are the fallback. Find both in Beehiiv → Settings → API.'],
+            ['key' => 'field_scm_bh_pub', 'label' => 'Publication ID', 'name' => 'beehiiv_publication_id', 'type' => 'text', 'instructions' => 'Starts with pub_', 'placeholder' => 'pub_00000000-0000-0000-0000-000000000000'],
+            ['key' => 'field_scm_bh_key', 'label' => 'API key', 'name' => 'beehiiv_api_key', 'type' => 'password', 'instructions' => 'Leave empty if set in wp-config.php.'],
+            ['key' => 'field_scm_bh_welcome', 'label' => 'Send Beehiiv welcome email', 'name' => 'beehiiv_welcome_email', 'type' => 'true_false', 'ui' => 1, 'default_value' => 1],
+            ['key' => 'field_scm_bh_utm', 'label' => 'Default UTM source', 'name' => 'beehiiv_utm_source', 'type' => 'text', 'default_value' => 'website'],
+            ['key' => 'field_scm_bh_stitle', 'label' => 'Success title', 'name' => 'beehiiv_success_title', 'type' => 'text', 'placeholder' => "You're on the list."],
+            ['key' => 'field_scm_bh_stext', 'label' => 'Success text', 'name' => 'beehiiv_success_text', 'type' => 'text', 'placeholder' => 'Look out for your confirmation email.'],
+        ],
+    ]);
+});

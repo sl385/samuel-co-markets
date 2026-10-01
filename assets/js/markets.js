@@ -39,6 +39,41 @@ document.addEventListener('DOMContentLoaded', () => {
     wrap.querySelectorAll('input[type="submit"]').forEach(btn => { btn.value = wrap.dataset.cta; });
   });
 
+  // Beehiiv signup forms (partials/components/newsletter-form.php) → REST relay
+  document.querySelectorAll('[data-bh-form]').forEach(form => {
+    const wrap = form.closest('[data-bh]');
+    const msg = form.querySelector('.scm-bh-form__msg');
+    const btn = form.querySelector('button[type="submit"]');
+    const success = wrap && wrap.querySelector('.scm-newsletter-success');
+    const show = (text) => { msg.textContent = text; msg.hidden = !text; };
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      show('');
+      const email = form.email.value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { show('Please enter a valid email address.'); form.email.focus(); return; }
+      if (!form.consent.checked) { show('Please tick the consent box.'); form.consent.focus(); return; }
+      const cfg = window.scmBeehiiv || {};
+      if (!cfg.endpoint) { show('Signup is not available right now.'); return; }
+      btn.disabled = true; btn.classList.add('is-loading');
+      try {
+        const res = await fetch(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, consent: true, source: form.dataset.source || 'website', website: form.website.value }) });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          form.hidden = true;
+          if (success) { if (data.message) success.querySelector('span').textContent = data.message; success.hidden = false; }
+          if (window.dataLayer) window.dataLayer.push({ event: 'newsletter_signup', source: form.dataset.source || 'website' });
+        } else {
+          show(data.message || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        show('Could not reach the server. Please try again.');
+      } finally {
+        btn.disabled = false; btn.classList.remove('is-loading');
+      }
+    });
+  });
+
   // "Markets at a glance" tabs (partials/components/static-markets-glance.php)
   document.querySelectorAll('[data-glance]').forEach(glance => {
     const tabs = glance.querySelectorAll('[data-panel]');

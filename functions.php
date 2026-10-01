@@ -83,6 +83,7 @@ include(TEMPLATEPATH . '/includes/woocommerce/course-compiler.php');
 include(TEMPLATEPATH . '/includes/theme-enqueue.php');
 include(TEMPLATEPATH . '/includes/theme-components.php');
 include(TEMPLATEPATH . '/includes/theme-fonts.php');
+include(TEMPLATEPATH . '/includes/theme-beehiiv.php');
 include(TEMPLATEPATH . '/includes/theme-acf.php');
 
 /* Importer (disabled, ported for reference)

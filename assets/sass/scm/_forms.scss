@@ -225,3 +225,21 @@ textarea.scm-field {
 .wpcf7 .wpcf7-response-output.wpcf7-aborted {
   border-left-color:var(--down) !important;
 }
+
+/* ---- Beehiiv signup form (partials/components/newsletter-form.php) ---- */
+.scm-bh-form__row { display: flex; gap: var(--space-3); }
+.scm-bh-form__row .scm-field { flex: 1; min-width: 0; height: var(--control-h); }
+.scm-bh-form__row .scm-button { flex-shrink: 0; height: var(--control-h); white-space: nowrap; }
+.scm-bh--stacked .scm-bh-form__row { flex-direction: column; }
+.scm-bh--stacked .scm-bh-form__row .scm-field, .scm-bh--stacked .scm-newsletter input[type="email"], .scm-bh--stacked.scm-newsletter input[type="email"] { flex: none; width: 100%; height: var(--control-h); }
+.scm-bh--stacked .scm-bh-form__row .scm-button { width: 100%; }
+.scm-bh-form__consent { margin-top: var(--space-3); font-size: var(--text-xs); color: var(--muted); }
+.scm-bh-form__consent a { color: var(--ink); }
+.scm-bh-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.scm-bh-form__msg { margin: var(--space-2) 0 0; }
+.scm-on-dark .scm-bh .scm-field, .scm-brief-panel .scm-bh .scm-field { background: rgba(255,255,255,.08); border-color: var(--line-on-dark); color: var(--on-dark); }
+.scm-on-dark .scm-bh .scm-field::placeholder, .scm-brief-panel .scm-bh .scm-field::placeholder { color: var(--on-dark-muted); }
+.scm-brief-panel .scm-bh-form__consent, .scm-on-dark .scm-bh-form__consent { color: var(--on-dark-muted); }
+.scm-brief-panel .scm-bh-form__consent a, .scm-on-dark .scm-bh-form__consent a { color: var(--on-dark); }
+.scm-button.is-loading span { opacity: .5; }
+@include bp-down(680px) { .scm-bh-form__row { flex-direction: column; } .scm-bh-form__row .scm-field { flex: none; } .scm-bh-form__row .scm-button { width: 100%; } }
