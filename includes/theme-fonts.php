@@ -22,6 +22,7 @@ function scm_display_fonts() {
         'literata'     => ['label' => 'Literata', 'stack' => "'Literata', Georgia, serif", 'google' => 'Literata:opsz,wght@7..72,400;7..72,500', 'note' => 'Bookish, soft terminals, calm.'],
         'instrument'   => ['label' => 'Instrument Serif', 'stack' => "'Instrument Serif', Georgia, serif", 'google' => 'Instrument+Serif', 'note' => 'Light, refined, single weight. Elegant at large sizes only.'],
         'dm-sans'      => ['label' => 'DM Sans (sans headings)', 'stack' => "'DM Sans', elza, Arial, sans-serif", 'google' => 'DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600', 'note' => 'Rounded geometric sans. The Quiver Quant direction: no serif at all.'],
+        'figtree'      => ['label' => 'Figtree (sans headings)', 'stack' => "'Figtree', elza, Arial, sans-serif", 'google' => 'Figtree:wght@400;500;600;700', 'note' => 'Friendly geometric sans, rounded but not cute. Sits between DM Sans and Jakarta.'],
         'jakarta'      => ['label' => 'Plus Jakarta Sans (sans headings)', 'stack' => "'Plus Jakarta Sans', elza, Arial, sans-serif", 'google' => 'Plus+Jakarta+Sans:wght@400;500;600', 'note' => 'Soft, modern sans. Fintech-app feel.'],
     ];
 }
