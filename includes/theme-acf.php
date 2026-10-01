@@ -132,7 +132,7 @@ add_action('acf/init', function () {
         'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'sco-general-settings']]],
         'menu_order' => 2,
         'fields' => [
-            ['key' => 'field_scm_display_font', 'label' => 'Display font', 'name' => 'scm_display_font', 'type' => 'select', 'choices' => $choices, 'default_value' => 'fraunces', 'return_format' => 'value', 'instructions' => 'Headings only; body text stays Elza. Preview any option on the live site by adding ?font=key to a URL (keys: ' . implode(', ', array_keys($choices)) . ').'],
+            ['key' => 'field_scm_display_font', 'label' => 'Display font', 'name' => 'scm_display_font', 'type' => 'select', 'choices' => $choices, 'default_value' => 'figtree', 'return_format' => 'value', 'instructions' => 'Headings only; body text stays Elza. Preview any option on the live site by adding ?font=key to a URL (keys: ' . implode(', ', array_keys($choices)) . ').'],
         ],
     ]);
 });

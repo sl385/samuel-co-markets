@@ -1702,3 +1702,5 @@ stylesheet's :root wins). The hardcoded link in header.php is gone. Body sans
 (Elza) unchanged.
 
 Display font decided: **Fraunces** (30 Sep 2026). Default in code, tokens and ACF.
+
+Display font changed to **Figtree** (1 Oct 2026) after review. Titles at 600.
